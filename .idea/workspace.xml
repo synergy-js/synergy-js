@@ -42,8 +42,50 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="testing" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "payneusmc07"
+  }
+}]]></component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1795444824" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="testing" />
+                    <option name="lastUsedInstant" value="1795435675" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/synergy-js/synergy-js.git",
+    "accountId": "b2b1eaca-9b9b-495f-898b-4ba93616e9f1"
+  }
+}]]></component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/apps/fusion-sandbox-rsbuild/package.json" />
     <dismissed value="$PROJECT_DIR$/apps/fusion-sandbox-vite/package.json" />
@@ -150,11 +192,6 @@
     ]
   }
 }]]></component>
-  <component name="QodanaReportsService">
-    <option name="descriptions">
-      <ReportDescription localRun="true" path="/private/var/folders/_0/1qmx1fxs5z5gq89v5wmd8k800000gp/T/qodana_output/qodana.sarif.json" reportGuid="38630fec-b93a-4412-95d4-1d5de3cecf1e" reportId="synergy-js/qodana/2026-11-04" />
-    </option>
-  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/packages/events" />
@@ -184,7 +221,6 @@
     </configuration>
     <list>
       <item itemvalue="npm.clean:node" />
-      <item itemvalue="npm.fusion:build" />
       <item itemvalue="npm.scribe:build" />
       <item itemvalue="npm.core:build" />
       <item itemvalue="npm.srvr:sandbox:dev" />
@@ -205,6 +241,7 @@
       <item itemvalue="npm.jsxr:build" />
       <item itemvalue="npm.hookr:build" />
       <item itemvalue="npm.hookr:test" />
+      <item itemvalue="npm.fusion:build" />
     </list>
   </component>
   <component name="SharedIndexes">
@@ -222,6 +259,47 @@
       <option name="presentableId" value="Default" />
       <updated>1777190207969</updated>
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1795435645286</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1795435645286</updated>
+    </task>
+    <task id="LOCAL-00002" summary="CI testing">
+      <option name="closed" value="true" />
+      <created>1795438188624</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1795438188624</updated>
+    </task>
+    <task id="LOCAL-00003" summary="CI testing2">
+      <option name="closed" value="true" />
+      <created>1795438487786</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1795438487786</updated>
+    </task>
+    <task id="LOCAL-00004" summary="CI testing3">
+      <option name="closed" value="true" />
+      <created>1795438685072</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1795438685072</updated>
+    </task>
+    <task id="LOCAL-00005" summary="CI testing3">
+      <option name="closed" value="true" />
+      <created>1795438825229</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1795438825229</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,6 +309,14 @@
         <option value="$PROJECT_DIR$/packages/css/tests/index.test.d.ts" />
       </list>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <MESSAGE value="Initial commit" />
+    <MESSAGE value="CI testing" />
+    <MESSAGE value="CI testing2" />
+    <MESSAGE value="CI testing3" />
+    <option name="LAST_COMMIT_MESSAGE" value="CI testing3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="../../../../WebstormProjects/synergy-js/coverage/lcov.info" NAME="lcov.info" MODIFIED="1793875981114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

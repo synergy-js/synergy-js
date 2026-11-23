@@ -1,0 +1,33 @@
+# .github/workflows/publish.yml
+name: Publish
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: "Package name (e.g., infusion)"
+        required: true
+      dry_run:
+        description: "Dry run (verify provenance without publishing)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm --filter "${{ inputs.package }}..." install --frozen-lockfile
+      - run: pnpm --filter "${{ inputs.package }}" build
+      - if: inputs.dry_run
+        run: pnpm --filter "${{ inputs.package }}" publish --dry-run --provenance --access public --no-git-checks
+      - if: ${{ !inputs.dry_run }}
+        run: pnpm --filter "${{ inputs.package }}" publish --provenance --access public --no-git-checks

@@ -1,0 +1,361 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"dee30814-4d15-47fc-8eef-2292e36d4fd3\" name=\"Changes\" comment=\"\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"DBNavigator.Project.Workspace.Settings\">\n    <assistant-settings>\n      <credential-settings>\n        <credentials />\n      </credential-settings>\n      <profile-settings>\n        <profiles />\n      </profile-settings>\n      <mcp-server-settings>\n        <workspace-integration value=\"false\" />\n        <mcp-servers />\n        <mcp-tool-approvals />\n      </mcp-server-settings>\n    </assistant-settings>\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"JavaScript File\" />\n        <option value=\"package.json\" />\n        <option value=\"HTML File\" />\n        <option value=\"TypeScript JSX File\" />\n        <option value=\"tsconfig.json\" />\n        <option value=\"TypeScript File\" />\n        <option value=\"GitHub Workflow\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"FormatOnSaveOptions\">\n    <option name=\"myRunOnSave\" value=\"true\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitToolBoxStore\">\n    <option name=\"recentBranches\">\n      <RecentBranches>\n        <option name=\"branchesForRepo\">\n          <list>\n            <RecentBranchesForRepo>\n              <option name=\"branches\">\n                <list>\n                  <RecentBranch>\n                    <option name=\"branchName\" value=\"testing\" />\n                    <option name=\"lastUsedInstant\" value=\"1795435675\" />\n                  </RecentBranch>\n                  <RecentBranch>\n                    <option name=\"branchName\" value=\"main\" />\n                    <option name=\"lastUsedInstant\" value=\"1795435674\" />\n                  </RecentBranch>\n                </list>\n              </option>\n              <option name=\"repositoryRootUrl\" value=\"file://$PROJECT_DIR$\" />\n            </RecentBranchesForRepo>\n          </list>\n        </option>\n      </RecentBranches>\n    </option>\n  </component>\n  <component name=\"PackageJsonUpdateNotifier\">\n    <dismissed value=\"$PROJECT_DIR$/apps/fusion-sandbox-rsbuild/package.json\" />\n    <dismissed value=\"$PROJECT_DIR$/apps/fusion-sandbox-vite/package.json\" />\n    <dismissed value=\"$PROJECT_DIR$/apps/srvr-sandbox/package.json\" />\n    <dismissed value=\"$PROJECT_DIR$/package.json\" />\n    <dismissed value=\"$PROJECT_DIR$/packages/css/package.json\" />\n    <dismissed value=\"$PROJECT_DIR$/packages/httpx/package.json\" />\n    <dismissed value=\"$PROJECT_DIR$/packages/infusion/package.json\" />\n    <dismissed value=\"$PROJECT_DIR$/packages/jsxr/package.json\" />\n    <dismissed value=\"$PROJECT_DIR$/packages/rsbuild-plugin-jsxr/package.json\" />\n    <dismissed value=\"$PROJECT_DIR$/packages/srvr/package.json\" />\n    <dismissed value=\"$PROJECT_DIR$/packages/typed-env/package.json\" />\n    <dismissed value=\"$PROJECT_DIR$/packages/verdict/package.json\" />\n  </component>\n  <component name=\"ProblemsViewState\">\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;customColor&quot;: &quot;&quot;,\n  &quot;associatedIndex&quot;: 4\n}</component>\n  <component name=\"ProjectId\" id=\"3KtHlNM0NIBJ0IjKbf1As7lDRsG\" />\n  <component name=\"ProjectLevelVcsManager\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n    <ConfirmationsSetting value=\"2\" id=\"Remove\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"autoscrollToSource\" value=\"true\" />\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"openDirectoriesWithSingleClick\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\n    \"DefaultHtmlFileTemplate\": \"HTML File\",\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\n    \"RunOnceActivity.git.unshallow\": \"true\",\n    \"RunOnceActivity.typescript.service.memoryLimit.init\": \"true\",\n    \"codeWithMe.voiceChat.enabledByDefault\": \"false\",\n    \"deletionFromPopupRequiresConfirmation\": \"false\",\n    \"git-widget-placeholder\": \"testing\",\n    \"go.import.settings.migrated\": \"true\",\n    \"javascript.nodejs.core.library.configured.version\": \"26.13.0\",\n    \"javascript.nodejs.core.library.typings.version\": \"26.6.6\",\n    \"javascript.preferred.runtime.type.id\": \"bun\",\n    \"last_opened_file_path\": \"/Users/mpayne/WebstormProjects/synergy-js/packages/events\",\n    \"node.js.detected.package.jshint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.jshint\": \"\",\n    \"nodejs_interpreter_path\": \"/opt/homebrew/bin/bun\",\n    \"nodejs_package_manager_path\": \"/opt/homebrew/bin/pnpm\",\n    \"npm.build.executor\": \"Run\",\n    \"npm.build:all.executor\": \"Run\",\n    \"npm.build:all:rsdoctor.executor\": \"Run\",\n    \"npm.clean:node.executor\": \"Run\",\n    \"npm.common:build.executor\": \"Run\",\n    \"npm.core:build.executor\": \"Run\",\n    \"npm.css:build.executor\": \"Run\",\n    \"npm.devtools.executor\": \"Run\",\n    \"npm.format.executor\": \"Run\",\n    \"npm.fusion-sandbox-rsbuild > sandbox-rsbuild-build.executor\": \"Run\",\n    \"npm.fusion-sandbox-rsbuild > sandbox-rsbuild-preview.executor\": \"Run\",\n    \"npm.fusion-sandbox-vite > sandbox-vite-build.executor\": \"Run\",\n    \"npm.fusion:build.executor\": \"Run\",\n    \"npm.fusion:build:rsdoctor.executor\": \"Run\",\n    \"npm.fusion:test.executor\": \"Run\",\n    \"npm.hookr:build.executor\": \"Run\",\n    \"npm.hookr:test.executor\": \"Run\",\n    \"npm.infusion:build.executor\": \"Run\",\n    \"npm.init.executor\": \"Run\",\n    \"npm.jsx:build.executor\": \"Run\",\n    \"npm.jsxr:build.executor\": \"Run\",\n    \"npm.router:build.executor\": \"Run\",\n    \"npm.sandbox > sandbox-dev.executor\": \"Run\",\n    \"npm.sandbox:dev.executor\": \"Run\",\n    \"npm.sandbox:fusion:dev.executor\": \"Run\",\n    \"npm.sandbox:fusion:preview.executor\": \"Run\",\n    \"npm.sandbox:fusion:rsbuild:build.executor\": \"Run\",\n    \"npm.sandbox:fusion:rsbuild:dev.executor\": \"Run\",\n    \"npm.sandbox:fusion:rsbuild:preview.executor\": \"Run\",\n    \"npm.sandbox:fusion:rsbuild:test.executor\": \"Run\",\n    \"npm.sandbox:fusion:vite:build.executor\": \"Run\",\n    \"npm.sandbox:fusion:vite:dev.executor\": \"Run\",\n    \"npm.sandbox:usrv:dev.executor\": \"Run\",\n    \"npm.scribe:build.executor\": \"Run\",\n    \"npm.signals-build.executor\": \"Run\",\n    \"npm.srvr:build.executor\": \"Run\",\n    \"npm.srvr:sandbox:dev.executor\": \"Run\",\n    \"npm.synergy:sandbox:dev.executor\": \"Run\",\n    \"npm.usrv > sandbox-dev.executor\": \"Run\",\n    \"npm.usrv > usrv-sandbox.executor\": \"Run\",\n    \"npm.usrv:build.executor\": \"Run\",\n    \"npm.usrv:test.executor\": \"Run\",\n    \"npm.van-ts:build.executor\": \"Run\",\n    \"settings.editor.selected.configurable\": \"org.jetbrains.plugins.gitlab.GitLabSettingsConfigurable\",\n    \"ts.external.directory.path\": \"/Users/mpayne/Library/Caches/JetBrains/WebStorm2026.3/ts-go-native-preview/v7.1.0-dev.jetbrains.20261006.2/node_modules/@typescript/typescript-darwin-arm64/lib\"\n  },\n  \"keyToStringList\": {\n    \"GitStage.ChangesTree.GroupingKeys\": [\n      \"directory\",\n      \"module\",\n      \"repository\"\n    ]\n  }\n}]]></component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/packages/events\" />\n      <recent name=\"$PROJECT_DIR$/packages/hookr\" />\n      <recent name=\"$PROJECT_DIR$/packages/rsbuild-plugin-srvr\" />\n      <recent name=\"$PROJECT_DIR$/packages/css\" />\n      <recent name=\"$PROJECT_DIR$/packages/van-ts\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/packages/events\" />\n      <recent name=\"$PROJECT_DIR$/packages/srvr/src\" />\n      <recent name=\"$PROJECT_DIR$/packages/srvr/src/core\" />\n      <recent name=\"$PROJECT_DIR$/packages/srvr/src/utils\" />\n      <recent name=\"$PROJECT_DIR$/packages/srvr\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"npm.hookr:test\">\n    <configuration name=\"fusion:build\" type=\"js.build_tools.npm\" nameIsGenerated=\"true\">\n      <package-json value=\"$PROJECT_DIR$/package.json\" />\n      <command value=\"run\" />\n      <scripts>\n        <script value=\"fusion:build\" />\n      </scripts>\n      <node-interpreter value=\"project\" />\n      <envs />\n      <method v=\"2\" />\n    </configuration>\n    <list>\n      <item itemvalue=\"npm.clean:node\" />\n      <item itemvalue=\"npm.fusion:build\" />\n      <item itemvalue=\"npm.scribe:build\" />\n      <item itemvalue=\"npm.core:build\" />\n      <item itemvalue=\"npm.srvr:sandbox:dev\" />\n      <item itemvalue=\"npm.srvr:test\" />\n      <item itemvalue=\"npm.devtools\" />\n      <item itemvalue=\"npm.fusion:sandbox:rsbuild:test\" />\n      <item itemvalue=\"npm.typed-env-build\" />\n      <item itemvalue=\"npm.fusion:sandbox:rsbuild:dev\" />\n      <item itemvalue=\"npm.fusion:sandbox:rsbuild:preview\" />\n      <item itemvalue=\"npm.srvr:build\" />\n      <item itemvalue=\"npm.infusion:build\" />\n      <item itemvalue=\"npm.scribe:sandbox\" />\n      <item itemvalue=\"npm.fusion:sandbox:rsbuild:build\" />\n      <item itemvalue=\"npm.router:build\" />\n      <item itemvalue=\"npm.signals:build\" />\n      <item itemvalue=\"npm.common:build\" />\n      <item itemvalue=\"npm.css:build\" />\n      <item itemvalue=\"npm.jsxr:build\" />\n      <item itemvalue=\"npm.hookr:build\" />\n      <item itemvalue=\"npm.hookr:test\" />\n    </list>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-d6986cc7102b-56aff7b04f6f-JavaScript-WS-263.7307.202\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"dee30814-4d15-47fc-8eef-2292e36d4fd3\" name=\"Changes\" comment=\"\" />\n      <created>1777190207969</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1777190207969</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Initial commit\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1795435645286</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1795435645286</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"CI testing\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1795438188624</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1795438188624</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"CI testing2\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1795438487786</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1795438487786</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"CI testing3\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1795438685072</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1795438685072</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"CI testing3\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1795438825229</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1795438825229</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"6\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n    <option name=\"exactExcludedFiles\">\n      <list>\n        <option value=\"$PROJECT_DIR$/packages/css/tests/index.test.d.ts\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT\" value=\"false\" />\n    <MESSAGE value=\"Initial commit\" />\n    <MESSAGE value=\"CI testing\" />\n    <MESSAGE value=\"CI testing2\" />\n    <MESSAGE value=\"CI testing3\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"CI testing3\" />\n  </component>\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\n    <SUITE FILE_PATH=\"../../../../WebstormProjects/synergy-js/coverage/lcov.info\" NAME=\"lcov.info\" MODIFIED=\"1793875981114\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"JestJavaScriptTestRunnerCoverage\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 06dc23b53d158faaf1f74e27a4c3c0fd29032a99)
++++ b/.idea/workspace.xml	(date 1795444773795)
+@@ -106,80 +106,80 @@
+     <option name="openDirectoriesWithSingleClick" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "DefaultHtmlFileTemplate": "HTML File",
+-    "ModuleVcsDetector.initialDetectionPerformed": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+-    "codeWithMe.voiceChat.enabledByDefault": "false",
+-    "deletionFromPopupRequiresConfirmation": "false",
+-    "git-widget-placeholder": "testing",
+-    "go.import.settings.migrated": "true",
+-    "javascript.nodejs.core.library.configured.version": "26.13.0",
+-    "javascript.nodejs.core.library.typings.version": "26.6.6",
+-    "javascript.preferred.runtime.type.id": "bun",
+-    "last_opened_file_path": "/Users/mpayne/WebstormProjects/synergy-js/packages/events",
+-    "node.js.detected.package.jshint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.jshint": "",
+-    "nodejs_interpreter_path": "/opt/homebrew/bin/bun",
+-    "nodejs_package_manager_path": "/opt/homebrew/bin/pnpm",
+-    "npm.build.executor": "Run",
+-    "npm.build:all.executor": "Run",
+-    "npm.build:all:rsdoctor.executor": "Run",
+-    "npm.clean:node.executor": "Run",
+-    "npm.common:build.executor": "Run",
+-    "npm.core:build.executor": "Run",
+-    "npm.css:build.executor": "Run",
+-    "npm.devtools.executor": "Run",
+-    "npm.format.executor": "Run",
+-    "npm.fusion-sandbox-rsbuild > sandbox-rsbuild-build.executor": "Run",
+-    "npm.fusion-sandbox-rsbuild > sandbox-rsbuild-preview.executor": "Run",
+-    "npm.fusion-sandbox-vite > sandbox-vite-build.executor": "Run",
+-    "npm.fusion:build.executor": "Run",
+-    "npm.fusion:build:rsdoctor.executor": "Run",
+-    "npm.fusion:test.executor": "Run",
+-    "npm.hookr:build.executor": "Run",
+-    "npm.hookr:test.executor": "Run",
+-    "npm.infusion:build.executor": "Run",
+-    "npm.init.executor": "Run",
+-    "npm.jsx:build.executor": "Run",
+-    "npm.jsxr:build.executor": "Run",
+-    "npm.router:build.executor": "Run",
+-    "npm.sandbox > sandbox-dev.executor": "Run",
+-    "npm.sandbox:dev.executor": "Run",
+-    "npm.sandbox:fusion:dev.executor": "Run",
+-    "npm.sandbox:fusion:preview.executor": "Run",
+-    "npm.sandbox:fusion:rsbuild:build.executor": "Run",
+-    "npm.sandbox:fusion:rsbuild:dev.executor": "Run",
+-    "npm.sandbox:fusion:rsbuild:preview.executor": "Run",
+-    "npm.sandbox:fusion:rsbuild:test.executor": "Run",
+-    "npm.sandbox:fusion:vite:build.executor": "Run",
+-    "npm.sandbox:fusion:vite:dev.executor": "Run",
+-    "npm.sandbox:usrv:dev.executor": "Run",
+-    "npm.scribe:build.executor": "Run",
+-    "npm.signals-build.executor": "Run",
+-    "npm.srvr:build.executor": "Run",
+-    "npm.srvr:sandbox:dev.executor": "Run",
+-    "npm.synergy:sandbox:dev.executor": "Run",
+-    "npm.usrv > sandbox-dev.executor": "Run",
+-    "npm.usrv > usrv-sandbox.executor": "Run",
+-    "npm.usrv:build.executor": "Run",
+-    "npm.usrv:test.executor": "Run",
+-    "npm.van-ts:build.executor": "Run",
+-    "settings.editor.selected.configurable": "org.jetbrains.plugins.gitlab.GitLabSettingsConfigurable",
+-    "ts.external.directory.path": "/Users/mpayne/Library/Caches/JetBrains/WebStorm2026.3/ts-go-native-preview/v7.1.0-dev.jetbrains.20261006.2/node_modules/@typescript/typescript-darwin-arm64/lib"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
++    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
++    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
++    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;testing&quot;,
++    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
++    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;26.13.0&quot;,
++    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;26.6.6&quot;,
++    &quot;javascript.preferred.runtime.type.id&quot;: &quot;bun&quot;,
++    &quot;last_opened_file_path&quot;: &quot;/Users/mpayne/WebstormProjects/synergy-js/packages/events&quot;,
++    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
++    &quot;nodejs_interpreter_path&quot;: &quot;/opt/homebrew/bin/bun&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;/opt/homebrew/bin/pnpm&quot;,
++    &quot;npm.build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.build:all.executor&quot;: &quot;Run&quot;,
++    &quot;npm.build:all:rsdoctor.executor&quot;: &quot;Run&quot;,
++    &quot;npm.clean:node.executor&quot;: &quot;Run&quot;,
++    &quot;npm.common:build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.core:build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.css:build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.devtools.executor&quot;: &quot;Run&quot;,
++    &quot;npm.format.executor&quot;: &quot;Run&quot;,
++    &quot;npm.fusion-sandbox-rsbuild &gt; sandbox-rsbuild-build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.fusion-sandbox-rsbuild &gt; sandbox-rsbuild-preview.executor&quot;: &quot;Run&quot;,
++    &quot;npm.fusion-sandbox-vite &gt; sandbox-vite-build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.fusion:build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.fusion:build:rsdoctor.executor&quot;: &quot;Run&quot;,
++    &quot;npm.fusion:test.executor&quot;: &quot;Run&quot;,
++    &quot;npm.hookr:build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.hookr:test.executor&quot;: &quot;Run&quot;,
++    &quot;npm.infusion:build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.init.executor&quot;: &quot;Run&quot;,
++    &quot;npm.jsx:build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.jsxr:build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.router:build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.sandbox &gt; sandbox-dev.executor&quot;: &quot;Run&quot;,
++    &quot;npm.sandbox:dev.executor&quot;: &quot;Run&quot;,
++    &quot;npm.sandbox:fusion:dev.executor&quot;: &quot;Run&quot;,
++    &quot;npm.sandbox:fusion:preview.executor&quot;: &quot;Run&quot;,
++    &quot;npm.sandbox:fusion:rsbuild:build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.sandbox:fusion:rsbuild:dev.executor&quot;: &quot;Run&quot;,
++    &quot;npm.sandbox:fusion:rsbuild:preview.executor&quot;: &quot;Run&quot;,
++    &quot;npm.sandbox:fusion:rsbuild:test.executor&quot;: &quot;Run&quot;,
++    &quot;npm.sandbox:fusion:vite:build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.sandbox:fusion:vite:dev.executor&quot;: &quot;Run&quot;,
++    &quot;npm.sandbox:usrv:dev.executor&quot;: &quot;Run&quot;,
++    &quot;npm.scribe:build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.signals-build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.srvr:build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.srvr:sandbox:dev.executor&quot;: &quot;Run&quot;,
++    &quot;npm.synergy:sandbox:dev.executor&quot;: &quot;Run&quot;,
++    &quot;npm.usrv &gt; sandbox-dev.executor&quot;: &quot;Run&quot;,
++    &quot;npm.usrv &gt; usrv-sandbox.executor&quot;: &quot;Run&quot;,
++    &quot;npm.usrv:build.executor&quot;: &quot;Run&quot;,
++    &quot;npm.usrv:test.executor&quot;: &quot;Run&quot;,
++    &quot;npm.van-ts:build.executor&quot;: &quot;Run&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.gitlab.GitLabSettingsConfigurable&quot;,
++    &quot;ts.external.directory.path&quot;: &quot;/Users/mpayne/Library/Caches/JetBrains/WebStorm2026.3/ts-go-native-preview/v7.1.0-dev.jetbrains.20261006.2/node_modules/@typescript/typescript-darwin-arm64/lib&quot;
+   },
+-  "keyToStringList": {
+-    "GitStage.ChangesTree.GroupingKeys": [
+-      "directory",
+-      "module",
+-      "repository"
++  &quot;keyToStringList&quot;: {
++    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
++      &quot;directory&quot;,
++      &quot;module&quot;,
++      &quot;repository&quot;
+     ]
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="$PROJECT_DIR$/packages/events" />
+@@ -287,7 +287,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1795438825229</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="CI testing AGAIN">
++      <option name="closed" value="true" />
++      <created>1795439694282</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1795439694282</updated>
++    </task>
++    <task id="LOCAL-00007" summary="CI testing AGAIN">
++      <option name="closed" value="true" />
++      <created>1795439952886</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1795439952886</updated>
++    </task>
++    <option name="localTasksCounter" value="8" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -304,7 +320,8 @@
+     <MESSAGE value="CI testing" />
+     <MESSAGE value="CI testing2" />
+     <MESSAGE value="CI testing3" />
+-    <option name="LAST_COMMIT_MESSAGE" value="CI testing3" />
++    <MESSAGE value="CI testing AGAIN" />
++    <option name="LAST_COMMIT_MESSAGE" value="CI testing AGAIN" />
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+     <SUITE FILE_PATH="../../../../WebstormProjects/synergy-js/coverage/lcov.info" NAME="lcov.info" MODIFIED="1793875981114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+Index: .gitlab-ci.yml
+===================================================================
+diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
+deleted file mode 100644
+--- a/.gitlab-ci.yml	(revision 06dc23b53d158faaf1f74e27a4c3c0fd29032a99)
++++ /dev/null	(revision 06dc23b53d158faaf1f74e27a4c3c0fd29032a99)
+@@ -1,18 +0,0 @@
+-variables:
+-  STORE_PATH: "$CI_PROJECT_DIR/.pnpm-store"
+-
+-default:
+-  image: node:24-alpine
+-  cache:
+-    key:
+-      files:
+-        - pnpm-lock.yaml
+-    paths:
+-      - $STORE_PATH
+-  before_script:
+-    - npm install -g pnpm
+-    - pnpm config set store-dir "$STORE_PATH"
+-    - pnpm install --frozen-lockfile
+-
+-include:
+-  - local: '/.gitlab/workflows/infusion.yml'
+\ No newline at end of file
+Index: .github/workflows/test.yml
+===================================================================
+diff --git a/.github/workflows/test.yml b/.github/workflows/test.yml
+deleted file mode 100644
+--- a/.github/workflows/test.yml	(revision 06dc23b53d158faaf1f74e27a4c3c0fd29032a99)
++++ /dev/null	(revision 06dc23b53d158faaf1f74e27a4c3c0fd29032a99)
+@@ -1,29 +0,0 @@
+-name: Test Publish Pipeline
+-on: [ push ]
+-
+-jobs:
+-  release:
+-    runs-on: ubuntu-latest
+-    steps:
+-      - uses: actions/checkout@v4
+-
+-      - uses: pnpm/action-setup@v3
+-        with:
+-          version: 12
+-
+-      - uses: actions/setup-node@v4
+-        with:
+-          node-version: 26
+-          cache: 'pnpm'
+-          # Point the default runner registry directly to your local Nexus instance
+-          registry-url: 'http://localhost:8081/repository/npm-private/'
+-
+-      - name: Install dependencies
+-        run: pnpm install --frozen-lockfile
+-
+-      - name: Publish to Private Nexus
+-        run: pnpm changeset publish
+-        env:
+-          # Your Nexus deployment auth token
+-          NODE_AUTH_TOKEN: ${{ secrets.NEXUS_TOKEN }}
+-  `
+\ No newline at end of file
+Index: .gitlab/workflows/infusion.yml
+===================================================================
+diff --git a/.gitlab/workflows/infusion.yml b/.gitlab/workflows/infusion.yml
+deleted file mode 100644
+--- a/.gitlab/workflows/infusion.yml	(revision 06dc23b53d158faaf1f74e27a4c3c0fd29032a99)
++++ /dev/null	(revision 06dc23b53d158faaf1f74e27a4c3c0fd29032a99)
+@@ -1,25 +0,0 @@
+-# .gitlab/workflows/_node-package.yml
+-spec:
+-  inputs:
+-    name:
+-      description: "Job prefix (e.g., infusion, web)"
+-    pkg:
+-      description: "pnpm package name (e.g., @repo/api or infusion)"
+-    dir:
+-      description: "Directory path (e.g., packages/infusion)"
+----
+-$[[ inputs.name ]]:
+-  rules:
+-    - changes:
+-        - $[[ inputs.dir ]]/**/*
+-        - pnpm-lock.yaml
+-    - if: $CI_PIPELINE_SOURCE == "web"
+-      when: manual
+-  script:
+-    - pnpm --filter "$[[ inputs.pkg ]]" test
+-    - pnpm --filter "$[[ inputs.pkg ]]" build
+-  artifacts:
+-    paths:
+-      - $[[ inputs.dir ]]/dist/
+-    expire_in: 7 days
+-
+Index: .github/workflows/production.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.github/workflows/production.yml b/.github/workflows/release.yml
+rename from .github/workflows/production.yml
+rename to .github/workflows/release.yml
+--- a/.github/workflows/production.yml	(revision 06dc23b53d158faaf1f74e27a4c3c0fd29032a99)
++++ b/.github/workflows/release.yml	(date 1795444819083)
+@@ -1,37 +1,37 @@
+ name: Release
+ on:
+   push:
+-    branches:
+-      - main # Triggers when you push or merge to your main branch
++    branches: [ main ]
++  workflow_dispatch:
++    inputs:
++      dry_run:
++        description: "Verify provenance without publishing"
++        type: boolean
++        default: true
+ 
+-# CRUCIAL FOR PROVENANCE: This grants the token creation rights npm requires
+ permissions:
+-  contents: write
++  contents: read
+   id-token: write
+ 
+ jobs:
+   release:
+-    runs-on: ubuntu-latest # Crucial: Must be an official GitHub-hosted cloud runner
++    runs-on: ubuntu-latest
+     steps:
+       - uses: actions/checkout@v4
+-
++        with:
++          fetch-depth: 2
+       - uses: pnpm/action-setup@v4
+         with:
+           version: 12
+-
+       - uses: actions/setup-node@v4
+         with:
+-          node-version: 22
+-          cache: 'pnpm'
+-
+-      - name: Install Dependencies
+-        run: pnpm install --frozen-lockfile
+-
+-      - name: Create Release PR or Publish to npm
+-        uses: changeset/action@v4
+-        with:
+-          # This handles both generating the PR and publishing
+-          publish: pnpm changeset publish
+-        env:
+-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+-          NPM_TOKEN: ${{ secrets.NEXUS_TOKEN_OR_NPM_TOKEN }} # Your npm automation token
++          node-version: 24
++          cache: pnpm
++      - run: pnpm --filter "...[HEAD~1]" install --frozen-lockfile
++      - run: pnpm --filter "...[HEAD~1]" build
++      - name: Dry-run provenance check
++        if: github.event_name == 'workflow_dispatch' && inputs.dry_run
++        run: pnpm --filter infusion publish --dry-run --provenance --access public --no-git-checks
++      - name: Publish to npm
++        if: github.event_name == 'push' || !inputs.dry_run
++        run: pnpm publish -r --access public
