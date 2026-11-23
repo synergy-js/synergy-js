@@ -1,0 +1,39 @@
+{
+	"name": "@synergy-js/fusion",
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"test": "bun --bun rstest",
+		"fusion-build": "rs lib",
+		"fusion-build-rsdoctor": "RSDOCTOR=true rs lib",
+		"fusion-test": "rs test"
+	},
+	"dependencies": {
+		"oxc-parser": "^0.157.0",
+		"zimmerframe": "^1.1.5",
+		"acorn": "^8.19.0",
+		"@sveltejs/acorn-typescript": "^1.0.13",
+		"magic-string": "catalog:",
+		"@synergy-js/infusion": "workspace:*",
+		"@synergy-js/verdict": "workspace:*",
+		"@synergy-js/scribe": "workspace:*",
+		"@types/estree": "^1.0.10"
+	},
+	"devDependencies": {
+		"@types/node": "catalog:",
+		"@rstest/adapter-rsbuild": "catalog:",
+		"@rsdoctor/rspack-plugin": "catalog:",
+		"@types/bun": "catalog:",
+		"vite": "catalog:"
+	},
+	"exports": {
+		"./rsbuild": {
+			"types": "./dist/rsbuild/index.d.ts",
+			"import": "./dist/rsbuild/index.js"
+		},
+		"./vite": {
+			"types": "./dist/vite/index.d.ts",
+			"import": "./dist/vite/index.js"
+		}
+	}
+}

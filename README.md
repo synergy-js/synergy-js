@@ -1,6 +1,12 @@
-# Turborepo starter
+# SynergyJS
 
-This Turborepo starter is maintained by the Turborepo core team.
+![NPM License](https://img.shields.io/npm/l/%40mpaynesecurity%2Frsbuild-plugin-fusion)
+
+**Important:**`Plugin is optimized for and only works with the Bun runtime.`
+
+**Important:**`Plugin is built on WinterCG-compliant web standards (Request, Response, and standard ES modules).
+If your cloud provider or runtime does not support standard web primitives, that is a limitation of the provider, not
+this tool.`
 
 ## Using this example
 

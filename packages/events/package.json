@@ -1,0 +1,29 @@
+{
+	"name": "@synergy-js/events",
+	"version": "0.0.0",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist",
+		"README.md"
+	],
+	"scripts": {
+		"events-build": "rs lib",
+		"events-test": "bun --bun rs test"
+	},
+	"devDependencies": {
+		"@types/node": "catalog:",
+		"@types/bun": "catalog:",
+		"@rsdoctor/rspack-plugin": "catalog:",
+		"typescript": "catalog:"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
+

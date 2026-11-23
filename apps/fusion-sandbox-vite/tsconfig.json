@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "isolatedDeclarations": false,
+    "jsxImportSource": "solid-js",
+    "allowArbitraryExtensions": true,
+    "jsx": "preserve",
+    "rootDir": "src",
+    "types": ["@rsbuild/core/types"]
+  }
+}

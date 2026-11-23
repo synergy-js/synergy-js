@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dee30814-4d15-47fc-8eef-2292e36d4fd3" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DBNavigator.Project.Workspace.Settings">
+    <assistant-settings>
+      <credential-settings>
+        <credentials />
+      </credential-settings>
+      <profile-settings>
+        <profiles />
+      </profile-settings>
+      <mcp-server-settings>
+        <workspace-integration value="false" />
+        <mcp-servers />
+        <mcp-tool-approvals />
+      </mcp-server-settings>
+    </assistant-settings>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="package.json" />
+        <option value="HTML File" />
+        <option value="TypeScript JSX File" />
+        <option value="tsconfig.json" />
+        <option value="TypeScript File" />
+        <option value="GitHub Workflow" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/apps/fusion-sandbox-rsbuild/package.json" />
+    <dismissed value="$PROJECT_DIR$/apps/fusion-sandbox-vite/package.json" />
+    <dismissed value="$PROJECT_DIR$/apps/srvr-sandbox/package.json" />
+    <dismissed value="$PROJECT_DIR$/package.json" />
+    <dismissed value="$PROJECT_DIR$/packages/css/package.json" />
+    <dismissed value="$PROJECT_DIR$/packages/httpx/package.json" />
+    <dismissed value="$PROJECT_DIR$/packages/infusion/package.json" />
+    <dismissed value="$PROJECT_DIR$/packages/jsxr/package.json" />
+    <dismissed value="$PROJECT_DIR$/packages/rsbuild-plugin-jsxr/package.json" />
+    <dismissed value="$PROJECT_DIR$/packages/srvr/package.json" />
+    <dismissed value="$PROJECT_DIR$/packages/typed-env/package.json" />
+    <dismissed value="$PROJECT_DIR$/packages/verdict/package.json" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="3KtHlNM0NIBJ0IjKbf1As7lDRsG" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="2" id="Remove" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="openDirectoriesWithSingleClick" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "main",
+    "go.import.settings.migrated": "true",
+    "javascript.nodejs.core.library.configured.version": "26.13.0",
+    "javascript.nodejs.core.library.typings.version": "26.6.6",
+    "javascript.preferred.runtime.type.id": "bun",
+    "last_opened_file_path": "/Users/mpayne/WebstormProjects/synergy-js/packages/events",
+    "node.js.detected.package.jshint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "nodejs_interpreter_path": "/opt/homebrew/bin/bun",
+    "nodejs_package_manager_path": "/opt/homebrew/bin/pnpm",
+    "npm.build.executor": "Run",
+    "npm.build:all.executor": "Run",
+    "npm.build:all:rsdoctor.executor": "Run",
+    "npm.clean:node.executor": "Run",
+    "npm.common:build.executor": "Run",
+    "npm.core:build.executor": "Run",
+    "npm.css:build.executor": "Run",
+    "npm.devtools.executor": "Run",
+    "npm.format.executor": "Run",
+    "npm.fusion-sandbox-rsbuild > sandbox-rsbuild-build.executor": "Run",
+    "npm.fusion-sandbox-rsbuild > sandbox-rsbuild-preview.executor": "Run",
+    "npm.fusion-sandbox-vite > sandbox-vite-build.executor": "Run",
+    "npm.fusion:build.executor": "Run",
+    "npm.fusion:build:rsdoctor.executor": "Run",
+    "npm.fusion:test.executor": "Run",
+    "npm.hookr:build.executor": "Run",
+    "npm.hookr:test.executor": "Run",
+    "npm.infusion:build.executor": "Run",
+    "npm.init.executor": "Run",
+    "npm.jsx:build.executor": "Run",
+    "npm.jsxr:build.executor": "Run",
+    "npm.router:build.executor": "Run",
+    "npm.sandbox > sandbox-dev.executor": "Run",
+    "npm.sandbox:dev.executor": "Run",
+    "npm.sandbox:fusion:dev.executor": "Run",
+    "npm.sandbox:fusion:preview.executor": "Run",
+    "npm.sandbox:fusion:rsbuild:build.executor": "Run",
+    "npm.sandbox:fusion:rsbuild:dev.executor": "Run",
+    "npm.sandbox:fusion:rsbuild:preview.executor": "Run",
+    "npm.sandbox:fusion:rsbuild:test.executor": "Run",
+    "npm.sandbox:fusion:vite:build.executor": "Run",
+    "npm.sandbox:fusion:vite:dev.executor": "Run",
+    "npm.sandbox:usrv:dev.executor": "Run",
+    "npm.scribe:build.executor": "Run",
+    "npm.signals-build.executor": "Run",
+    "npm.srvr:build.executor": "Run",
+    "npm.srvr:sandbox:dev.executor": "Run",
+    "npm.synergy:sandbox:dev.executor": "Run",
+    "npm.usrv > sandbox-dev.executor": "Run",
+    "npm.usrv > usrv-sandbox.executor": "Run",
+    "npm.usrv:build.executor": "Run",
+    "npm.usrv:test.executor": "Run",
+    "npm.van-ts:build.executor": "Run",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.gitlab.GitLabSettingsConfigurable",
+    "ts.external.directory.path": "/Users/mpayne/Library/Caches/JetBrains/WebStorm2026.3/ts-go-native-preview/v7.1.0-dev.jetbrains.20261006.2/node_modules/@typescript/typescript-darwin-arm64/lib"
+  },
+  "keyToStringList": {
+    "GitStage.ChangesTree.GroupingKeys": [
+      "directory",
+      "module",
+      "repository"
+    ]
+  }
+}]]></component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="/private/var/folders/_0/1qmx1fxs5z5gq89v5wmd8k800000gp/T/qodana_output/qodana.sarif.json" reportGuid="38630fec-b93a-4412-95d4-1d5de3cecf1e" reportId="synergy-js/qodana/2026-11-04" />
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/packages/events" />
+      <recent name="$PROJECT_DIR$/packages/hookr" />
+      <recent name="$PROJECT_DIR$/packages/rsbuild-plugin-srvr" />
+      <recent name="$PROJECT_DIR$/packages/css" />
+      <recent name="$PROJECT_DIR$/packages/van-ts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/packages/events" />
+      <recent name="$PROJECT_DIR$/packages/srvr/src" />
+      <recent name="$PROJECT_DIR$/packages/srvr/src/core" />
+      <recent name="$PROJECT_DIR$/packages/srvr/src/utils" />
+      <recent name="$PROJECT_DIR$/packages/srvr" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.hookr:test">
+    <configuration name="fusion:build" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="fusion:build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.clean:node" />
+      <item itemvalue="npm.fusion:build" />
+      <item itemvalue="npm.scribe:build" />
+      <item itemvalue="npm.core:build" />
+      <item itemvalue="npm.srvr:sandbox:dev" />
+      <item itemvalue="npm.srvr:test" />
+      <item itemvalue="npm.devtools" />
+      <item itemvalue="npm.fusion:sandbox:rsbuild:test" />
+      <item itemvalue="npm.typed-env-build" />
+      <item itemvalue="npm.fusion:sandbox:rsbuild:dev" />
+      <item itemvalue="npm.fusion:sandbox:rsbuild:preview" />
+      <item itemvalue="npm.srvr:build" />
+      <item itemvalue="npm.infusion:build" />
+      <item itemvalue="npm.scribe:sandbox" />
+      <item itemvalue="npm.fusion:sandbox:rsbuild:build" />
+      <item itemvalue="npm.router:build" />
+      <item itemvalue="npm.signals:build" />
+      <item itemvalue="npm.common:build" />
+      <item itemvalue="npm.css:build" />
+      <item itemvalue="npm.jsxr:build" />
+      <item itemvalue="npm.hookr:build" />
+      <item itemvalue="npm.hookr:test" />
+    </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-56aff7b04f6f-JavaScript-WS-263.7307.202" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dee30814-4d15-47fc-8eef-2292e36d4fd3" name="Changes" comment="" />
+      <created>1777190207969</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1777190207969</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/packages/css/tests/index.test.d.ts" />
+      </list>
+    </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="../../../../WebstormProjects/synergy-js/coverage/lcov.info" NAME="lcov.info" MODIFIED="1793875981114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

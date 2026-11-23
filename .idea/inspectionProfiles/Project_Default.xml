@@ -1,0 +1,13 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="ShadcnAccessibility" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="ShadcnAccessibilityJS" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="ShadcnInvalidProps" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="ShadcnInvalidPropsJS" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="ShadcnMissingComponent" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="ShadcnMissingComponentJS" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="ShadcnRadixImport" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="ShadcnRadixImportJS" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+  </profile>
+</component>

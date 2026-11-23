@@ -1,0 +1,47 @@
+{
+	"name": "@synergy-js/jsxr",
+	"version": "1.0.0",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/synergy-js/synergy-js.git",
+		"directory": "packages/jsxr"
+	},
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		},
+		"./web": {
+			"import": "./dist/web/index.js",
+			"types": "./dist/web/index.d.ts"
+		},
+		"./router": {
+			"import": "./dist/router/index.js",
+			"types": "./dist/router/index.d.ts"
+		},
+		"./web/jsx-runtime": {
+			"types": "./dist/web/jsx-runtime.d.ts",
+			"import": "./dist/web/jsx-runtime.js"
+		},
+		"./web/jsx-dev-runtime": {
+			"types": "./dist/web/jsx-dev-runtime.d.ts",
+			"import": "./dist/web/jsx-dev-runtime.js"
+		}
+	},
+	"scripts": {
+		"clean:node": "rm -rf node_modules",
+		"clean:dist": "rm -rf dist",
+		"jsxr-build": "rs lib",
+		"jsxr-test": "bun --bun rs test"
+	},
+	"dependencies": {
+		"@synergy-js/signals": "workspace:*"
+	},
+	"devDependencies": {
+		"@types/bun": "catalog:",
+		"@types/node": "catalog:",
+		"@rsdoctor/rspack-plugin": "catalog:"
+	}
+}

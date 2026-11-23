@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="typed-env-build" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="typed-env-build" />
+    </scripts>
+    <node-interpreter value="project" />
+    <envs />
+    <EXTENSION ID="com.intellij.lang.javascript.buildTools.npm.rc.StartBrowserRunConfigurationExtension">
+      <browser name="8cdcecb4-ddaf-409b-a94b-9b714e205a5b" />
+    </EXTENSION>
+    <method v="2" />
+  </configuration>
+</component>

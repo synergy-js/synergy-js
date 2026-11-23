@@ -1,0 +1,28 @@
+{
+	"name": "@synergy-js/httpx",
+	"version": "1.0.0",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/synergy-js/synergy-js.git",
+		"directory": "packages/httpx"
+	},
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		}
+	},
+	"scripts": {
+		"clean:node": "rm -rf node_modules",
+		"clean:dist": "rm -rf dist",
+		"httpx-build": "rs lib",
+		"httpx-test": "bun test"
+	},
+	"devDependencies": {
+		"@types/bun": "catalog:",
+		"@types/node": "catalog:",
+		"@rsdoctor/rspack-plugin": "catalog:"
+	}
+}

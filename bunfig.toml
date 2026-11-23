@@ -1,0 +1,23 @@
+[test]
+coverage = true
+coverageReporter = ["text", "lcov"] # default ["text"]
+match = ["**/tests/**/bun.test.ts"]
+coveragePathIgnorePatterns = [
+	# Exclude utility files
+	"src/utils/**",
+	# Exclude specific test patterns
+	"**/*.bun.test.ts",
+	"**/tests/helpers.ts",
+	"**/tests/utils.ts",
+	# Exclude build artifacts
+	"**/dist/**",
+	"build/**",
+	# Exclude vendor/third-party code
+	"**/node_modules/**",
+]
+
+[fmt]
+sortImports = true
+sortPackageJson = true
+sortTailwindcss = true
+semiColon = false

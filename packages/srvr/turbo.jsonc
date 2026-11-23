@@ -1,0 +1,25 @@
+// @synergy/core
+{
+	"$schema": "https://turborepo.dev/schema.json",
+	"extends": [
+		"//"
+	],
+	"tasks": {
+		"core-build": {
+			"cache": true,
+			"tags": [
+				"public",
+				"lib"
+			],
+			"inputs": [
+				"$TURBO_DEFAULT$",
+				"src"
+			],
+			"outputs": [
+				"dist"
+			],
+			"dependsOn": [
+			]
+		}
+	}
+}

@@ -1,0 +1,24 @@
+// @synergy/css
+{
+	"$schema": "https://turborepo.dev/schema.json",
+	"extends": [
+		"//"
+	],
+	"tasks": {
+		"css-build": {
+			"cache": true,
+			"tags": [
+				"public",
+				"lib"
+			],
+			"inputs": [
+				"src"
+			],
+			"outputs": [
+				"dist"
+			],
+			"dependsOn": [
+			]
+		}
+	}
+}

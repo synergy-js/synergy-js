@@ -1,0 +1,22 @@
+{
+	"$schema": "https://turborepo.dev/schema.json",
+	"extends": [
+		"//"
+	],
+	"tags": [
+		"lib"
+	],
+	"tasks": {
+		"signals-build": {
+			"outputs": [
+				"dist"
+			],
+			"inputs": [
+				"$TURBO_DEFAULT$",
+				"src"
+			],
+			"dependsOn": [
+			]
+		}
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"$schema": "https://turborepo.dev/schema.json",
+	"extends": [
+		"//"
+	],
+	"tasks": {
+		"fusion-build": {
+			"cache": true,
+			"inputs": [
+				"$TURBO_DEFAULT$",
+				"src/",
+				"!src/**/tests/"
+			],
+			"outputs": [
+				"dist/"
+			],
+			"dependsOn": []
+		},
+		"fusion-build-rsdoctor": {
+			"cache": true,
+			"inputs": [
+				"$TURBO_DEFAULT$",
+				"src/"
+			],
+			"outputs": [
+				"dist/"
+			]
+		},
+		"fusion-test": {
+			"cache": false,
+			"inputs": [
+				"$TURBO_DEFAULT$",
+				"src/"
+			],
+			"outputs": [
+				"dist/"
+			],
+			"dependsOn": [
+			]
+		}
+	}
+}

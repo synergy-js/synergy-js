@@ -1,0 +1,22 @@
+{
+	"$schema": "https://turborepo.dev/schema.json",
+	"extends": [
+		"//"
+	],
+	"tasks": {
+		"srvr-sandbox-dev": {
+			"cache": false,
+			"persistent": true,
+			"tags": [
+				"app",
+				"sandbox"
+			],
+			"dependsOn": [
+				"^infusion-build",
+				"^srvr-build",
+				"^jsxr-build",
+				"^css-build"
+			]
+		}
+	}
+}

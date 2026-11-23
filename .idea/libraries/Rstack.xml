@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Rstack" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/node_modules/.pnpm/rstack@0.9.0_jiti@2.7.0_typescript@7.0.2/node_modules/rstack/types" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/node_modules/.pnpm/rstack@0.9.0_jiti@2.7.0_typescript@7.0.2/node_modules/rstack/types" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

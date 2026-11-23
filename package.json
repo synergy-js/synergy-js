@@ -1,20 +1,55 @@
 {
-  "name": "synergy",
-  "private": true,
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
-  },
-  "devDependencies": {
-    "prettier": "3.9.6",
-    "turbo": "^2.11.4",
-    "typescript": "7.0.2"
-  },
-  "packageManager": "pnpm@11.25.0",
-  "engines": {
-    "node": ">=24"
-  }
+	"name": "synergy-js",
+	"type": "module",
+	"devEngines": {
+		"packageManager": {
+			"name": "pnpm",
+			"version": "^12.10.0"
+		}
+	},
+	"scripts": {
+		"clean:dist": "pnpm -r clean:dist",
+		"clean:node": "pnpm -r clean:node && rm -rf node_modules && rm pnpm-lock.yaml",
+		"css:build": "turbo css-build && pnpm i",
+		"devtools": "turbo devtools --no-open",
+		"format": "rs fmt",
+		"fusion:build": "turbo fusion-build",
+		"fusion:build:rsdoctor": "turbo fusion-build-rsdoctor",
+		"fusion:sandbox:rsbuild:build": "turbo sandbox-rsbuild-build",
+		"fusion:sandbox:rsbuild:dev": "turbo sandbox-rsbuild-dev-bun",
+		"fusion:sandbox:rsbuild:preview": "turbo sandbox-rsbuild-preview",
+		"fusion:sandbox:rsbuild:test": "turbo sandbox-rsbuild-test",
+		"fusion:test": "turbo fusion-test",
+		"hookr:build": "turbo hookr-build",
+		"hookr:test": "turbo hookr-test",
+		"httpx:build": "turbo http-client-build",
+		"httpx:test": "turbo http-client-test",
+		"infusion:build": "turbo infusion-build",
+		"infusion:test": "turbo infusion-test",
+		"init": "pnpm i",
+		"jsxr:build": "turbo jsxr-build",
+		"jsxr:test": "turbo jsxr-test",
+		"router:build": "turbo router-build",
+		"router:test": "turbo router-test",
+		"verdict:build": "turbo verdict-build",
+		"verdict:test": "turbo verdict-test",
+		"scribe:build": "turbo scribe-build",
+		"scribe:sandbox": "turbo scribe-sandbox",
+		"scribe:test": "turbo scribe-test",
+		"signals-build": "turbo signals-build",
+		"srvr:sandbox:dev": "turbo srvr-sandbox-dev",
+		"test:all": "bun test --coverage",
+		"srvr:build": "turbo srvr-build",
+		"srvr:test": "turbo srvr-test",
+		"typed-env-build": "turbo validate-env-build",
+		"typed-env-test": "turbo validate-env-test"
+	},
+	"devDependencies": {
+		"rstack": "catalog:",
+		"@rsbuild/core": "catalog:",
+		"@types/bun": "catalog:",
+		"@types/node": "catalog:",
+		"turbo": "^2.11.11",
+		"@rstest/adapter-rsbuild": "catalog:"
+	}
 }

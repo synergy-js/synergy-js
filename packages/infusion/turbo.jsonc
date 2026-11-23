@@ -1,0 +1,32 @@
+// @synergy-js/infusion
+{
+	"$schema": "https://turborepo.dev/schema.json",
+	"extends": [
+		"//"
+	],
+	"tags": [
+		"lib",
+		"public"
+	],
+	"tasks": {
+		"infusion-build": {
+			"cache": true,
+			"inputs": [
+				"$TURBO_DEFAULT$",
+				"src"
+			],
+			"outputs": [
+				"dist"
+			],
+			"dependsOn": [
+			]
+		},
+		"infusion-test": {
+			"cache": true,
+			"inputs": [
+				"$TURBO_DEFAULT$",
+				"tests/**"
+			]
+		}
+	}
+}

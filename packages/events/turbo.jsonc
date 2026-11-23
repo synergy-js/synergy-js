@@ -1,0 +1,17 @@
+{
+  "$schema": "https://turborepo.dev/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "validate-env-build": {
+      "cache": true,
+      "tags": ["lib", "public"],
+      "inputs": ["$TURBO_DEFAULT$", "src/**"],
+      "outputs": ["dist/**"],
+      "dependsOn": [],
+    },
+    "validate-env-test": {
+      "cache": false,
+      "inputs": ["$TURBO_DEFAULT$", "tests/**"],
+    },
+  },
+}

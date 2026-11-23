@@ -1,0 +1,29 @@
+{
+	"name": "@synergy-js/validate-env",
+	"version": "1.0.0",
+	"description": "",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/payneusmc07/utils.git"
+	},
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"clean:node": "rm -rf node_modules",
+		"clean:dist": "rm -rf dist",
+		"validate-env-build": "rs lib",
+		"validate-env-test": "bun test"
+	},
+	"devDependencies": {
+		"@types/bun": "catalog:",
+		"@types/node": "catalog:",
+		"rstack": "catalog:",
+		"@rsdoctor/rspack-plugin": "catalog:"
+	}
+}

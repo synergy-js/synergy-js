@@ -1,0 +1,32 @@
+// @synergy/http-client
+{
+	"$schema": "https://turborepo.dev/schema.json",
+	"extends": [
+		"//"
+	],
+	"tasks": {
+		"httpx-build": {
+			"cache": true,
+			"tags": [
+				"lib",
+				"public"
+			],
+			"inputs": [
+				"$TURBO_DEFAULT$",
+				"src/"
+			],
+			"outputs": [
+				"dist/"
+			],
+			"dependsOn": []
+		},
+		"httpx-test": {
+			"cache": true,
+			"inputs": [
+				"$TURBO_DEFAULT$",
+				"tests/"
+			],
+			"dependsOn": []
+		}
+	}
+}

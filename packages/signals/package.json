@@ -1,0 +1,30 @@
+{
+	"name": "@synergy-js/signals",
+	"version": "1.0.0",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/synergy-js/synergy-js.git",
+		"directory": "packages/signals"
+	},
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"clean:node": "rm -rf node_modules",
+		"clean:dist": "rm -rf dist",
+		"signals-build": "rs lib",
+		"signals-test": "bun --bun rs test"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+		"@types/node": "catalog:",
+		"@types/bun": "catalog:",
+		"@rsdoctor/rspack-plugin": "catalog:"
+	}
+}
