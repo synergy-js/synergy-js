@@ -8,19 +8,36 @@ on:
         required: true
         type: choice
         options:
-          - infusion
+          - events
+          - fusion
+          - hookr
           - httpx
+          - infusion
           - jsxr
           - prism
-          - verdict
+          - rsbuild-plugin-jsxr
+          - scribe
+          - signals
+          - srvr
           - typed-env
+          - verdict
+      bump:
+        description: "Version bump"
+        required: true
+        type: choice
+        default: patch
+        options:
+          - patch
+          - minor
+          - major
+          - prerelease
       dry_run:
         description: "Dry run (verify without publishing)"
         type: boolean
         default: true
 
 permissions:
-  contents: read
+  contents: write
   id-token: write
 
 jobs:
@@ -28,6 +45,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: pnpm/action-setup@v4
         with:
           version: 12
@@ -35,11 +54,20 @@ jobs:
         with:
           node-version: 24
 
-      - run: pnpm --filter "${{ inputs.package }}" install --no-frozen-lockfile
-      - run: pnpm --filter "${{ inputs.package }}" build
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter "@synergy-js/${{ inputs.package }}" build
 
       - if: inputs.dry_run
-        run: pnpm --filter "${{ inputs.package }}" publish --dry-run --provenance --access public --no-git-checks
+        run: pnpm --filter "@synergy-js/${{ inputs.package }}" publish --dry-run --provenance --access public --no-git-checks
 
       - if: ${{ !inputs.dry_run }}
-        run: pnpm --filter "${{ inputs.package }}" publish --provenance --access public --no-git-checks
+        run: |
+          if [ "${{ inputs.bump }}" = "prerelease" ]; then
+            pnpm --filter "@synergy-js/${{ inputs.package }}" version prerelease --preid alpha
+            pnpm --filter "@synergy-js/${{ inputs.package }}" publish --tag alpha --provenance --access public
+          else
+            pnpm --filter "@synergy-js/${{ inputs.package }}" version "${{ inputs.bump }}"
+            pnpm --filter "@synergy-js/${{ inputs.package }}" publish --provenance --access public
+          fi
+
+          git push --follow-tags
