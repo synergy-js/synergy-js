@@ -1,0 +1,45 @@
+name: publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: "Package to publish"
+        required: true
+        type: choice
+        options:
+          - infusion
+          - httpx
+          - jsxr
+          - prism
+          - verdict
+          - typed-env
+      dry_run:
+        description: "Dry run (verify without publishing)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - run: pnpm --filter "${{ inputs.package }}" install --no-frozen-lockfile
+      - run: pnpm --filter "${{ inputs.package }}" build
+
+      - if: inputs.dry_run
+        run: pnpm --filter "${{ inputs.package }}" publish --dry-run --provenance --access public --no-git-checks
+
+      - if: ${{ !inputs.dry_run }}
+        run: pnpm --filter "${{ inputs.package }}" publish --provenance --access public --no-git-checks
