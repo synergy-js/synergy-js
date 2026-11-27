@@ -4,8 +4,6 @@
 		"rootDir": "./src",
 		"outDir": "./dist",
 		"declarationDir": "./dist",
-		"composite": true,
-		"declaration": true,
 		"isolatedDeclarations": true,
 		"types": [
 			"node",

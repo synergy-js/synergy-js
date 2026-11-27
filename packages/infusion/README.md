@@ -1,6 +1,8 @@
 # Infusion
 
-A lightweight, type-safe Dependency Injection (DI) container for TypeScript. Built around standard ES class decorators (`@Service`), hierarchical container scopes, and functional `inject()` resolution without requiring `reflect-metadata`.
+A lightweight, type-safe Dependency Injection (DI) container for TypeScript.
+
+Built around standard ES class decorators (`@Service`), hierarchical container scopes, and functional `inject()` resolution without requiring `reflect-metadata`.
 
 ## Features
 
@@ -65,8 +67,7 @@ await container.destroy()
 
 | Decorator | Default Metadata | Options |
 | :--- | :--- | :--- |
-| `@Service(options?)` | `{ scope: "Singleton", autoProvided: true, factory: undefined }` | `scope`, `autoProvided`, `factory` |
-| `@Injectable(options?)` | `{ scope: "Singleton" }` | `scope` |
+| `@Service(options?)` | `{ scope: "Singleton", autoProvided: true, factory: undefined }` | `scope`, `autoProvided`, `factory` || `scope` |
 
 ### Scope Behavior
 

@@ -11,10 +11,6 @@ define.lib({
 			dts: {
 				isolated: true,
 			},
-			output: {
-				cleanDistPath: true,
-				minify: true,
-			},
 			source: {
 				entry: {
 					index: ["src/**"],
@@ -28,8 +24,5 @@ define.lib({
 				process.env.RSDOCTOR ? new RsdoctorRspackPlugin({port: 8000}) : null,
 			],
 		},
-	},
-	splitChunks: {
-		preset: "default",
 	},
 })
