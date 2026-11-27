@@ -4,8 +4,6 @@
 		"rootDir": "./src",
 		"outDir": "./dist",
 		"declarationDir": "./dist",
-		"composite": true,
-		"declaration": true,
 		"isolatedDeclarations": true,
 		"types": [
 			"node",
@@ -13,13 +11,5 @@
 			"rstack/types"
 		]
 	},
-	"exclude": ["tests", "playground"],
-	"references": [
-		{
-			"path": "../verdict/tsconfig.json"
-		},
-		{
-			"path": "../scribe/tsconfig.json"
-		}
-	]
+	"exclude": ["tests", "playground", "rstack.config.ts"]
 }
