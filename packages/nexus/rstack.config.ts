@@ -6,18 +6,12 @@ define.extends([sharedConfig])
 define.lib({
 	lib: [
 		{
-			id: "srvr",
+			id: "nexus",
 			bundle: false,
 			dts: {
-				build: true,
-			},
-			output: {
-				cleanDistPath: true,
-				minify: true,
-				target: "node",
+				isolated: true,
 			},
 			source: {
-				tsconfigPath: "tsconfig.lib.json",
 				entry: {
 					index: ["src/**", "!src/**/__*.ts"],
 				},
@@ -30,8 +24,5 @@ define.lib({
 				process.env.RSDOCTOR ? new RsdoctorRspackPlugin({port: 8000}) : null,
 			],
 		},
-	},
-	splitChunks: {
-		preset: "default",
 	},
 })

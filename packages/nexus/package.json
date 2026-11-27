@@ -1,17 +1,32 @@
 {
-	"name": "@synergy-js/srvr",
+	"name": "@synergy-js/nexus",
 	"version": "1.0.1",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/synergy-js/synergy-js.git",
-		"directory": "packages/srvr"
+		"directory": "packages/nexus"
 	},
 	"type": "module",
 	"files": [
 		"dist",
 		"README.md"
 	],
+	"scripts": {
+		"build": "wireit"
+	},
+	"wireit": {
+		"build": {
+			"clean": "if-file-deleted",
+			"command": "rs lib",
+			"files": [
+				"src/**/*.ts"
+			],
+			"output": [
+				"dist/**"
+			]
+		}
+	},
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
@@ -34,6 +49,7 @@
 		"@types/bun": "catalog:",
 		"@types/node": "catalog:",
 		"rstack": "catalog:",
-		"typescript": "catalog:"
+		"typescript": "catalog:",
+		"wireit": "catalog:"
 	}
 }
