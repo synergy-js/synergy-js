@@ -8,39 +8,14 @@
 		}
 	},
 	"scripts": {
-		"clean:dist": "just clean-dist",
-		"clean:node": "just clean-node_modules",
-		"events:build": "just build events",
-		"events:test": "just test events",
-		"hookr:build": "just build hookr",
-		"hookr:test": "just test hookr",
-		"httpx:build": "just build httpx",
-		"httpx:test": "just test httpx",
-		"infusion:build": "just build infusion",
-		"infusion:test": "just test infusion",
-		"init": "just install",
-		"jsxr:build": "just build jsxr",
-		"jsxr:test": "just test jsxr",
-		"prism:build": "just build prism",
-		"prism:test": "just test prism",
-		"scribe:build": "just build scribe",
-		"scribe:sandbox": "just run scribe sandbox",
-		"scribe:test": "just test scribe",
-		"signals-build": "just build signals",
-		"signals-test": "just build signals",
-		"srvr:build": "just build srvr",
-		"srvr:sandbox": "just run srvr-sandbox",
-		"srvr:test": "just test srvr",
-		"typed-env-build": "just build typed-env",
-		"typed-env-test": "just test typed-env",
-		"verdict:build": "just build verdict",
-		"verdict:test": "just test verdict",
-		"verdict:sandbox": "just run verdict-sandbox"
 	},
 	"devDependencies": {
 		"@rstest/adapter-rsbuild": "catalog:",
 		"@types/bun": "catalog:",
 		"@types/node": "catalog:",
-		"taze": "catalog:"
+		"rstack": "catalog:",
+		"taze": "catalog:",
+		"release-please": "^17.11.2",
+		"wireit": "catalog:"
 	}
 }

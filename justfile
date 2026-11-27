@@ -1,21 +1,24 @@
-# Build a single package: `just build verdict`
+set shell := ["zsh", "-cu"]
+
+# Build a single packag
 build pkg:
-    cd packages/{{ pkg }} && bun --bun rs lib && pnpm i
+    cd packages/{{ pkg }} && pnpm --filter {{ pkg }} build && pnpm i
 
-# Test a single package: `just test httpx`
-test pkg:
-    cd packages/{{ pkg }} && bun --bun rs test
+# Run the kinetic build pipeline
+#build-kinetic:
+#    pnpm --filter signals build && pnpm --filter kinetic build && pnpm --filter rsbuild-plugin-kinetic build
 
-# Delete dist in one package (or all): `just clean verdict`
+# Delete the folder and node_modules folders in all packages
+clean-all:
+    rm -rf packages/*/dist && rm -rf packages/*/node_modules
+
+# Delete the dist folder in one package
 clean-dist pkg:
     rm -rf packages/{{ pkg }}/dist
 
-# Delete node_modules in one package (or all):
+# Delete node_modules in one package
 clean-node_modules pkg:
     rm -rf packages/{{ pkg }}/node_modules
-
-install:
-    pnpm i
 
 install-global-dev-dep-from-catalog pkg:
     pnpm -r add -d {{ pkg }}@catalog:
@@ -23,19 +26,22 @@ install-global-dev-dep-from-catalog pkg:
 install-workspace-pkg-from-catalog pkg dep:
     pnpm --filter "./packages/{{ pkg }}" add {{ dep }}@catalog:
 
-clean-all:
-    rm -rf packages/*/dist && rm -rf packages/*/node_modules
-
+# Publish to local NPM registry
 publish-local pkg registry:
     cd packages/{{ pkg }} pnpm publish --registry {{ registry }}
 
+# Pre-seed NPM trusted publishing for one package
+setup-trusted-publishing pkg:
+    pnpm login && cd packages/{{ pkg }} && pnpm dlx setup-npm-trusted-publish @synergy-js/{{ pkg }}
+
+# Run a single sandbox
+sandbox pkg:
+    pnpm --filter {{ pkg }} dev
+
+# Test a single package
+test pkg:
+    cd packages/{{ pkg }} && bun --bun rs test
+
+# Unpublish from local NPM registry
 unpublish-local pkg registry:
     cd packages/{{ pkg }} pnpm unpublish --registry {{ registry }}
-
-publish-npm pkg:
-    cd packages/{{ pkg }} pnpm publish
-
-# Build, test, and publish to Nexus without any .npmrc file
-pub pkg: (build pkg) (test pkg)
-    npm_config_//registry.mpaynesecurity.net/:_authToken=$NEXUS_NPM_TOKEN \
-    pnpm --filter ./packages/{{ pkg }} publish --registry https://mpaynesecurity.net --no-git-checks
