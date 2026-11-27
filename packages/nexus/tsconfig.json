@@ -1,0 +1,14 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"rootDir": "./src",
+		"outDir": "./dist",
+		"declarationDir": "./dist",
+		"isolatedDeclarations": true
+	},
+	"exclude": [
+		"tests",
+		"playground",
+		"./rstack.config.ts"
+	]
+}

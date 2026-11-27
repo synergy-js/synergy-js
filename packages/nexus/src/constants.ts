@@ -1,0 +1,1 @@
+export const ROUTE_DEFINITIONS: unique symbol = Symbol("srvr:route-definitions")
