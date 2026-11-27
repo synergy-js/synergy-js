@@ -79,7 +79,7 @@ jobs:
           pnpm --filter "@synergy-js/${{ inputs.package }}" publish --dry-run --provenance --access public --no-git-checks
 
       - name: Bump version, publish & tag
-        if: !inputs.dry_run
+        if: ${{ !inputs.dry_run }}
         run: |
           PKG_FILTER="@synergy-js/${{ inputs.package }}"
           PKG_DIR="packages/${{ inputs.package }}"
