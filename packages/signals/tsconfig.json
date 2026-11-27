@@ -4,11 +4,10 @@
 		"rootDir": "./src",
 		"outDir": "./dist",
 		"declarationDir": "./dist",
-		"composite": true,
-		"declaration": true,
 		"isolatedDeclarations": true
 	},
 	"exclude": [
+		"dist",
 		"tests",
 		"playground",
 		"./rstack.config.ts"

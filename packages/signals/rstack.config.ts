@@ -9,11 +9,9 @@ define.lib({
 			id: "signals",
 			bundle: false,
 			dts: {
-				build: true,
+				isolated: true,
 			},
 			output: {
-				cleanDistPath: true,
-				minify: true,
 				target: "web",
 			},
 			source: {
@@ -29,8 +27,5 @@ define.lib({
 				process.env.RSDOCTOR ? new RsdoctorRspackPlugin({port: 8000}) : null,
 			],
 		},
-	},
-	splitChunks: {
-		preset: "default",
 	},
 })
