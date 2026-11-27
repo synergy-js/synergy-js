@@ -7,20 +7,17 @@ define.extends([sharedConfig])
 define.lib({
 	lib: [
 		{
-			id: "jsxr",
+			id: "kinetic",
 			bundle: false,
 			dts: {
 				isolated: true,
 			},
 			output: {
-				cleanDistPath: true,
-				minify: true,
-				//target: "web",
+				target: "web",
 			},
 			source: {
-				//tsconfigPath: "tsconfig.lib.json",
 				entry: {
-					index: ["src/**", "!src/**__*.ts", "router/**"],
+					index: ["src/**", "!src/__*.ts", "router/**"],
 				},
 			},
 		},
@@ -31,9 +28,6 @@ define.lib({
 				process.env.RSDOCTOR ? new RsdoctorRspackPlugin({port: 8000}) : null,
 			],
 		},
-	},
-	splitChunks: {
-		preset: "default",
 	},
 })
 define.test({

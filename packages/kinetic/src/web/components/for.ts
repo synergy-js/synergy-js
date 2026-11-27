@@ -1,7 +1,20 @@
-import { type Accessor, createEffect, createSignal, runWithOwner } from "@synergy-js/signals"
-import type { JSXChild, JSXRenderNode, RowEntry } from "../types.ts"
-
+import {
+	type Accessor,
+	createEffect,
+	createSignal, onCleanup,
+	runWithOwner,
+	type Setter,
+} from "@synergy-js/signals"
+import type { JSXChild, JSXRenderNode } from "../types.ts"
 import { renderFragment } from "../utils.js"
+
+export interface RowEntry<T> {
+	item: T
+	setIndex: Setter<number>
+	nodes: Node[]
+	dispose: () => void
+}
+
 
 export interface ForProps<T> {
 	each: readonly T[] | Accessor<readonly T[]>
@@ -95,6 +108,13 @@ export const For = <T>(props: ForProps<T>): JSXRenderNode => {
 		
 		rows = nextRows
 	})
-	
+	onCleanup(() => {
+		disposeFallback?.()
+		disposeFallback = null
+		for(const entry of rows.values()) {
+			entry.dispose()
+		}
+		rows.clear()
+	})
 	return {tagName: "", props: {}, children: [], dom: container}
 }

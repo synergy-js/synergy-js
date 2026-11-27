@@ -1,4 +1,4 @@
-import type { Accessor, BaseContext, Setter } from "@synergy-js/signals"
+import type { Accessor } from "@synergy-js/signals"
 
 export interface JSXRenderNode {
 	tagName: string
@@ -27,6 +27,20 @@ export type JSXChild =
 	| Accessor<string | number | boolean | null | undefined>
 	| JSXChild[]
 
+export type EventHandler<E extends Event = Event> =
+	| ((event: E) => unknown)
+	| {}
+	| null
+	| undefined
+	| boolean
+
+export type EventHandlers = {
+	[K in keyof HTMLElementEventMap as `on${Capitalize<K>}` | `on${K}`]?: EventHandler<HTMLElementEventMap[K]>
+} & {
+	// Optional fallback for custom events (e.g. CustomEvent)
+	[key: `on${string}`]: EventHandler<Event>
+}
+
 export interface CustomLayoutOverrides<TElement extends Element = HTMLElement> {
 	class?: string | Accessor<string>
 	className?: string | Accessor<string>
@@ -47,32 +61,11 @@ export type ReactiveProps<K extends keyof HTMLElementTagNameMap> = ReactiveAttri
 
 export type JSXComponent<P = Record<string, unknown>> = (props: P) => JSXRenderNode
 
-export type EventHandlers = {
-	[K in keyof HTMLElementEventMap as `on${Capitalize<K>}` | `on${K}`]?: (
-		event: HTMLElementEventMap[K],
-	) => void
-}
-
-
 export interface MatchDescriptor<T = unknown> {
 	readonly __jsxrMatch: true
 	when: T | undefined | null | false | Accessor<T | undefined | null | false>
 	children?: JSXChild | ((item: NonNullable<T>) => JSXChild)
 }
 
-export interface ContextProviderProps<T> {
-	value: T
-	children?: JSXChild | (() => JSXChild)
-}
-
-export interface Context<T> extends BaseContext<T> {
-	Provider: (props: ContextProviderProps<T>) => JSXRenderNode
-}
 
 
-export interface RowEntry<T> {
-	item: T
-	setIndex: Setter<number>
-	nodes: Node[]
-	dispose: () => void
-}

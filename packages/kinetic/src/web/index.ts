@@ -1,7 +1,6 @@
-export * from "./utils.ts"
-export * from "./types.ts"
 export * from "./split-props.ts"
 export * from "./merge-props.ts"
 export * from "./jsx-runtime.ts"
 export * from "./jsx-dev-runtime.ts"
 export * from "./components"
+export { createContext } from "./context.ts"

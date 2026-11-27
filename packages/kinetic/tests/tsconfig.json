@@ -1,11 +1,7 @@
 {
 	"extends": "../../../tsconfig.base.json",
 	"compilerOptions": {
-		"noEmit": true,
 		"jsx": "react-jsx",
 		"jsxImportSource": "@synergy-js/jsxr"
-	},
-	"references": [
-		{ "path": ".." }
-	]
+	}
 }

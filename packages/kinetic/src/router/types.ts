@@ -1,4 +1,4 @@
-import type { JSXRenderNode } from "../../web"
+import type { JSXRenderNode } from "../web"
 
 export type RouteParams = Record<string, string>
 

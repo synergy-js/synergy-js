@@ -1,17 +1,35 @@
 {
-	"name": "@synergy-js/jsxr",
-	"version": "1.0.1",
+	"name": "@synergy-js/kinetic",
+	"version": "0.1.0-beta.0",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/synergy-js/synergy-js.git",
-		"directory": "packages/jsxr"
+		"directory": "packages/kinetic"
 	},
 	"type": "module",
 	"files": [
 		"dist",
 		"README.md"
 	],
+	"scripts": {
+		"build": "wireit"
+	},
+	"wireit": {
+		"build": {
+			"command": "rs lib",
+			"clean": "if-file-deleted",
+			"dependencies": [
+				"../signals:build"
+			],
+			"files": [
+				"src/**/*.ts"
+			],
+			"output": [
+				"dist/**"
+			]
+		}
+	},
 	"exports": {
 		".": {
 			"import": "./dist/index.js",
@@ -34,14 +52,20 @@
 			"import": "./dist/web/jsx-dev-runtime.js"
 		}
 	},
-	"dependencies": {
-		"@synergy-js/signals": "workspace:*"
-	},
 	"devDependencies": {
 		"@rsdoctor/rspack-plugin": "catalog:",
 		"@types/bun": "catalog:",
 		"@types/node": "catalog:",
 		"rstack": "catalog:",
-		"typescript": "catalog:"
+		"typescript": "catalog:",
+		"wireit": "catalog:"
+	},
+	"peerDependencies": {
+		"@synergy-js/signals": "workspace:*"
+	},
+	"peerDependenciesMeta": {
+		"@synergy-js/signals": {
+			"optional": false
+		}
 	}
 }

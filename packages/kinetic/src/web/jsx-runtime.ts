@@ -1,8 +1,26 @@
-import { createEffect, onCleanup, runWithOwner, createBaseContext, untrack, type BaseContext } from "@synergy-js/signals"
-import type { JSXComponent, JSXChild, ReactiveProps, JSXRenderNode, Context, ContextProviderProps } from "./types.ts"
-import { appendDomChildren, applyAttribute, renderFragment, renderToString } from "./utils.js"
+import { createEffect, runWithOwner, untrack } from "@synergy-js/signals"
+import type { JSXChild, JSXComponent, JSXRenderNode, ReactiveProps } from "./types.ts"
+import { appendDomChildren, applyAttribute, renderFragment } from "./utils.js"
 
 export const Fragment: symbol = Symbol.for("jsxr.dom.fragment")
+
+export const mount = (app: JSXRenderNode | (() => JSXRenderNode), target: string | Element = "#root"): () => void => {
+	const container = typeof target === "string" ? document.querySelector(target) : target
+	
+	if(!container) {
+		throw new Error(`Mount target not found: ${String(target)}`)
+	}
+	
+	container.replaceChildren()
+	
+	const owned = runWithOwner(() => (typeof app === "function" ? app() : app))
+	container.appendChild(owned.result.dom)
+	
+	return () => {
+		owned.dispose()
+		container.replaceChildren()
+	}
+}
 
 export const jsx = <TTag extends keyof HTMLElementTagNameMap, TProps extends Record<string, unknown> = ReactiveProps<TTag>>(
 	tag: TTag | JSXComponent<TProps & {children?: JSXChild}> | typeof Fragment,
@@ -14,14 +32,44 @@ export const jsx = <TTag extends keyof HTMLElementTagNameMap, TProps extends Rec
 		return renderFragment(props.children)
 	}
 	/*
-	 *  untrack(() => tag(props)) ensures components run strictly
-	 *  once as setup functions and never accidentally subscribe parent
-	 *  <Show> / <For> effects to signals read during setup
+	 * If props arrives with __getters and __children from the loader, tag(props) won't see props.value or props.children unless jsx()
+	 * converts __getters and __children into real Object.defineProperty getters on props before calling tag(props
 	 * */
 	if(typeof tag === "function") {
-		//return tag(props)
-		return untrack(() => tag(props))
+		const componentProps: Record<string, unknown> = {...props}
+		const getters = componentProps["__getters"] as Record<string, () => unknown> | undefined
+		delete componentProps["__getters"]
+		
+		if(getters) {
+			for(const [k, getter] of Object.entries(getters)) {
+				Object.defineProperty(componentProps, k, {
+					enumerable: true,
+					configurable: true,
+					get: getter,
+				})
+			}
+		}
+		
+		if("__children" in componentProps) {
+			const childrenThunk = componentProps["__children"] as () => JSXChild
+			delete componentProps["__children"]
+			Object.defineProperty(componentProps, "children", {
+				enumerable: true,
+				configurable: true,
+				get: childrenThunk,
+			})
+		}
+		/*
+		 *  untrack(() => tag(props)) ensures components run strictly
+		 *  once as setup functions and never accidentally subscribe parent
+		 *  <Show> / <For> effects to signals read during setup
+		 */
+		return untrack(() => tag(componentProps as TProps & {children?: JSXChild}))
 	}
+	// if(typeof tag === "function") {
+	//
+	// 	return untrack(() => tag(props))
+	// }
 	
 	const internalProps: Record<string, unknown> = {...props}
 	
@@ -39,6 +87,7 @@ export const jsx = <TTag extends keyof HTMLElementTagNameMap, TProps extends Rec
 	
 	const refCallback = internalProps["ref"] as ((el: HTMLElement) => void) | undefined
 	delete internalProps["ref"]
+	
 	// SSR / Server branch (no DOM available)
 	if(typeof document === "undefined") {
 		const elementProps: Record<string, unknown> = {}
@@ -95,57 +144,12 @@ export const jsxs: <TTag extends keyof HTMLElementTagNameMap, TProps extends Rec
 	children?: JSXChild
 }, key?: string | number) => JSXRenderNode = jsx
 
+
 export const jsxDEV: <TTag extends keyof HTMLElementTagNameMap, TProps extends Record<string, unknown> = ReactiveProps<TTag>>(tag: TTag | JSXComponent<TProps & {
 	children?: JSXChild
 }> | typeof Fragment, props: TProps & {
 	children?: JSXChild
 }, key?: string | number) => JSXRenderNode = jsx
-
-export const onMount = (fn: () => void | (() => void)): void => {
-	const cleanup = fn()
-	if(typeof cleanup === "function") {
-		onCleanup(cleanup)
-	}
-}
-
-export const createContext = <T>(defaultValue: T): Context<T> => {
-	const base: BaseContext<T> = createBaseContext(defaultValue)
-	
-	const Provider = (props: ContextProviderProps<T>): JSXRenderNode => {
-		const owned = runWithOwner(() => {
-				const resolved =
-					typeof props.children === "function"
-					? (props.children as () => JSXChild)()
-					: props.children
-				return renderFragment(resolved)
-			},
-			{id: base.id, value: props.value},
-		)
-		
-		onCleanup(owned.dispose)
-		return owned.result
-	}
-	
-	return {...base, Provider}
-}
-
-export const mount = (app: JSXRenderNode | (() => JSXRenderNode), target: string | Element = "#root"): () => void => {
-	const container = typeof target === "string" ? document.querySelector(target) : target
-	
-	if(!container) {
-		throw new Error(`Mount target not found: ${String(target)}`)
-	}
-	
-	container.replaceChildren()
-	
-	const owned = runWithOwner(() => (typeof app === "function" ? app() : app))
-	container.appendChild(owned.result.dom)
-	
-	return () => {
-		owned.dispose()
-		container.replaceChildren()
-	}
-}
 
 export namespace JSX {
 	export type Element = JSXRenderNode
@@ -165,4 +169,8 @@ export namespace JSX {
 	export type IntrinsicElements = {
 		[TTag in keyof HTMLElementTagNameMap]: ReactiveProps<TTag>
 	}
+	
+	// Keeps `(e: PointerEvent)` inference when writing a function,
+	// while allowing any expression result (void, number, string, etc.) for the compiler!
+	export type EventHandler<E extends Event = Event> = | ((event: E) => unknown) | ({} | null | undefined)
 }

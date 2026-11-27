@@ -2,16 +2,19 @@
 	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
 		"lib": [
-			"dom"
+			"dom",
+			"esnext"
 		],
 		"jsx": "react-jsx",
 		"jsxImportSource": "@synergy-js/jsxr",
-		"rootDir": "./src",
+		"rootDir": "src",
 		"outDir": "./dist",
 		"declarationDir": "./dist",
-		"composite": true,
-		"declaration": true,
 		"isolatedDeclarations": true
 	},
-	"exclude": ["tests", "playground"]
+	"exclude": [
+		"tests",
+		"playground",
+		"./rstack.config.ts"
+	]
 }

@@ -1,5 +1,5 @@
 import { createEffect, createMemo, onCleanup } from "@synergy-js/signals"
-import { JSXRenderNode, renderFragment, Show } from "../web"
+import { type JSXRenderNode, renderFragment, Show } from "../web"
 import { createRouteData } from "./loaders.js"
 import { resolveRouteChain } from "./matchers.js"
 import { currentPath, dataStack, outletStack, setCurrentPath, setParams } from "./state.js"

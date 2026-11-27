@@ -1,5 +1,5 @@
-import { currentPath, dataStack, params, setCurrentPath } from "./state"
-import type { RouteData, RouteParams } from "./types"
+import { currentPath, dataStack, params, setCurrentPath } from "./state.ts"
+import type { RouteData, RouteParams } from "./types.ts"
 
 export const useParams = (): RouteParams => params()
 

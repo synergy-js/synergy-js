@@ -1,5 +1,5 @@
-import { Accessor } from "@synergy-js/signals"
-import { JSXChild, JSXRenderNode, MatchDescriptor } from "../types.js"
+import { type Accessor } from "@synergy-js/signals"
+import type { JSXChild, JSXRenderNode, MatchDescriptor } from "../types.ts"
 
 export interface MatchProps<T> {
 	when: T | undefined | null | false | Accessor<T | undefined | null | false>
