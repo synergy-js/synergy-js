@@ -162,7 +162,7 @@ describe("Asynchronous Helpers (tryAsync, pipeAsync, ResultAsync)", () => {
 		expect(out.unwrap()).toBe("fallback:TOO_LOW")
 	})
 	
-	test("ResultAsync static constructors work cleanly", async () => {
+	test("ResultAsync static constructors return the proper result", async () => {
 		const fromSafe = await ResultAsync.fromSafePromise(Promise.resolve("safe")).unwrap()
 		expect(fromSafe.unwrap()).toBe("safe")
 		

@@ -1,7 +1,7 @@
-import { afterAll, beforeAll, describe, expect, test } from "rstack/test" // or "bun:test"
+import { afterAll, beforeAll, describe, expect, test } from "rstack/test"
 import { err, ok, tryAsync } from "../src"
 
-describe("HTTP Fetch Integration (Real Server)", () => {
+describe("HTTP Fetch Integration", () => {
 	let server: ReturnType<typeof Bun.serve>
 	let flakyHits = 0
 	
@@ -39,11 +39,9 @@ describe("HTTP Fetch Integration (Real Server)", () => {
 		})
 	})
 	
-	afterAll(() => {
-		server?.stop(true)
-	})
+	afterAll(() => server?.stop(true))
 	
-	test("GET request parses JSON and unwraps cleanly", async () => {
+	test("GET request parses and unwraps JSON", async () => {
 		const message = await tryAsync(
 			async () => {
 				const res = await fetch(`${server.url}api/test`)

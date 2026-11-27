@@ -14,12 +14,7 @@ define.lib({
 			id: "verdict",
 			bundle: false,
 			dts: {
-				build: true,
-			},
-			output: {
-				cleanDistPath: true,
-				minify: true,
-				target: "node",
+				isolated: true,
 			},
 			source: {
 				entry: {
@@ -34,8 +29,5 @@ define.lib({
 				process.env.RSDOCTOR ? new RsdoctorRspackPlugin({port: 8000}) : null,
 			],
 		},
-	},
-	splitChunks: {
-		preset: "default",
 	},
 })

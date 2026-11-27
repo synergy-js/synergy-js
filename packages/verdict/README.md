@@ -1,8 +1,6 @@
 # Verdict
 
-**Type-safe, batteries-included `Result` primitives, pipelines, and resilient async execution for TypeScript.**
-
-Verdict gives you Rust-inspired `Ok` / `Err` error handling without the boilerplate tax—shipping with a standardized `AppError` architecture, built-in exponential backoff retries, `AbortSignal` support, and ergonomic escape hatches (`toTuple()`, `toNullable()`, `filter()`).
+**Rust-inspired `Ok` / `Err` / `Result` driven primitives, pipelines, and resilient async execution.**
 
 ---
 
@@ -36,7 +34,7 @@ npm install verdict
 ### 1. Wrapping Synchronous Operations (`trySync`)
 
 ```ts
-import { trySync } from "verdict"
+import { trySync } from "@synergy-js/verdict"
 
 interface Config {
 	port: number
@@ -59,7 +57,7 @@ else {
 ### 2. Resilient Async Operations with Retries (`tryAsync`)
 
 ```ts
-import { tryAsync } from "verdict"
+import { tryAsync } from "@synergy-js/verdict"
 
 const controller = new AbortController()
 
@@ -88,7 +86,7 @@ const user = await tryAsync(
 ### 3. Chaining Pipelines (`pipeSync` & `pipeAsync`)
 
 ```ts
-import { Err, Ok, pipeAsync, tryAsync } from "verdict"
+import { Err, Ok, pipeAsync, tryAsync } from "@synergy-js/verdict"
 
 const result = await pipeAsync(tryAsync(() => fetchOrder(orderId), "ORDER_FETCH_ERR"))
 	.filter(
@@ -109,7 +107,7 @@ const result = await pipeAsync(tryAsync(() => fetchOrder(orderId), "ORDER_FETCH_
 ### 4. Combining Multiple Results (`result.all`)
 
 ```ts
-import { Ok, Err, result } from "verdict"
+import { Ok, Err, result } from "@synergy-js/verdict"
 
 const combined = result.all([
 	new Ok("admin" as const),
@@ -126,7 +124,7 @@ if(combined.isOk()) {
 ### 5. Escape Hatches (`toTuple`, `toNullable`, `fromNullable`, `tryExecute`)
 
 ```ts
-import { fromNullable, tryExecute } from "verdict"
+import { fromNullable, tryExecute } from "@synergy-js/verdict"
 
 // Convert nullable values into Results
 const tokenResult = fromNullable(process.env.API_TOKEN, () => ({
