@@ -2,38 +2,62 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/packages/jsxr/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/packages/prism/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/packages/verdict/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/events/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/fusion/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/httpx/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/infusion/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/scribe/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/signals/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/env-guard/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/kinetic/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/tap/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/.github" />
       <excludeFolder url="file://$MODULE_DIR$/.rstack" />
       <excludeFolder url="file://$MODULE_DIR$/packages/fusion/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/fusion/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/hookr/.turbo" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/hookr/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/httpx/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/httpx/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/infusion/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/infusion/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/jsxr/.turbo" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/jsxr/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/prism/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/prism/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/scribe/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/scribe/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/signals/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/signals/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/srvr/.turbo" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/srvr/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/typed-env/.turbo" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/typed-env/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/verdict/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/verdict/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/sandboxes/fusion-sandbox-rsbuild/.turbo" />
-      <excludeFolder url="file://$MODULE_DIR$/sandboxes/fusion-sandbox-rsbuild/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/sandboxes/fusion-sandbox-vite/.turbo" />
-      <excludeFolder url="file://$MODULE_DIR$/sandboxes/fusion-sandbox-vite/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/sandboxes/srvr-sandbox/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/env-guard/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/env-guard/.wireit" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/env-guard/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/fusion/.wireit" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/httpx/.wireit" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/httpx/coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/infusion/.wireit" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/kinetic/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/kinetic/.wireit" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/kinetic/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/nexus/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/nexus/.wireit" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/nexus/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/prism/.wireit" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/prism/coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/rsbuild-plugin-kinetic/.wireit" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/rsbuild-plugin-kinetic/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/scribe/.wireit" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/signals/.wireit" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/tap/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/tap/.wireit" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/tap/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/verdict/.wireit" />
+      <excludeFolder url="file://$MODULE_DIR$/sandboxes/fusion-rsbuild/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/sandboxes/fusion-rsbuild/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/sandboxes/fusion-vite/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/sandboxes/fusion-vite/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/sandboxes/kinetic-rsbuild/.wireit" />
+      <excludeFolder url="file://$MODULE_DIR$/sandboxes/nexus/.turbo" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

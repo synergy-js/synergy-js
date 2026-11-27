@@ -5,104 +5,93 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dee30814-4d15-47fc-8eef-2292e36d4fd3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/srvr-sandbox/temp/component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/decorator-plugin.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/fusion/src/common/templates/wintertc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/infusion/src/infusion.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/infusion/src/injectable.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/infusion/src/injection-token.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/infusion/src/service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/infusion/src/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/infusion/tests/service.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/jsxr/tests/index.test.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/prism/src/cx.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/prism/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/prism/src/sheet.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/prism/src/stylesheet.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/prism/src/tokens.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/prism/src/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/prism/src/variants.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/prism/tests/index.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/scribe/src/scribe.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/signals/tests/index.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/common_build.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/core_build.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/synergy-js.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/synergy-js.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/srvr-sandbox/component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/srvr-sandbox/entry.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/srvr-sandbox/entry.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/srvr-sandbox/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/srvr-sandbox/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/srvr-sandbox/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/srvr-sandbox/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/srvr-sandbox/routes/test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/srvr-sandbox/routes/test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/srvr-sandbox/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/srvr-sandbox/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bunfig.toml" beforeDir="false" afterPath="$PROJECT_DIR$/bunfig.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/justfile" beforeDir="false" afterPath="$PROJECT_DIR$/justfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/css/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/prism/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/css/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/packages/prism/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/css/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/prism/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/css/rstack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/prism/rstack.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/css/src/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/css/tests/index.test.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/prism/tests/index.test.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/css/tests/index.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/css/tests/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/prism/tests/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/css/tsconfig.lib.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/prism/tsconfig.lib.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/css/tsconfig.test.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/prism/tsconfig.test.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/css/turbo.jsonc" beforeDir="false" afterPath="$PROJECT_DIR$/packages/prism/turbo.jsonc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/events/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/events/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/events/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/events/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/events/tests/index.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/events/tests/index.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/events/turbo.jsonc" beforeDir="false" afterPath="$PROJECT_DIR$/packages/events/turbo.jsonc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/fusion/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/fusion/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/fusion/src/common/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/fusion/src/common/middleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/fusion/src/common/templates/wintercg.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/srvr-sandbox/component.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/fusion/src/common/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/fusion/src/common/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/fusion/src/common/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/fusion/src/common/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/fusion/tests/index.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/fusion/tests/index.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/fusion/turbo.jsonc" beforeDir="false" afterPath="$PROJECT_DIR$/packages/fusion/turbo.jsonc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/hookr/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/packages/hookr/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/hookr/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/hookr/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/hookr/playground/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/hookr/playground/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/hookr/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/hookr/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/hookr/src/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/hookr/src/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/hookr/tests/index.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/hookr/tests/index.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/events/rstack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/events/rstack.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/events/tests/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/events/tests/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/events/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/events/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/fusion/rstack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/fusion/rstack.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/fusion/tests/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/fusion/tests/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/fusion/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/fusion/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/hookr/rstack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/hookr/rstack.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/hookr/tests/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/hookr/tests/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/hookr/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/hookr/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/httpx/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/httpx/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/httpx/rstack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/httpx/rstack.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/httpx/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/httpx/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/httpx/tests/index.bun.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/httpx/tests/index.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/httpx/turbo.jsonc" beforeDir="false" afterPath="$PROJECT_DIR$/packages/httpx/turbo.jsonc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/infusion/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/infusion/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/httpx/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/httpx/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/infusion/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/infusion/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/infusion/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/packages/infusion/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/infusion/rstack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/infusion/rstack.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/infusion/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/infusion/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/infusion/src/old__index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/infusion/tests/active-container.bun.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/infusion/tests/class-based.bun.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/infusion/tests/helpers.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/infusion/tests/injection-token.bun.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/infusion/tests/injection-token.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/jsxr/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/infusion/tests/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/infusion/tests/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/infusion/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/infusion/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/jsxr/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/jsxr/rstack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/rstack.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/jsxr/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/jsxr/src/router/state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/src/router/state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/jsxr/src/router/Router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/src/router/Router.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/jsxr/src/router/hooks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/src/router/hooks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/jsxr/src/router/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/src/router/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/jsxr/src/web/components/for.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/src/web/components/for.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/jsxr/src/web/components/match.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/src/web/components/match.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/jsxr/src/web/components/show.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/src/web/components/show.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/jsxr/src/web/components/switch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/src/web/components/switch.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/jsxr/src/web/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/src/web/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/jsxr/src/web/jsx-runtime.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/src/web/jsx-runtime.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/jsxr/src/web/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/src/web/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/jsxr/src/web/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/src/web/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/jsxr/tests/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/tests/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/jsxr/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/jsxr/tsconfig.test.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/jsxr/tsconfig.test.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/scribe/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/scribe/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/scribe/src/transports.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/scribe/src/transports.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/scribe/src/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/scribe/src/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/scribe/src/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/scribe/src/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/scribe/tests/sandbox.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/scribe/tests/sandbox.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/scribe/turbo.jsonc" beforeDir="false" afterPath="$PROJECT_DIR$/packages/scribe/turbo.jsonc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/signals/turbo.jsonc" beforeDir="false" afterPath="$PROJECT_DIR$/packages/signals/turbo.jsonc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/srvr/src/core/bootstrap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/srvr/src/core/bootstrap.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/srvr/src/core/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/srvr/src/core/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/srvr/src/core/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/srvr/src/core/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/srvr/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/srvr/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/srvr/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/srvr/src/router/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/srvr/src/router/route-interceptor.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/srvr/src/router/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/srvr/src/router/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/srvr/src/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/srvr/src/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/prism/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/prism/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/prism/rstack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/prism/rstack.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/prism/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/prism/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/prism/tests/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/prism/tests/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/prism/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/prism/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/rsbuild-plugin-jsxr/rstack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rsbuild-plugin-jsxr/rstack.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/rsbuild-plugin-jsxr/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rsbuild-plugin-jsxr/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/rsbuild-plugin-jsxr/src/reactivejs-loader.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/rsbuild-plugin-jsxr/src/reactivejs-plugin.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/rsbuild-plugin-jsxr/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/rsbuild-plugin-jsxr/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/scribe/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/scribe/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/scribe/rstack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/scribe/rstack.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/scribe/tests/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/scribe/tests/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/scribe/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/scribe/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/signals/rstack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/signals/rstack.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/signals/tests/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/signals/tests/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/signals/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/signals/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/signals/tsconfig.tsbuildinfo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/srvr/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/srvr/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/srvr/rstack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/srvr/rstack.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/srvr/tests/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/srvr/tests/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/srvr/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/srvr/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/typed-env/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/typed-env/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/typed-env/rstack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/typed-env/rstack.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/typed-env/tests/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/typed-env/tests/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/typed-env/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/typed-env/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/verdict/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/verdict/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/verdict/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/packages/verdict/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/verdict/rstack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/verdict/rstack.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/verdict/tests/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/verdict/tests/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/verdict/tsconfig.tsbuildinfo" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/turbo.jsonc" beforeDir="false" afterPath="$PROJECT_DIR$/turbo.jsonc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-workspace.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-workspace.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/publish.ts" beforeDir="false" afterPath="$PROJECT_DIR$/publish.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rstack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/rstack.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sandboxes/fusion-sandbox-rsbuild/src/fn01.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sandboxes/fusion-sandbox-rsbuild/src/fn01.server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sandboxes/fusion-sandbox-rsbuild/tests/dev.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sandboxes/fusion-sandbox-rsbuild/tsconfig.app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sandboxes/fusion-sandbox-rsbuild/tsconfig.test.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sandboxes/fusion-sandbox-rsbuild/turbo.jsonc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sandboxes/fusion-sandbox-vite/tsconfig.test.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sandboxes/fusion-sandbox-vite/turbo.jsonc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sandboxes/jsrx-rsbuild/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/sandboxes/jsrx-rsbuild/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sandboxes/srvr-sandbox/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/sandboxes/srvr-sandbox/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sandboxes/srvr-sandbox/temp/component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sandboxes/srvr-sandbox/temp/component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sandboxes/srvr-sandbox/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/sandboxes/srvr-sandbox/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/shared.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,9 +130,10 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="testing" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -163,12 +153,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="testing" />
-                    <option name="lastUsedInstant" value="1795435675" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1795770751" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1795435674" />
+                    <option name="branchName" value="testing" />
+                    <option name="lastUsedInstant" value="1795435675" />
                   </RecentBranch>
                 </list>
               </option>
@@ -179,25 +169,34 @@
       </RecentBranches>
     </option>
   </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="1c6bd77f-8539-467c-a054-f81b7df3effc" />
+  </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/synergy-js/synergy-js.git&quot;,
-    &quot;accountId&quot;: &quot;b2b1eaca-9b9b-495f-898b-4ba93616e9f1&quot;
+    &quot;accountId&quot;: &quot;1c6bd77f-8539-467c-a054-f81b7df3effc&quot;
   }
 }</component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupnpm">
+      <scroll-view-position x="0" y="0" />
+    </layout>
+  </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
+    <dismissed value="$PROJECT_DIR$/packages/env-guard/package.json" />
     <dismissed value="$PROJECT_DIR$/packages/httpx/package.json" />
     <dismissed value="$PROJECT_DIR$/packages/infusion/package.json" />
-    <dismissed value="$PROJECT_DIR$/packages/jsxr/package.json" />
+    <dismissed value="$PROJECT_DIR$/packages/kinetic/package.json" />
+    <dismissed value="$PROJECT_DIR$/packages/nexus/package.json" />
     <dismissed value="$PROJECT_DIR$/packages/prism/package.json" />
-    <dismissed value="$PROJECT_DIR$/packages/rsbuild-plugin-jsxr/package.json" />
-    <dismissed value="$PROJECT_DIR$/packages/srvr/package.json" />
-    <dismissed value="$PROJECT_DIR$/packages/typed-env/package.json" />
+    <dismissed value="$PROJECT_DIR$/packages/rsbuild-plugin-kinetic/package.json" />
     <dismissed value="$PROJECT_DIR$/packages/verdict/package.json" />
-    <dismissed value="$PROJECT_DIR$/sandboxes/fusion-sandbox-rsbuild/package.json" />
-    <dismissed value="$PROJECT_DIR$/sandboxes/fusion-sandbox-vite/package.json" />
-    <dismissed value="$PROJECT_DIR$/sandboxes/srvr-sandbox/package.json" />
+    <dismissed value="$PROJECT_DIR$/sandboxes/fusion-rsbuild/package.json" />
+    <dismissed value="$PROJECT_DIR$/sandboxes/fusion-vite/package.json" />
+    <dismissed value="$PROJECT_DIR$/sandboxes/kinetic-rsbuild/package.json" />
+    <dismissed value="$PROJECT_DIR$/sandboxes/nexus/package.json" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -217,215 +216,108 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "testing",
-    "go.import.settings.migrated": "true",
-    "javascript.nodejs.core.library.configured.version": "26.13.0",
-    "javascript.nodejs.core.library.typings.version": "26.6.6",
-    "javascript.preferred.runtime.type.id": "bun",
-    "last_opened_file_path": "/Users/mpayne/WebstormProjects/synergy-js/packages/verdict",
-    "node.js.detected.package.jshint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "nodejs_interpreter_path": "/opt/homebrew/bin/bun",
-    "nodejs_package_manager_path": "/opt/homebrew/bin/pnpm",
-    "npm.build.executor": "Run",
-    "npm.build:all.executor": "Run",
-    "npm.build:all:rsdoctor.executor": "Run",
-    "npm.clean:node.executor": "Run",
-    "npm.common:build.executor": "Run",
-    "npm.core:build.executor": "Run",
-    "npm.css:build.executor": "Run",
-    "npm.css:test.executor": "Run",
-    "npm.devtools.executor": "Run",
-    "npm.events:test.executor": "Run",
-    "npm.format.executor": "Run",
-    "npm.fusion-sandbox-rsbuild > sandbox-rsbuild-build.executor": "Run",
-    "npm.fusion-sandbox-rsbuild > sandbox-rsbuild-preview.executor": "Run",
-    "npm.fusion-sandbox-vite > sandbox-vite-build.executor": "Run",
-    "npm.fusion:build.executor": "Run",
-    "npm.fusion:build:rsdoctor.executor": "Run",
-    "npm.fusion:test.executor": "Run",
-    "npm.hookr:build.executor": "Run",
-    "npm.hookr:test.executor": "Run",
-    "npm.httpx:test.executor": "Run",
-    "npm.infusion:build.executor": "Run",
-    "npm.infusion:test.executor": "Run",
-    "npm.init.executor": "Run",
-    "npm.jsx:build.executor": "Run",
-    "npm.jsxr:build.executor": "Run",
-    "npm.jsxr:test.executor": "Run",
-    "npm.router:build.executor": "Run",
-    "npm.sandbox > sandbox-dev.executor": "Run",
-    "npm.sandbox:dev.executor": "Run",
-    "npm.sandbox:fusion:dev.executor": "Run",
-    "npm.sandbox:fusion:preview.executor": "Run",
-    "npm.sandbox:fusion:rsbuild:build.executor": "Run",
-    "npm.sandbox:fusion:rsbuild:dev.executor": "Run",
-    "npm.sandbox:fusion:rsbuild:preview.executor": "Run",
-    "npm.sandbox:fusion:rsbuild:test.executor": "Run",
-    "npm.sandbox:fusion:vite:build.executor": "Run",
-    "npm.sandbox:fusion:vite:dev.executor": "Run",
-    "npm.sandbox:usrv:dev.executor": "Run",
-    "npm.scribe:build.executor": "Run",
-    "npm.scribe:test.executor": "Run",
-    "npm.signals-build.executor": "Run",
-    "npm.signals-test.executor": "Run",
-    "npm.signals:build.executor": "Run",
-    "npm.srvr:build.executor": "Run",
-    "npm.srvr:sandbox:dev.executor": "Run",
-    "npm.synergy:sandbox:dev.executor": "Run",
-    "npm.usrv > sandbox-dev.executor": "Run",
-    "npm.usrv > usrv-sandbox.executor": "Run",
-    "npm.usrv:build.executor": "Run",
-    "npm.usrv:test.executor": "Run",
-    "npm.van-ts:build.executor": "Run",
-    "npm.verdict:build.executor": "Run",
-    "npm.verdict:test.executor": "Run",
-    "settings.editor.selected.configurable": "settings.typescriptcompiler",
-    "ts.external.directory.path": "/Users/mpayne/Library/Caches/JetBrains/WebStorm2026.3/ts-go-native-preview/v7.1.0-dev.jetbrains.20261006.2/node_modules/@typescript/typescript-darwin-arm64/lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Git.CreateWorkingTree.LastParentPath&quot;: &quot;/Users/mpayne/WebstormProjects&quot;,
+    &quot;Git.Working.Tree.Tab.closed.by.user&quot;: &quot;opened&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;26.13.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;26.6.6&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;bun&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mpayne/WebstormProjects/synergy-js/sandboxes/jsrx-rsbuild/src&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;/opt/homebrew/bin/bun&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;/opt/homebrew/bin/pnpm&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.build:all.executor&quot;: &quot;Run&quot;,
+    &quot;npm.build:all:rsdoctor.executor&quot;: &quot;Run&quot;,
+    &quot;npm.clean:node.executor&quot;: &quot;Run&quot;,
+    &quot;npm.common:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.core:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.css:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.css:test.executor&quot;: &quot;Run&quot;,
+    &quot;npm.devtools.executor&quot;: &quot;Run&quot;,
+    &quot;npm.events:test.executor&quot;: &quot;Run&quot;,
+    &quot;npm.format.executor&quot;: &quot;Run&quot;,
+    &quot;npm.fusion-sandbox-rsbuild &gt; sandbox-rsbuild-build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.fusion-sandbox-rsbuild &gt; sandbox-rsbuild-preview.executor&quot;: &quot;Run&quot;,
+    &quot;npm.fusion-sandbox-vite &gt; sandbox-vite-build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.fusion:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.fusion:build:rsdoctor.executor&quot;: &quot;Run&quot;,
+    &quot;npm.fusion:test.executor&quot;: &quot;Run&quot;,
+    &quot;npm.hookr:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.hookr:test.executor&quot;: &quot;Run&quot;,
+    &quot;npm.httpx:test.executor&quot;: &quot;Run&quot;,
+    &quot;npm.infusion:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.infusion:test.executor&quot;: &quot;Run&quot;,
+    &quot;npm.init.executor&quot;: &quot;Run&quot;,
+    &quot;npm.jsx:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.jsxr:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.jsxr:test.executor&quot;: &quot;Run&quot;,
+    &quot;npm.kinetic-rsbuild &gt; dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.router:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.sandbox &gt; sandbox-dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.sandbox:dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.sandbox:fusion:dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.sandbox:fusion:preview.executor&quot;: &quot;Run&quot;,
+    &quot;npm.sandbox:fusion:rsbuild:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.sandbox:fusion:rsbuild:dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.sandbox:fusion:rsbuild:preview.executor&quot;: &quot;Run&quot;,
+    &quot;npm.sandbox:fusion:rsbuild:test.executor&quot;: &quot;Run&quot;,
+    &quot;npm.sandbox:fusion:vite:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.sandbox:fusion:vite:dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.sandbox:usrv:dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.scribe:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.scribe:test.executor&quot;: &quot;Run&quot;,
+    &quot;npm.signals-build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.signals-test.executor&quot;: &quot;Run&quot;,
+    &quot;npm.signals:build.executor&quot;: &quot;Debug&quot;,
+    &quot;npm.srvr:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.srvr:sandbox:dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.synergy:sandbox:dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.usrv &gt; sandbox-dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.usrv &gt; usrv-sandbox.executor&quot;: &quot;Run&quot;,
+    &quot;npm.usrv:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.usrv:test.executor&quot;: &quot;Run&quot;,
+    &quot;npm.van-ts:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.verdict:build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.verdict:test.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/mpayne/Library/Caches/JetBrains/WebStorm2026.3/ts-go-native-preview/v7.1.0-dev.jetbrains.20261006.2/node_modules/@typescript/typescript-darwin-arm64/lib&quot;
   },
-  "keyToStringList": {
-    "GitStage.ChangesTree.GroupingKeys": [
-      "directory",
-      "module",
-      "repository"
+  &quot;keyToStringList&quot;: {
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/packages/verdict" />
-      <recent name="$PROJECT_DIR$/packages/configs" />
-      <recent name="$PROJECT_DIR$/packages/events" />
-      <recent name="$PROJECT_DIR$/packages/hookr" />
-      <recent name="$PROJECT_DIR$/packages/rsbuild-plugin-srvr" />
+      <recent name="$PROJECT_DIR$/sandboxes/jsrx-rsbuild/src" />
+      <recent name="$PROJECT_DIR$/sandboxes/srvr-sandbox" />
+      <recent name="$PROJECT_DIR$/sandboxes/jsrx-rsbuild" />
+      <recent name="$PROJECT_DIR$/sandboxes/fusion-sandbox-vite" />
+      <recent name="$PROJECT_DIR$/sandboxes/fusion-sandbox-rsbuild" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/packages/env-guard" />
+      <recent name="$PROJECT_DIR$/packages/env-guard/tests" />
+      <recent name="$PROJECT_DIR$/sandboxes/fusion-sandbox-rsbuild/tests" />
       <recent name="$PROJECT_DIR$/packages/signals" />
       <recent name="$PROJECT_DIR$/packages/verdict/tests" />
-      <recent name="$PROJECT_DIR$/packages/verdict" />
-      <recent name="$PROJECT_DIR$/packages/signals/tests" />
-      <recent name="$PROJECT_DIR$/packages/scribe/tests" />
     </key>
-  </component>
-  <component name="RunManager" selected="npm.signals:build">
-    <configuration name="fusion:build" type="js.build_tools.npm" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="fusion:build" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="infusion:test" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="infusion:test" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="init" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="init" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="scribe:test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="scribe:test" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="signals-test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="signals-test" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="verdict:build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="verdict:build" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="verdict:test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="verdict:test" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="npm.clean:node" />
-      <item itemvalue="npm.fusion:build" />
-      <item itemvalue="npm.scribe:build" />
-      <item itemvalue="npm.srvr:sandbox:dev" />
-      <item itemvalue="npm.srvr:test" />
-      <item itemvalue="npm.devtools" />
-      <item itemvalue="npm.fusion:sandbox:rsbuild:test" />
-      <item itemvalue="npm.typed-env-build" />
-      <item itemvalue="npm.fusion:sandbox:rsbuild:dev" />
-      <item itemvalue="npm.fusion:sandbox:rsbuild:preview" />
-      <item itemvalue="npm.srvr:build" />
-      <item itemvalue="npm.infusion:build" />
-      <item itemvalue="npm.infusion:test" />
-      <item itemvalue="npm.scribe:sandbox" />
-      <item itemvalue="npm.fusion:sandbox:rsbuild:build" />
-      <item itemvalue="npm.router:build" />
-      <item itemvalue="npm.signals:build" />
-      <item itemvalue="npm.css:build" />
-      <item itemvalue="npm.jsxr:build" />
-      <item itemvalue="npm.hookr:build" />
-      <item itemvalue="npm.hookr:test" />
-      <item itemvalue="npm.events:test" />
-      <item itemvalue="npm.init" />
-      <item itemvalue="npm.verdict:build" />
-      <item itemvalue="npm.verdict:test" />
-      <item itemvalue="npm.scribe:test" />
-      <item itemvalue="npm.signals-test" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="npm.verdict:build" />
-        <item itemvalue="npm.init" />
-        <item itemvalue="npm.verdict:test" />
-        <item itemvalue="npm.signals-test" />
-        <item itemvalue="npm.scribe:test" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -441,158 +333,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1777190207969</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Initial commit">
-      <option name="closed" value="true" />
-      <created>1795435645286</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1795435645286</updated>
-    </task>
-    <task id="LOCAL-00002" summary="CI testing">
-      <option name="closed" value="true" />
-      <created>1795438188624</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1795438188624</updated>
-    </task>
-    <task id="LOCAL-00003" summary="CI testing2">
-      <option name="closed" value="true" />
-      <created>1795438487786</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1795438487786</updated>
-    </task>
-    <task id="LOCAL-00004" summary="CI testing3">
-      <option name="closed" value="true" />
-      <created>1795438685072</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1795438685072</updated>
-    </task>
-    <task id="LOCAL-00005" summary="CI testing3">
-      <option name="closed" value="true" />
-      <created>1795438825229</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1795438825229</updated>
-    </task>
-    <task id="LOCAL-00006" summary="WHY IS CI LITERALLY IMPOSSIBLE">
-      <option name="closed" value="true" />
-      <created>1795445321937</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1795445321937</updated>
-    </task>
-    <task id="LOCAL-00007" summary="WHY IS CI LITERALLY IMPOSSIBLE">
-      <option name="closed" value="true" />
-      <created>1795445363930</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1795445363930</updated>
-    </task>
-    <task id="LOCAL-00008" summary="WHY IS CI LITERALLY IMPOSSIBLE">
-      <option name="closed" value="true" />
-      <created>1795445402075</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1795445402075</updated>
-    </task>
-    <task id="LOCAL-00009" summary="WHY IS CI LITERALLY IMPOSSIBLE">
-      <option name="closed" value="true" />
-      <created>1795445492194</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1795445492194</updated>
-    </task>
-    <task id="LOCAL-00010" summary="WHY IS CI LITERALLY IMPOSSIBLE">
-      <option name="closed" value="true" />
-      <created>1795445814607</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1795445814607</updated>
-    </task>
-    <task id="LOCAL-00011" summary="WHY IS CI LITERALLY IMPOSSIBLE">
-      <option name="closed" value="true" />
-      <created>1795445891345</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1795445891345</updated>
-    </task>
-    <task id="LOCAL-00012" summary="WHY IS CI LITERALLY IMPOSSIBLE!?">
-      <option name="closed" value="true" />
-      <created>1795446111271</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1795446111271</updated>
-    </task>
-    <task id="LOCAL-00013" summary="WHY IS CI LITERALLY IMPOSSIBLE!?">
-      <option name="closed" value="true" />
-      <created>1795446275306</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1795446275306</updated>
-    </task>
-    <task id="LOCAL-00014" summary="WHY IS CI LITERALLY IMPOSSIBLE!?">
-      <option name="closed" value="true" />
-      <created>1795446395355</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1795446395355</updated>
-    </task>
-    <task id="LOCAL-00015" summary="WHY IS CI LITERALLY IMPOSSIBLE!?">
-      <option name="closed" value="true" />
-      <created>1795446440879</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1795446440879</updated>
-    </task>
-    <task id="LOCAL-00016" summary="WHY IS CI LITERALLY IMPOSSIBLE!?">
-      <option name="closed" value="true" />
-      <created>1795447188811</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1795447188811</updated>
-    </task>
-    <task id="LOCAL-00017" summary="WHY IS CI LITERALLY IMPOSSIBLE!?">
-      <option name="closed" value="true" />
-      <created>1795447470194</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1795447470194</updated>
-    </task>
-    <task id="LOCAL-00018" summary="WHY IS CI LITERALLY IMPOSSIBLE!? THIS IS THE LAST ATTEMPT AT THIS!">
-      <option name="closed" value="true" />
-      <created>1795447705293</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1795447705293</updated>
-    </task>
-    <task id="LOCAL-00019" summary="WHY IS CI LITERALLY IMPOSSIBLE!? THIS IS THE LAST ATTEMPT AT THIS!">
-      <option name="closed" value="true" />
-      <created>1795448145837</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1795448145837</updated>
     </task>
     <task id="LOCAL-00020" summary="WHY IS CI LITERALLY IMPOSSIBLE!? THIS IS THE LAST ATTEMPT AT THIS!">
       <option name="closed" value="true" />
@@ -762,7 +502,231 @@
       <option name="project" value="LOCAL" />
       <updated>1795613093241</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Added Fusion package">
+      <option name="closed" value="true" />
+      <created>1795613419390</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1795613419390</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Added JSXR package">
+      <option name="closed" value="true" />
+      <created>1795613440144</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1795613440144</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Added Prism package">
+      <option name="closed" value="true" />
+      <created>1795613462469</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1795613462469</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Fix for Signals">
+      <option name="closed" value="true" />
+      <created>1795613487100</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1795613487100</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Since CI is a moron, MASSIVE COMMIT!">
+      <option name="closed" value="true" />
+      <created>1795613687680</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1795613687680</updated>
+    </task>
+    <task id="LOCAL-00046" summary="more bs">
+      <option name="closed" value="true" />
+      <created>1795614468925</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1795614468925</updated>
+    </task>
+    <task id="LOCAL-00047" summary="more bs">
+      <option name="closed" value="true" />
+      <created>1795614581900</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1795614581900</updated>
+    </task>
+    <task id="LOCAL-00048" summary="FUCK CI">
+      <option name="closed" value="true" />
+      <created>1795614710637</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1795614710637</updated>
+    </task>
+    <task id="LOCAL-00049" summary="tweaks for httpx">
+      <option name="closed" value="true" />
+      <created>1795616393976</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1795616393976</updated>
+    </task>
+    <task id="LOCAL-00050" summary="refactor: Removed changesets, did not find them useful as I am the only developer on this project.">
+      <option name="closed" value="true" />
+      <created>1795698959262</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1795698959262</updated>
+    </task>
+    <task id="LOCAL-00051" summary="refactor: Updated .github/workflows/publish.yml to auto-configure/generate tags.">
+      <option name="closed" value="true" />
+      <created>1795699732915</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1795699732915</updated>
+    </task>
+    <task id="LOCAL-00052" summary="chore: Updated main readme.&#10;chore: Removed publish.ts script, felt very hacked together.&#10;chore: Cleaned up rstack.config.ts and shared.config.ts">
+      <option name="closed" value="true" />
+      <created>1795769892494</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1795769892494</updated>
+    </task>
+    <task id="LOCAL-00053" summary="refactor: migrated from package.json scripts to justfile.&#10;chore: cleaned up pnpm-workspace.yaml">
+      <option name="closed" value="true" />
+      <created>1795770909694</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1795770909694</updated>
+    </task>
+    <task id="LOCAL-00054" summary="refactor: renamed from typed-env to env-guard&#10;fix: corrected parsing logic.">
+      <option name="closed" value="true" />
+      <created>1795773821614</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1795773821615</updated>
+    </task>
+    <task id="LOCAL-00055" summary="refactor: renamed from typed-env to env-guard&#10;fix: corrected parsing logic.">
+      <option name="closed" value="true" />
+      <created>1795773860497</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1795773860497</updated>
+    </task>
+    <task id="LOCAL-00056" summary="refactor(httpx): added wireit for building/caching.">
+      <option name="closed" value="true" />
+      <created>1795773999625</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1795773999625</updated>
+    </task>
+    <task id="LOCAL-00057" summary="refactor: added wireit for building/caching">
+      <option name="closed" value="true" />
+      <created>1795774160708</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1795774160708</updated>
+    </task>
+    <task id="LOCAL-00058" summary="feat!(kinetic): renamed from jsx to kinetic">
+      <option name="closed" value="true" />
+      <created>1795774221177</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1795774221177</updated>
+    </task>
+    <task id="LOCAL-00059" summary="feat!: added prism package( atomic css engine)">
+      <option name="closed" value="true" />
+      <created>1795774284116</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1795774284116</updated>
+    </task>
+    <task id="LOCAL-00060" summary="test(scribe): added basic testing framework">
+      <option name="closed" value="true" />
+      <created>1795774323717</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1795774323717</updated>
+    </task>
+    <task id="LOCAL-00061" summary="feat!(tap): renamed from hookr to tap.">
+      <option name="closed" value="true" />
+      <created>1795774387317</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1795774387317</updated>
+    </task>
+    <task id="LOCAL-00062" summary="feat!(nexus): renamed from srvr to nexus">
+      <option name="closed" value="true" />
+      <created>1795774417727</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1795774417727</updated>
+    </task>
+    <task id="LOCAL-00063" summary="feat!(nexus): renamed from srvr to nexus">
+      <option name="closed" value="true" />
+      <created>1795774429195</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1795774429195</updated>
+    </task>
+    <task id="LOCAL-00064" summary="chore(signals): removed ts references.">
+      <option name="closed" value="true" />
+      <created>1795774491979</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1795774491979</updated>
+    </task>
+    <task id="LOCAL-00065" summary="chore(verdict): general cleanup">
+      <option name="closed" value="true" />
+      <created>1795774532846</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1795774532846</updated>
+    </task>
+    <task id="LOCAL-00066" summary="chore: renamed sandboxes to better reflect their usage.&#10;&#10;test(rsbuild-plugin-kinetic): began basic manual testing in sandboxes/kinetic-rsbuild">
+      <option name="closed" value="true" />
+      <created>1795774690559</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1795774690559</updated>
+    </task>
+    <task id="LOCAL-00067" summary="test(rsbuild-plugin-kinetic): began manual testing in sandboxes/rsbuild-kinetic">
+      <option name="closed" value="true" />
+      <created>1795774746765</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1795774746765</updated>
+    </task>
+    <task id="LOCAL-00068" summary="chore: renamed sandboxes to better reflect their usage.&#10;&#10;test(rsbuild-plugin-kinetic): began basic manual testing in sandboxes/kinetic-rsbuild">
+      <option name="closed" value="true" />
+      <created>1795774779531</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1795774779531</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -775,6 +739,8 @@
         <option value="$PROJECT_DIR$/packages/verdict/playground/index.d.ts" />
         <option value="$PROJECT_DIR$/packages/verdict/tests/index.test.d.ts" />
         <option value="$PROJECT_DIR$/packages/verdict/tests/http.test.d.ts" />
+        <option value="$PROJECT_DIR$/shared.config.d.ts" />
+        <option value="$PROJECT_DIR$/packages/jsxr/rstack.config.d.ts" />
       </list>
     </option>
   </component>
@@ -791,27 +757,36 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Initial commit" />
-    <MESSAGE value="CI testing" />
-    <MESSAGE value="CI testing2" />
-    <MESSAGE value="CI testing3" />
-    <MESSAGE value="WHY IS CI LITERALLY IMPOSSIBLE" />
-    <MESSAGE value="WHY IS CI LITERALLY IMPOSSIBLE!?" />
-    <MESSAGE value="WHY IS CI LITERALLY IMPOSSIBLE!? THIS IS THE LAST ATTEMPT AT THIS!" />
-    <MESSAGE value="Initial commit for events package" />
-    <MESSAGE value="More CI testing" />
-    <MESSAGE value="More CI testing, WHO DESIGNED THESE TO FAIL!?!?!" />
-    <MESSAGE value="More CI testing, WHO DESIGNED THESE TO FAIL!?!?! Why does Github HATE DEVELOPERS!?" />
-    <MESSAGE value="More CI testing, WHO DESIGNED THESE TO FAIL!?!?! Why is EVERYTHING ABOUT THIS RIGGED TO FAIL!?!" />
-    <MESSAGE value="More CI testing, WHO DESIGNED THESE TO FAIL!?!?! Why is EVERYTHING ABOUT THIS RIGGED TO FAIL!?! MORE BULLSHIT!" />
-    <MESSAGE value="FUCK CI!" />
-    <MESSAGE value="Added signals package" />
-    <MESSAGE value="Adjusted workflows/publish" />
-    <MESSAGE value="more ci tweaks" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="FUCK THIS!!!!!!!!!!!!!!!!!!!!!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="FUCK THIS!!!!!!!!!!!!!!!!!!!!!!" />
+    <MESSAGE value="Added Fusion package" />
+    <MESSAGE value="Added JSXR package" />
+    <MESSAGE value="Added Prism package" />
+    <MESSAGE value="Fix for Signals" />
+    <MESSAGE value="Since CI is a moron, MASSIVE COMMIT!" />
+    <MESSAGE value="more bs" />
+    <MESSAGE value="FUCK CI" />
+    <MESSAGE value="tweaks for httpx" />
+    <MESSAGE value="refactor: Removed changesets, did not find them useful as I am the only developer on this project." />
+    <MESSAGE value="refactor: Updated .github/workflows/publish.yml to auto-configure/generate tags." />
+    <MESSAGE value="chore: Updated main readme.&#10;chore: Removed publish.ts script, felt very hacked together.&#10;chore: Cleaned up rstack.config.ts and shared.config.ts" />
+    <MESSAGE value="refactor: migrated from package.json scripts to justfile.&#10;chore: cleaned up pnpm-workspace.yaml" />
+    <MESSAGE value="refactor: renamed from typed-env to env-guard&#10;fix: corrected parsing logic." />
+    <MESSAGE value="refactor(httpx): added wireit for building/caching." />
+    <MESSAGE value="refactor: added wireit for building/caching" />
+    <MESSAGE value="feat!(kinetic): renamed from jsx to kinetic" />
+    <MESSAGE value="feat!: added prism package( atomic css engine)" />
+    <MESSAGE value="test(scribe): added basic testing framework" />
+    <MESSAGE value="feat!(tap): renamed from hookr to tap." />
+    <MESSAGE value="feat!(nexus): renamed from srvr to nexus" />
+    <MESSAGE value="chore(signals): removed ts references." />
+    <MESSAGE value="chore(verdict): general cleanup" />
+    <MESSAGE value="test(rsbuild-plugin-kinetic): began manual testing in sandboxes/rsbuild-kinetic" />
+    <MESSAGE value="chore: renamed sandboxes to better reflect their usage.&#10;&#10;test(rsbuild-plugin-kinetic): began basic manual testing in sandboxes/kinetic-rsbuild" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="../../../../WebstormProjects/synergy-js/coverage/lcov.info" NAME="lcov.info" MODIFIED="1793875981114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="../../../../WebstormProjects/synergy-js/packages/httpx/coverage/lcov.info" NAME="lcov.info" MODIFIED="1795618142032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
