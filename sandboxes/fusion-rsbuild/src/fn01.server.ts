@@ -1,3 +1,3 @@
-import { homedir } from "node:os";
+import { homedir } from "node:os"
 
 export const getHomeDir = () => homedir();
