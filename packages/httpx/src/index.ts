@@ -17,7 +17,7 @@
  * `Resilient URL Cleanup`: Your regex line baseUrl.replace(/\/+$/, "") is a lifesaver. It completely eliminates accidental triple-slashes (https://api.com), which is one of the most common configuration bugs in frontend apps.
  *
  * `Smart Content-Type Management`: Automatically assigning "application/json" for objects, but knowing to completely strip or ignore it for FormData or empty GET requests, is excellent. Many developers mess this up, causing file uploads or text bodies to break.
- * @module HttpClient
+ * @module HttpX
  */
 
 /**

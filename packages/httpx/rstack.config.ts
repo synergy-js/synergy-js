@@ -6,14 +6,10 @@ define.extends([sharedConfig])
 define.lib({
 	lib: [
 		{
-			id: "http-client",
+			id: "httpx",
 			bundle: false,
 			dts: {
 				isolated: true,
-			},
-			output: {
-				cleanDistPath: true,
-				minify: true,
 			},
 			source: {
 				entry: {
@@ -28,8 +24,5 @@ define.lib({
 				process.env.RSDOCTOR ? new RsdoctorRspackPlugin({port: 8000}) : null,
 			],
 		},
-	},
-	splitChunks: {
-		preset: "default",
 	},
 })
