@@ -24,16 +24,15 @@ on:
         type: boolean
         default: false
       release-tag-version:
-        description: "Tag version (pkg@0.1.0-alpha, beta, ...")
+        description: "Tag version (pkg@0.1.0-alpha, beta, ...)"
         type: choice
-        default: false
+        default: beta
         options:
           - alpha
           - beta
           - stable
       bump:
         description: "Version bump"
-        required: true
         type: choice
         default: patch
         options:
