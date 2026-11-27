@@ -1,0 +1,41 @@
+{
+	"name": "@synergy-js/tap",
+	"version": "0.1.0-beta.1",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist",
+		"README.md"
+	],
+	"scripts": {
+		"build": "wireit"
+	},
+	"wireit": {
+		"build": {
+			"clean": "if-file-deleted",
+			"command": "rs lib",
+			"files": [
+				"src/**/*.ts"
+			],
+			"output": [
+				"dist/**"
+			]
+		}
+	},
+	"devDependencies": {
+		"@rsdoctor/rspack-plugin": "catalog:",
+		"@types/bun": "catalog:",
+		"@types/node": "catalog:",
+		"rstack": "catalog:",
+		"typescript": "catalog:",
+		"wireit": "catalog:"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
