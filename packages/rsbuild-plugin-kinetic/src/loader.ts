@@ -28,12 +28,12 @@
  * */
 
 
-import type { Rspack } from "@rsbuild/core"
+import type { Rspack } from "rstack/app"
 import MagicString from "magic-string"
 import { parseSync, Visitor } from "oxc-parser"
 import { isComponentTag, isDynamicExpr, wrapExpr } from "./utils.js"
 
-export default function ReactiveJSLoader(this: Rspack.LoaderContext, source: string): void {
+export default function jsxrLoader(this: Rspack.LoaderContext, source: string): void {
 	const {program} = parseSync(this.resourcePath, source, {
 		sourceType: "module",
 	})
@@ -55,22 +55,47 @@ export default function ReactiveJSLoader(this: Rspack.LoaderContext, source: str
 						continue
 					}
 					
-					// Skip event handlers (onClick, onInput, etc.)
-					if(
-						name.length > 2 &&
-						name.startsWith("on") &&
-						name.charCodeAt(2) >= 65 &&
-						name.charCodeAt(2) <= 90
-					) {
-						continue
-					}
-					
 					if(attr.value?.type === "JSXExpressionContainer") {
-						wrapExpr(attr.value.expression, s)
+						const expr = attr.value.expression
+						
+						// For event handlers: don't double-wrap if user already passed `() => ...` or `handleClick`
+						if(name.length > 2 && name.toLowerCase().startsWith("on")) {
+							if(
+								expr.type === "ArrowFunctionExpression" ||
+								expr.type === "FunctionExpression" ||
+								expr.type === "Identifier" ||
+								expr.type === "MemberExpression"
+							) {
+								continue
+							}
+						}
+						
+						wrapExpr(expr, s)
 					}
 				}
 				return
 			}
+			// if(!isComponent) {
+			// 	for(const attr of node.attributes) {
+			// 		if(attr.type !== "JSXAttribute") {
+			// 			continue
+			// 		}
+			// 		const name = attr.name.type === "JSXIdentifier" ? attr.name.name : null
+			// 		if(!name || name === "ref" || name === "key") {
+			// 			continue
+			// 		}
+			//
+			// 		// Skip event handlers (onClick, onInput, etc.)
+			// 		if(name.length > 2 && name.toLowerCase().startsWith("on")) {
+			// 			continue
+			// 		}
+			//
+			// 		if(attr.value?.type === "JSXExpressionContainer") {
+			// 			wrapExpr(attr.value.expression, s)
+			// 		}
+			// 	}
+			// 	return
+			// }
 			
 			// 2. Components: collect dynamic props into a single `__getters` object
 			// so SWC's object spread never eagerly evaluates them
@@ -117,7 +142,6 @@ export default function ReactiveJSLoader(this: Rspack.LoaderContext, source: str
 		JSXElement(node) {
 			const isComponent = isComponentTag(node.openingElement.name)
 			
-			
 			/*
 			 * 3. Component children: wrap in lazy `__children` (unless it's a render-prop function like `{(u) => ...}`)
 			 * Lazy Children (get children())
@@ -139,15 +163,13 @@ export default function ReactiveJSLoader(this: Rspack.LoaderContext, source: str
 						nonEmptyChildren[0].expression.type === "FunctionExpression")
 				
 				if(!isRenderProp && nonEmptyChildren.length > 0) {
-					const firstChild = node.children[0]
-					const lastChild = node.children[node.children.length - 1]
-					const childrenCode = source.slice(firstChild.start, lastChild.end)
+					const firstChild = node.children[0]!
+					const lastChild = node.children[node.children.length - 1]!
+					const insertPos = node.openingElement.end - 1
 					
-					s.appendLeft(
-						node.openingElement.end - 1,
-						` __children={() => (<>${childrenCode}</>)}`,
-					)
-					s.overwrite(firstChild.start, lastChild.end, "")
+					s.appendLeft(insertPos, " __children={() => (<>")
+					s.move(firstChild.start, lastChild.end, insertPos)
+					s.appendLeft(insertPos, "</>)}")
 				}
 				return
 			}

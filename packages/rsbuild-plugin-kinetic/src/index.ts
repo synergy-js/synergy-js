@@ -1,0 +1,1 @@
+export { jsxrPlugin } from "./plugin.ts"
