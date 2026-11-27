@@ -1,7 +1,7 @@
 /**
- * Yes—that is genuinely a legit, production-grade atomic CSS-in-JS architecture (StyleX / Atomizer / Compiled style), not a toy.
+ * Atomic CSS-in-JS architecture (StyleX / Atomizer / Compiled style).
  *
- * What Makes It Legit (Engineering Breakdown)
+ * Engineering Breakdown
  *
  * 1. True Atomic Deduplication (atomCache): Instead of generating duplicate CSS rules per component like
  * Emotion/styled-components, "background-color:red" is inserted into the stylesheet once (syn-0) and

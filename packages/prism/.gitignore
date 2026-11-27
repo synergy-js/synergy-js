@@ -1,13 +1,4 @@
-# Local
-.DS_Store
-*.local
-*.log*
-
-# Dist
+dist
 node_modules
-dist/
-
-# IDE
-.vscode/*
-!.vscode/extensions.json
-.idea
+coverage
+.wireit

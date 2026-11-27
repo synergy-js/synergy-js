@@ -1,7 +1,7 @@
 import { getOrInsertAtom } from "./sheet.js"
 import type { CSSProperties, NestedBlock, StyleRule } from "./types.js"
 
-const collectPseudo = (
+const _collectPseudo = (
 	suffix: string,
 	pseudoBlock: CSSProperties,
 	classes: string[],
@@ -22,7 +22,7 @@ const collectPseudo = (
 	}
 }
 
-const collectBlock = (
+const _collectBlock = (
 	block: NestedBlock,
 	classes: string[],
 	atRulePrefix = "",
@@ -32,7 +32,7 @@ const collectBlock = (
 		if(val == null) continue
 		
 		if(prop.startsWith("&") && typeof val === "object") {
-			collectPseudo(prop.slice(1), val as CSSProperties, classes, atRulePrefix)
+			_collectPseudo(prop.slice(1), val as CSSProperties, classes, atRulePrefix)
 			continue
 		}
 		
@@ -54,7 +54,7 @@ const collectBlock = (
  * @returns {Record<T, string>}
  * @example
  * ```ts
- * export const theme = defineTokens({
+ * export const theme = createTokens({
  *   colors: {
  *     primary: "#2563eb",
  *     primaryHover: "#1d4ed8",
@@ -95,12 +95,12 @@ export const createStyleSheet = <T extends string>(styles: Record<T, StyleRule>)
 			if(val == null) continue
 			
 			if(prop.startsWith("@") && typeof val === "object") {
-				collectBlock(val as NestedBlock, classes, prop)
+				_collectBlock(val as NestedBlock, classes, prop)
 				continue
 			}
 			
 			if(prop.startsWith("&") && typeof val === "object") {
-				collectPseudo(prop.slice(1), val as CSSProperties, classes)
+				_collectPseudo(prop.slice(1), val as CSSProperties, classes)
 				continue
 			}
 			

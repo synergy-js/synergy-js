@@ -6,20 +6,18 @@ define.extends([sharedConfig])
 define.lib({
 	lib: [
 		{
-			id: "core",
+			id: "prism",
 			bundle: false,
 			dts: {
 				isolated: true,
 			},
-			output: {
-				cleanDistPath: true,
-				minify: true,
-			},
 			source: {
-				tsconfigPath: "tsconfig.lib.json",
 				entry: {
 					index: ["src/**", "!src/**/__*.ts"],
 				},
+			},
+			output: {
+				target: "web",
 			},
 		},
 	],
@@ -29,8 +27,5 @@ define.lib({
 				process.env.RSDOCTOR ? new RsdoctorRspackPlugin({port: 8000}) : null,
 			],
 		},
-	},
-	splitChunks: {
-		preset: "default",
 	},
 })

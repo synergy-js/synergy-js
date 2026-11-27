@@ -4,8 +4,6 @@
 		"rootDir": "./src",
 		"outDir": "./dist",
 		"declarationDir": "./dist",
-		"composite": true,
-		"declaration": true,
 		"isolatedDeclarations": true,
 		"lib": [
 			"dom",
@@ -17,5 +15,9 @@
 			"rstack/types"
 		]
 	},
-	"exclude": ["tests", "playground"]
+	"exclude": [
+		"tests",
+		"playground",
+		"rstack.config.ts"
+	]
 }

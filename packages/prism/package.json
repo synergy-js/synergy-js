@@ -12,6 +12,23 @@
 		"dist",
 		"README.md"
 	],
+	"scripts": {
+		"build": "wireit"
+	},
+	"wireit": {
+		"build": {
+			"command": "rs lib",
+			"clean": "if-file-deleted",
+			"dependencies": [
+			],
+			"files": [
+				"src/**/*.ts"
+			],
+			"output": [
+				"dist/**"
+			]
+		}
+	},
 	"dependencies": {
 		"csstype": "^3.2.3"
 	},
@@ -20,7 +37,8 @@
 		"@types/bun": "catalog:",
 		"@types/node": "catalog:",
 		"rstack": "catalog:",
-		"typescript": "catalog:"
+		"typescript": "catalog:",
+		"wireit": "catalog:"
 	},
 	"publishConfig": {
 		"access": "public"

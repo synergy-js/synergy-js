@@ -1,6 +1,6 @@
 import { cx } from "./cx.js"
 import { createStyleSheet } from "./stylesheet.js"
-import type { RecipeConfig, RecipeProps, VariantSchema } from "./types.js"
+import type { RecipeConfig, RecipeProps, VariantSchema } from "./types.ts"
 
 
 /**
