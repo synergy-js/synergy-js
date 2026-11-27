@@ -9,7 +9,7 @@ Build-time server functions for Rsbuild and Vite. Write normal exported function
 - Named exported functions and variables are discovered with `oxc-parser` (no annotations required)
 - Development middleware evaluates server modules in-process
 - Production builds emit a server entry (`dist/index.js`) from a runtime preset template
-- Verbose/debug logging of function IDs and manifests via `logLevel`
+- Verbose/debug logging of function IDs and RPC endpoints via `logLevel`
 
 ## Installation
 
