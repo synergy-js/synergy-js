@@ -6,17 +6,12 @@ define.extends([sharedConfig])
 define.lib({
 	lib: [
 		{
-			id: "validate-env",
+			id: "env-guard",
 			bundle: false,
 			dts: {
 				isolated: true,
 			},
-			output: {
-				cleanDistPath: true,
-				minify: true,
-			},
 			source: {
-				tsconfigPath: "tsconfig.lib.json",
 				entry: {
 					index: ["src/**"],
 				},
@@ -29,8 +24,5 @@ define.lib({
 				process.env.RSDOCTOR ? new RsdoctorRspackPlugin({port: 8000}) : null,
 			],
 		},
-	},
-	splitChunks: {
-		preset: "default",
 	},
 })
