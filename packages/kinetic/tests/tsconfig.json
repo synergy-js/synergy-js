@@ -2,6 +2,6 @@
 	"extends": "../../../tsconfig.base.json",
 	"compilerOptions": {
 		"jsx": "react-jsx",
-		"jsxImportSource": "@synergy-js/jsxr"
+		"jsxImportSource": "@synergy-js/kinetic"
 	}
 }

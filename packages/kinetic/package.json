@@ -13,17 +13,17 @@
 		"README.md"
 	],
 	"scripts": {
-		"build": "wireit"
+		"build": "wireit",
+		"test": "rs test"
 	},
 	"wireit": {
 		"build": {
 			"command": "rs lib",
 			"clean": "if-file-deleted",
-			"dependencies": [
-				"../signals:build"
-			],
+			"dependencies": [],
 			"files": [
-				"src/**/*.ts"
+				"src/**/*.ts",
+				"src/**/*.tsx"
 			],
 			"output": [
 				"dist/**"
@@ -43,6 +43,14 @@
 			"import": "./dist/router/index.js",
 			"types": "./dist/router/index.d.ts"
 		},
+		"./signals": {
+			"import": "./dist/signals/index.js",
+			"types": "./dist/signals/index.d.ts"
+		},
+		"./testing": {
+			"import": "./dist/testing/index.js",
+			"types": "./dist/testing/index.d.ts"
+		},
 		"./jsx-runtime": {
 			"types": "./dist/web/jsx-runtime.d.ts",
 			"import": "./dist/web/jsx-runtime.js"
@@ -53,19 +61,14 @@
 		}
 	},
 	"devDependencies": {
+		"@synergy-js/rsbuild-plugin-kinetic": "workspace:*",
+		"@rstest/adapter-rsbuild": "^0.12.6",
 		"@rsdoctor/rspack-plugin": "catalog:",
 		"@types/bun": "catalog:",
 		"@types/node": "catalog:",
+		"happy-dom": "catalog:",
 		"rstack": "catalog:",
 		"typescript": "catalog:",
 		"wireit": "catalog:"
-	},
-	"peerDependencies": {
-		"@synergy-js/signals": "workspace:*"
-	},
-	"peerDependenciesMeta": {
-		"@synergy-js/signals": {
-			"optional": false
-		}
 	}
 }

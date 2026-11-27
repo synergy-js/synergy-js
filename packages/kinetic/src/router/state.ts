@@ -1,19 +1,26 @@
-import { createSignal } from "@synergy-js/signals"
-import type { JSXRenderNode } from "../web"
-import type { RouteData, RouteParams } from "./types"
+import { createContext } from "../web/context.ts"
+import type { Context } from "../web/context.ts"
+import { createSignal } from "../signals"
+import type { Accessor, JSXRenderNode, MatchedRoute, RouteData } from "../types"
 
-// export const [currentPath, setCurrentPath] = createSignal(window.location.pathname)
-// export const [params, setParams] = createSignal<RouteParams>({})
-//
-// export const outletStack: Array<() => JSXRenderNode> = []
-// export const dataStack: Array<RouteData | null> = []
-const pathSignal = createSignal<string>("/")
-export const currentPath: () => string = pathSignal[0]
-export const setCurrentPath: (value: string) => void = pathSignal[1]
+const getBrowserLocation = (): string =>
+	typeof window === "undefined"
+		? "/"
+		: `${window.location.pathname}${window.location.search}${window.location.hash}`
 
-const paramsSignal = createSignal<RouteParams>({})
-export const params: () => RouteParams = paramsSignal[0]
-export const setParams: (value: RouteParams) => void = paramsSignal[1]
+// Browser location is shared; route matches and render stacks belong to each Router.
+const locationSignal = createSignal<string>(getBrowserLocation())
+export const currentPath: Accessor<string> = locationSignal[0]
+export const setCurrentPath = (value: string): void => {
+	locationSignal[1](value)
+}
 
-export const outletStack: Array<() => JSXRenderNode> = []
-export const dataStack: Array<RouteData | null> = []
+export interface RouterContextValue {
+	location: Accessor<string>
+	matchedRoutes: Accessor<MatchedRoute[]>
+	outletStack: Array<() => JSXRenderNode>
+	dataStack: Array<RouteData | null>
+}
+
+export const routerContext: Context<RouterContextValue | null> =
+	createContext<RouterContextValue | null>(null)

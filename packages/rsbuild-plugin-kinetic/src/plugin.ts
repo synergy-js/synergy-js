@@ -8,8 +8,8 @@ const localDirectory = dirname(filename)
 
 const reactiveLoaderPath = resolve(localDirectory, "loader.js")
 
-export const jsxrPlugin = (): RsbuildPlugin => ({
-	name: "ReactiveJs Plugin",
+export const kineticPlugin = (): RsbuildPlugin => ({
+	name: "Kinetic Plugin",
 	setup({modifyRspackConfig, modifyRsbuildConfig}) {
 		modifyRsbuildConfig((config, {mergeRsbuildConfig}) => {
 			return mergeRsbuildConfig(config, {
@@ -19,7 +19,7 @@ export const jsxrPlugin = (): RsbuildPlugin => ({
 							transform: {
 								react: {
 									runtime: "automatic",
-									importSource: "@synergy-js/jsxr",
+									importSource: "@synergy-js/kinetic",
 								},
 							},
 						},

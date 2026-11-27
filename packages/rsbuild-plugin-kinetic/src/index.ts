@@ -1,1 +1,1 @@
-export { jsxrPlugin } from "./plugin.ts"
+export { kineticPlugin } from "./plugin.ts"

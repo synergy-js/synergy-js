@@ -33,12 +33,13 @@ import MagicString from "magic-string"
 import { parseSync, Visitor } from "oxc-parser"
 import { isComponentTag, isDynamicExpr, wrapExpr } from "./utils.js"
 
-export default function jsxrLoader(this: Rspack.LoaderContext, source: string): void {
+export default function kineticLoader(this: Rspack.LoaderContext, source: string): void {
 	const {program} = parseSync(this.resourcePath, source, {
 		sourceType: "module",
 	})
 	
 	const s = new MagicString(source)
+	const componentChildren: {start: number; end: number; insertPos: number}[] = []
 	
 	const visitor = new Visitor({
 		JSXOpeningElement(node) {
@@ -57,13 +58,16 @@ export default function jsxrLoader(this: Rspack.LoaderContext, source: string): 
 					
 					if(attr.value?.type === "JSXExpressionContainer") {
 						const expr = attr.value.expression
+						if(expr.type === "Identifier") {
+							continue
+						}
 						
 						// For event handlers: don't double-wrap if user already passed `() => ...` or `handleClick`
 						if(name.length > 2 && name.toLowerCase().startsWith("on")) {
 							if(
 								expr.type === "ArrowFunctionExpression" ||
 								expr.type === "FunctionExpression" ||
-								expr.type === "Identifier" ||
+								//expr.type === "Identifier" ||
 								expr.type === "MemberExpression"
 							) {
 								continue
@@ -75,27 +79,6 @@ export default function jsxrLoader(this: Rspack.LoaderContext, source: string): 
 				}
 				return
 			}
-			// if(!isComponent) {
-			// 	for(const attr of node.attributes) {
-			// 		if(attr.type !== "JSXAttribute") {
-			// 			continue
-			// 		}
-			// 		const name = attr.name.type === "JSXIdentifier" ? attr.name.name : null
-			// 		if(!name || name === "ref" || name === "key") {
-			// 			continue
-			// 		}
-			//
-			// 		// Skip event handlers (onClick, onInput, etc.)
-			// 		if(name.length > 2 && name.toLowerCase().startsWith("on")) {
-			// 			continue
-			// 		}
-			//
-			// 		if(attr.value?.type === "JSXExpressionContainer") {
-			// 			wrapExpr(attr.value.expression, s)
-			// 		}
-			// 	}
-			// 	return
-			// }
 			
 			// 2. Components: collect dynamic props into a single `__getters` object
 			// so SWC's object spread never eagerly evaluates them
@@ -165,11 +148,12 @@ export default function jsxrLoader(this: Rspack.LoaderContext, source: string): 
 				if(!isRenderProp && nonEmptyChildren.length > 0) {
 					const firstChild = node.children[0]!
 					const lastChild = node.children[node.children.length - 1]!
-					const insertPos = node.openingElement.end - 1
 					
-					s.appendLeft(insertPos, " __children={() => (<>")
-					s.move(firstChild.start, lastChild.end, insertPos)
-					s.appendLeft(insertPos, "</>)}")
+					componentChildren.push({
+						start: firstChild.start,
+						end: lastChild.end,
+						insertPos: node.openingElement.end - 1,
+					})
 				}
 				return
 			}
@@ -193,6 +177,14 @@ export default function jsxrLoader(this: Rspack.LoaderContext, source: string): 
 	
 	visitor.visit(program)
 	
+	for(const {start, end, insertPos} of componentChildren.sort(
+		(a, b) => (a.end - a.start) - (b.end - b.start),
+	)) {
+		const children = s.slice(start, end)
+		s.remove(start, end)
+		s.appendLeft(insertPos, ` __children={() => (<>${children}</>)}`)
+	}
+	
 	const map = s.generateMap({
 		source: this.resourcePath,
 		file: this.resourcePath,
@@ -202,4 +194,3 @@ export default function jsxrLoader(this: Rspack.LoaderContext, source: string): 
 	
 	this.callback(null, s.toString(), map.toString())
 }
-

@@ -1,66 +1,100 @@
-import { createEffect, createMemo, onCleanup } from "@synergy-js/signals"
-import { type JSXRenderNode, renderFragment, Show } from "../web"
+import { createMemo, onCleanup, useContext } from "../signals"
 import { createRouteData } from "./loaders.js"
 import { resolveRouteChain } from "./matchers.js"
-import { currentPath, dataStack, outletStack, setCurrentPath, setParams } from "./state.js"
-import type { MatchedRoute, RouteDefinition, RouteParams } from "./types.ts"
+import { currentPath, routerContext, setCurrentPath } from "./state.js"
+import type { RouterContextValue } from "./state.js"
+import type { MatchedRoute, RouteDefinition, JSXRenderNode } from "../types.ts"
+import { renderFragment, Show } from "../web"
+import type { ShowProps } from "../web/components/show.js"
+import { jsx } from "../web"
 
 const syncPopState = (): void => {
-	const onPopState = () => setCurrentPath(window.location.pathname)
-	window.addEventListener("popstate", onPopState)
-	onCleanup(() => window.removeEventListener("popstate", onPopState))
+	const updateLocation = (): void => {
+		setCurrentPath(
+			`${window.location.pathname}${window.location.search}${window.location.hash}`,
+		)
+	}
+	updateLocation()
+	window.addEventListener("popstate", updateLocation)
+	window.addEventListener("hashchange", updateLocation)
+	onCleanup(() => {
+		window.removeEventListener("popstate", updateLocation)
+		window.removeEventListener("hashchange", updateLocation)
+	})
 }
 
-const mergeParams = (chain: MatchedRoute[]): RouteParams =>
-	chain.reduce<RouteParams>((acc, item) => ({...acc, ...item.params}), {})
+/** Resolve a browser location into the pathname used for route matching. */
+const getPathname = (location: string): string => {
+	try {
+		return new URL(location, window.location.origin).pathname
+	}
+	catch {
+		return "/"
+	}
+}
 
 const renderRouteWithContext = (
+	context: RouterContextValue,
 	activeChain: () => MatchedRoute[],
 	index: number,
-	route: RouteDefinition,
+	matched: MatchedRoute,
 ): JSXRenderNode => {
-	const routeData = createRouteData(route.loader)
+	const routeData = createRouteData(matched.route.loader, () => matched.params)
 	
-	outletStack.push(() => <RouteLevel activeChain={activeChain} index={index + 1} />)
-	dataStack.push(routeData)
-	
+	// The stacks provide Outlet and useRouteData with the currently rendering route.
+	context.outletStack.push(() => jsx(RouteLevel, {context, activeChain, index: index + 1}))
+	context.dataStack.push(routeData)
 	try {
-		return route.component()
+		return matched.route.component()
 	}
 	finally {
-		outletStack.pop()
-		dataStack.pop()
+		context.outletStack.pop()
+		context.dataStack.pop()
 	}
 }
 
+/**
+ * Renders the match at this depth and replaces its owned branch when navigation
+ * changes that match. Nested matches are rendered through the parent's Outlet.
+ */
 const RouteLevel = (props: {
+	context: RouterContextValue
 	activeChain: () => MatchedRoute[]
 	index: number
 }): JSXRenderNode => {
-	const currentRoute = createMemo(() => props.activeChain()[props.index]?.route)
-	
-	return (
-		<Show when={currentRoute}>
-			{(route) => renderRouteWithContext(props.activeChain, props.index, route)}
-		</Show>
-	)
+	const currentMatch = createMemo(() => props.activeChain()[props.index])
+
+	const showProps: ShowProps<MatchedRoute> = {
+		when: currentMatch,
+		children: (matched) =>
+			renderRouteWithContext(props.context, props.activeChain, props.index, matched),
+	}
+	return Show(showProps)
 }
 
+/** Renders the next matched child route inside its parent route component. */
 export const Outlet = (): JSXRenderNode => {
-	const renderChild = outletStack[outletStack.length - 1]
+	const renderChild = useContext(routerContext)?.outletStack.at(-1)
 	return renderChild ? renderChild() : renderFragment(null)
 }
 
+/** Matches browser navigation against route definitions and renders the active chain. */
 export const Router = (props: {routes: RouteDefinition[]}): JSXRenderNode => {
 	syncPopState()
 	
+	const pathname = createMemo(() => getPathname(currentPath()))
 	const activeChain = createMemo(
-		() => resolveRouteChain(props.routes, currentPath()) ?? [],
+		() => resolveRouteChain(props.routes, pathname()) ?? [],
 	)
+	const context: RouterContextValue = {
+		location: currentPath,
+		matchedRoutes: activeChain,
+		outletStack: [],
+		dataStack: [],
+	}
 	
-	createEffect(() => {
-		setParams(mergeParams(activeChain()))
+	return jsx(routerContext.Provider, {
+		value: context,
+		children: () => jsx(RouteLevel, {context, activeChain, index: 0}),
 	})
-	
-	return <RouteLevel activeChain={activeChain} index={0} />
 }

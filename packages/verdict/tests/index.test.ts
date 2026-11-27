@@ -177,7 +177,7 @@ describe("Asynchronous Helpers (tryAsync, pipeAsync, ResultAsync)", () => {
 	})
 })
 
-describe("Utility Helpers (result.all, fromNullable, tryExecute, isAppError)", () => {
+describe("Utility Helpers (result.all, fromNullable, isAppError)", () => {
 	test("result.all combines heterogeneous tuples and short-circuits on Err", () => {
 		const success = result.all([ok("session" as const), ok(200), ok(true)] as const)
 		expect(success.unwrap()).toEqual(["session", 200, true])

@@ -6,6 +6,10 @@ export type SplitPropsMulti<
 	Omit<T, K[number][number]>,
 ]
 
+/**
+ * Split props into getter-backed groups and a final rest object.
+ * If a key appears in multiple groups, the first group owns it.
+ */
 export const splitProps = <T extends Record<string, unknown>, const K extends readonly (readonly (keyof T)[])[]>(props: T, ...keyGroups: K): SplitPropsMulti<T, K> => {
 	const buckets = keyGroups.map(() => ({})) as Record<PropertyKey, unknown>[]
 	const rest: Record<PropertyKey, unknown> = {}

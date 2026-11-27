@@ -1,11 +1,11 @@
 import { Err } from "./err.ts"
 import { Ok } from "./ok.ts"
 
+/** A value that is either a successful `Ok<T>` or a failed `Err<E>`. */
 export type Result<T, E> = Ok<T> | Err<E>
 
 /**
- * Establish a global error architecture.
- * This ensures the entire codebase uses consistent, structured error schemas that integrate seamlessly with the `Result` type.
+ * Structured application error suitable for consistent Result and HTTP handling.
  *
  * @example
  * ```ts
@@ -41,12 +41,13 @@ export type Result<T, E> = Ok<T> | Err<E>
 export interface AppError {
 	/** A stable, uppercase string code for machine filtering (e.g., 'AUTH_FAILED') */
 	code: string;
-	/** A human-readable message, safe to show to end users */
+	/** A human-readable description for diagnostics or user-facing handling. */
 	message: string;
 	/** Optional HTTP status code for API layer consistency */
 	status?: number;
 	/** Optional debugging metadata or original system error details */
 	context?: Record<string, unknown>;
+	/** Original thrown value, when the error wraps an exception. */
 	cause?: unknown
 }
 
@@ -85,16 +86,26 @@ export type InferOk<R> = R extends Result<infer T, any> ? T : never;
  */
 export type InferErr<R> = R extends Result<any, infer E> ? E : never;
 
+/** Go-style tuple representation returned by `Result.toTuple()`. */
 export type ResultTuple<T, E> = [error: null, data: T] | [error: E, data: null];
 
+/** Retry, cancellation, and error-mapping controls for `tryAsync`. */
 export interface RetryOptions<E = AppError> {
+	/** Maximum total calls to the operation, including the first call. Defaults to 1. */
 	attempts?: number
+	/** Delay before the first retry, in milliseconds. Defaults to 0. */
 	delayMs?: number
+	/** Multiplier applied to the delay after each retry. Defaults to 1. */
 	backoffFactor?: number
+	/** Randomize each delay between 0.8× and 1.2× its calculated value. */
 	withJitter?: boolean
+	/** Stop before another attempt and interrupt retry delays when aborted. */
 	signal?: AbortSignal
+	/** Return false to stop retrying after this failure. Attempt count starts at 1. */
 	shouldRetry?: (err: unknown, attempt: number) => boolean
+	/** Convert a thrown value, including abort reasons, to the desired error type. */
 	mapError?: (cause: unknown) => E
 }
 
+/** Options accepted by `tryAsync`. */
 export type TryAsyncOptions<E = AppError> = RetryOptions<E>

@@ -1,0 +1,44 @@
+{
+	"name": "rsbuild-sandbox",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "wireit",
+		"build": "wireit"
+	},
+	"wireit": {
+		"build": {
+			"command": "bun --bun rs build"
+		},
+		"dev": {
+			"command": "rs dev",
+			"clean": "if-file-deleted",
+			"service": true,
+			"dependencies": [
+				"../../packages/prism:build",
+				"../../packages/kinetic:build",
+				"../../packages/rsbuild-plugin-kinetic:build",
+				"../../packages/fusion:build"
+			],
+			"files": [
+				"src/**/*.ts"
+			],
+			"readyWhen": {
+				"lineMatches": "Rsbuild v2.3.4"
+			}
+		}
+	},
+	"devDependencies": {
+		"@synergy-js/infusion": "workspace:*",
+		"@synergy-js/fusion": "workspace:*",
+		"@synergy-js/kinetic": "workspace:*",
+		"@synergy-js/prism": "workspace:*",
+		"@synergy-js/verdict": "workspace:*",
+		"@synergy-js/rsbuild-plugin-kinetic": "workspace:*",
+		"@types/node": "catalog:",
+		"rstack": "catalog:",
+		"typescript": "catalog:",
+		"wireit": "catalog:"
+	}
+}

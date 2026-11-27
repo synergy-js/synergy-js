@@ -10,7 +10,6 @@
 		"@synergy-js/infusion": "workspace:*",
 		"@synergy-js/kinetic": "workspace:*",
 		"@synergy-js/prism": "workspace:",
-		"@synergy-js/signals": "workspace:*",
 		"@synergy-js/nexus": "workspace:*"
 	},
 	"devDependencies": {

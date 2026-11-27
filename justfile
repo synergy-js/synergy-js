@@ -4,6 +4,9 @@ set shell := ["zsh", "-cu"]
 build pkg:
     cd packages/{{ pkg }} && pnpm --filter {{ pkg }} build && pnpm i
 
+build-sandbox pkg:
+    cd sandboxes/{{ pkg }} && pnpm --filter {{ pkg }} build
+
 # Run the kinetic build pipeline
 #build-kinetic:
 #    pnpm --filter signals build && pnpm --filter kinetic build && pnpm --filter rsbuild-plugin-kinetic build
@@ -45,3 +48,12 @@ test pkg:
 # Unpublish from local NPM registry
 unpublish-local pkg registry:
     cd packages/{{ pkg }} pnpm unpublish --registry {{ registry }}
+
+kinetic-build:
+    cd packages/kinetic && pnpm build && pnpm i
+
+kinetic-plugin-build:
+    cd packages/rsbuild-plugin-kinetic && pnpm build && pnpm i
+
+kinetic-test:
+    cd packages/kinetic && bun --bun rs test

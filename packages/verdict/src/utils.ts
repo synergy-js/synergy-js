@@ -3,6 +3,7 @@ import { Ok } from "./ok.ts"
 import type { Result, AppError } from "./types.ts"
 
 
+/** Convert a non-null value to Ok, or lazily create an Err for null/undefined. */
 export const fromNullable = <T, E>(
 	value: T | null | undefined,
 	onNull: () => E,
@@ -10,6 +11,7 @@ export const fromNullable = <T, E>(
 	return value != null ? new Ok(value) : new Err(onNull())
 }
 
+/** Check whether a value has the required `AppError` code and message fields. */
 export const isAppError = (err: unknown): err is AppError =>
 	typeof err === "object" &&
 	err !== null &&
@@ -18,7 +20,12 @@ export const isAppError = (err: unknown): err is AppError =>
 	"message" in err &&
 	typeof err.message === "string"
 
+/** Helpers for operating on collections of Results. */
 export const result = {
+	/**
+	 * Combine a positional tuple of Results; return the first error or all values.
+	 * The result value keeps the input tuple's element types and order.
+	 */
 	all: <const T extends readonly unknown[], E extends readonly unknown[]>(
 		results: readonly [...{ [K in keyof T]: Result<T[K], E[number]> }],
 	): Result<{ -readonly [K in keyof T]: T[K] }, E[number]> => {
@@ -39,6 +46,7 @@ export const result = {
 	},
 }
 
+/** Alias for `result.all`. */
 export const all: <const T extends readonly unknown[], E extends readonly unknown[]>(results: readonly [...{
 	[K in keyof T]: Result<T[K], E[number]>;
 }

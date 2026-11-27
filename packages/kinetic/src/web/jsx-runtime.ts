@@ -1,10 +1,11 @@
-import { createEffect, runWithOwner, untrack } from "@synergy-js/signals"
-import type { JSXChild, JSXComponent, JSXRenderNode, ReactiveProps } from "./types.ts"
+import { createEffect, runWithOwner, untrack } from "../signals"
+import type { JSXChild, JSXComponent, JSXElement, ReactiveProps } from "../types.ts"
 import { appendDomChildren, applyAttribute, renderFragment } from "./utils.js"
 
 export const Fragment: symbol = Symbol.for("jsxr.dom.fragment")
 
-export const mount = (app: JSXRenderNode | (() => JSXRenderNode), target: string | Element = "#root"): () => void => {
+/** Mount an app into a DOM target and return a disposer that unmounts and cleans it up. */
+export const mount = (app: JSXElement | (() => JSXElement), target: string | Element = "#root"): () => void => {
 	const container = typeof target === "string" ? document.querySelector(target) : target
 	
 	if(!container) {
@@ -22,11 +23,15 @@ export const mount = (app: JSXRenderNode | (() => JSXRenderNode), target: string
 	}
 }
 
+/**
+ * JSX runtime entry point. Components execute once during setup; function-valued
+ * intrinsic props and children are tracked reactively by the DOM runtime.
+ */
 export const jsx = <TTag extends keyof HTMLElementTagNameMap, TProps extends Record<string, unknown> = ReactiveProps<TTag>>(
 	tag: TTag | JSXComponent<TProps & {children?: JSXChild}> | typeof Fragment,
 	props: TProps & {children?: JSXChild},
 	key?: string | number,
-): JSXRenderNode => {
+): JSXElement => {
 	
 	if(tag === Fragment) {
 		return renderFragment(props.children)
@@ -66,10 +71,6 @@ export const jsx = <TTag extends keyof HTMLElementTagNameMap, TProps extends Rec
 		 */
 		return untrack(() => tag(componentProps as TProps & {children?: JSXChild}))
 	}
-	// if(typeof tag === "function") {
-	//
-	// 	return untrack(() => tag(props))
-	// }
 	
 	const internalProps: Record<string, unknown> = {...props}
 	
@@ -142,24 +143,24 @@ export const jsxs: <TTag extends keyof HTMLElementTagNameMap, TProps extends Rec
 	children?: JSXChild
 }> | typeof Fragment, props: TProps & {
 	children?: JSXChild
-}, key?: string | number) => JSXRenderNode = jsx
+}, key?: string | number) => JSXElement = jsx
 
 
 export const jsxDEV: <TTag extends keyof HTMLElementTagNameMap, TProps extends Record<string, unknown> = ReactiveProps<TTag>>(tag: TTag | JSXComponent<TProps & {
 	children?: JSXChild
 }> | typeof Fragment, props: TProps & {
 	children?: JSXChild
-}, key?: string | number) => JSXRenderNode = jsx
+}, key?: string | number) => JSXElement = jsx
 
 export namespace JSX {
-	export type Element = JSXRenderNode
+	export type Element = JSXElement
 	
 	export interface ElementChildrenAttribute {
 		children: {}
 	}
 	
 	export interface ElementClass {
-		render(props: any): JSXRenderNode
+		render(props: any): JSXElement
 	}
 	
 	export interface ElementAttributesProperty {

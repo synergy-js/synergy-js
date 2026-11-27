@@ -13,7 +13,8 @@
 		"README.md"
 	],
 	"scripts": {
-		"build": "wireit"
+		"build": "wireit",
+		"test": "rstest run"
 	},
 	"wireit": {
 		"build": {

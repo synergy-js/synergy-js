@@ -1,6 +1,6 @@
 # Verdict
 
-**Rust-inspired `Ok` / `Err` / `Result` driven primitives, pipelines, and resilient async execution.**
+**Rust-inspired `Ok` / `Err` / `Result` primitives, fluent pipelines, and resilient async execution.**
 
 ---
 
@@ -20,11 +20,11 @@
 ## Installation
 
 ```bash
-bun add verdict
+bun add @synergy-js/verdict
 # or
-pnpm add verdict
+pnpm add @synergy-js/verdict
 # or
-npm install verdict
+npm install @synergy-js/verdict
 ```
 
 ---
@@ -52,6 +52,12 @@ if(parsed.isErr()) {
 else {
 	console.log("Running on port:", parsed.value.port)
 }
+
+// Or handle both cases exhaustively:
+const message = parsed.match({
+	Ok: (config) => `Running on port ${config.port}`,
+	Err: (error) => `Configuration failed: ${error.message}`,
+})
 ```
 
 ### 2. Resilient Async Operations with Retries (`tryAsync`)
@@ -81,6 +87,23 @@ const user = await tryAsync(
 )
 	.map((u) => u.name)
 	.unwrapOr("Guest")
+
+// `user` is a string here: ResultAsync.unwrapOr() resolves to the value or fallback.
+```
+
+`attempts` counts total calls, not retries. The optional `signal` stops future calls and interrupts retry delays. Pass the same signal to the underlying operation (as with `fetch` above) to cancel in-flight work.
+
+Awaiting a `ResultAsync` directly returns a `Result`, which can be narrowed or matched:
+
+```ts
+const result = await tryAsync(() => loadProfile(), "PROFILE_LOAD_FAILED")
+const profile = result.match({
+	Ok: (value) => value,
+	Err: (error) => {
+		console.error(error.code, error.message)
+		return null
+	},
+})
 ```
 
 ### 3. Chaining Pipelines (`pipeSync` & `pipeAsync`)
@@ -121,10 +144,10 @@ if(combined.isOk()) {
 }
 ```
 
-### 5. Escape Hatches (`toTuple`, `toNullable`, `fromNullable`, `tryExecute`)
+### 5. Escape Hatches (`toTuple`, `toNullable`, `fromNullable`)
 
 ```ts
-import { fromNullable, tryExecute } from "@synergy-js/verdict"
+import { Err, fromNullable, Ok } from "@synergy-js/verdict"
 
 // Convert nullable values into Results
 const tokenResult = fromNullable(process.env.API_TOKEN, () => ({
@@ -132,11 +155,57 @@ const tokenResult = fromNullable(process.env.API_TOKEN, () => ({
 	message: "API_TOKEN is required",
 }))
 
-// Go-style [error, data] tuples when you don't want Result wrappers
-const [err, parsed] = tryExecute(() => JSON.parse(input))
-if(err) {
-	console.error(err.message)
-}
+// Convert a Result to a Go-style [error, data] tuple at an integration boundary.
+const [parseError, parsed] = new Ok(JSON.parse(input)).toTuple()
+if(parseError) console.error(parseError.message)
+
+const [failure, value] = new Err(new Error("Unavailable")).toTuple()
+// failure is Error; value is null.
+```
+
+`tryExecute` is not part of this package's public API; use `trySync` or `tryAsync` to capture thrown errors.
+
+### 6. Structured errors
+
+Define stable error codes at application boundaries and preserve the original cause:
+
+```ts
+import { trySync, type AppError } from "@synergy-js/verdict"
+
+const parseUser = (input: string) =>
+	trySync<User, AppError>(
+		() => JSON.parse(input) as User,
+		"INVALID_USER_JSON",
+	).mapErr((error) => ({
+		...error,
+		status: 400,
+		context: {source: "request body"},
+	}))
+```
+
+### 7. Async cancellation and error mapping
+
+```ts
+import { tryAsync } from "@synergy-js/verdict"
+
+const controller = new AbortController()
+const result = await tryAsync(
+	() => fetch("/api/report", {signal: controller.signal}).then((response) => {
+		if(!response.ok) throw new Error(`HTTP ${response.status}`)
+		return response.json() as Promise<Report>
+	}),
+	{
+		attempts: 3,
+		delayMs: 100,
+		backoffFactor: 2,
+		signal: controller.signal,
+		mapError: (cause) => ({
+			code: controller.signal.aborted ? "CANCELLED" : "REPORT_FAILED",
+			message: cause instanceof Error ? cause.message : String(cause),
+			cause,
+		}),
+	},
+)
 ```
 
 ---
@@ -145,7 +214,10 @@ if(err) {
 
 ### Core Types
 
-* **`Ok<T>` / `Err<E>`** — `isOk()`, `isErr()`, `map()`, `mapErr()`, `andThen()`, `orElse()`, `filter()`, `inspect()`, `inspectErr()`, `match()`, `unwrap()`, `expect()`, `unwrapOr()`, `unwrapOrElse()`, `toNullable()`, `toTuple()`
-* **`ResultAsync<T, E>`** — Thenable (`PromiseLike<Result<T, E>>`) async wrapper supporting direct `await` and full async chaining.
+* **`Ok<T>` / `Err<E>`** — Discriminated result classes with `isOk()` / `isErr()`, `match()`, `map()` / `mapErr()`, `andThen()` / `orElse()`, `filter()`, side-effect inspection, unwrapping, and tuple/nullable conversion.
+* **`ResultAsync<T, E>`** — Thenable (`PromiseLike<Result<T, E>>`); `await` resolves to an `Ok` or `Err`, not the raw value. Supports async `map`, `mapErr`, `andThen`, `orElse`, `filter`, `match`, and conversions.
 * **`AppError`** — `{ code: string; message: string; status?: number; context?: Record<string, unknown>; cause?: unknown }`
 * **Type Helpers** — `InferOk<R>`, `InferErr<R>`, `ResultTuple<T, E>`
+* **Factories and helpers** — `ok`, `err`, `trySync`, `tryAsync`, `pipeSync`, `pipeAsync`, `fromNullable`, `result.all` / `all`, `isAppError`
+
+`result.all([...])` returns the first `Err`, or an `Ok` containing the positionally typed values when all entries succeed.

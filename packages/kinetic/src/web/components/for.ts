@@ -1,11 +1,9 @@
 import {
-	type Accessor,
 	createEffect,
 	createSignal, onCleanup,
 	runWithOwner,
-	type Setter,
-} from "@synergy-js/signals"
-import type { JSXChild, JSXRenderNode } from "../types.ts"
+} from "../../signals"
+import type { JSXChild, JSXElement, Setter, Accessor } from "../../types.ts"
 import { renderFragment } from "../utils.js"
 
 export interface RowEntry<T> {
@@ -22,7 +20,8 @@ export interface ForProps<T> {
 	children: (item: T, index: Accessor<number>) => JSXChild
 }
 
-export const For = <T>(props: ForProps<T>): JSXRenderNode => {
+/** Render a reactive list, reusing row nodes by item identity and updating indices. */
+export const For = <T>(props: ForProps<T>): JSXElement => {
 	const resolveList = (): readonly T[] => typeof props.each === "function" ? (props.each as Accessor<readonly T[]>)() : props.each
 	
 	const anchor = document.createComment("usrv-for")
