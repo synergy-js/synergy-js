@@ -9,11 +9,11 @@
 			"esnext"
 		],
 		"jsx": "react-jsx",
-		"jsxImportSource": "@synergy-js/jsx"
+		"jsxImportSource": "@synergy-js/kinetic"
 	},
 	"exclude": [
 		"dist",
 		"tests",
 		"playground"
-	],
+	]
 }

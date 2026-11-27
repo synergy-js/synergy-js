@@ -2,8 +2,13 @@ import { type RsbuildContext, type Rspack, rspack } from "@rsbuild/core"
 import MagicString from "magic-string"
 import { existsSync, mkdirSync, readFileSync } from "node:fs"
 import { resolve } from "node:path"
-import { PluginOptions, productionFnManifest } from "../../common/types.ts"
-import { colors, log } from "../../common/utils.ts"
+import { createHash } from "node:crypto"
+import {
+	type FusionServerFunctionMetadata,
+	type PluginOptions,
+} from "../../common/types.ts"
+import { parseServerFunctionStubs } from "../../common/utils.ts"
+import { colors, log } from "@synergy-js/scribe"
 
 /**
  * Rspack plugin to generate the production index.js server entry
@@ -41,7 +46,6 @@ export class FusionSeverGeneratorPlugin {
 					},
 					() => {
 						const serverFns = this.generateServerManifestImports(
-							productionFnManifest,
 							this._context,
 							compilation,
 						)
@@ -55,7 +59,7 @@ export class FusionSeverGeneratorPlugin {
 						)
 						
 						if(!existsSync(serverTemplateFilePath)) {
-							log.withErrorWithBadge(
+							log.badge(
 								`[${this._name}]`,
 								`Template file missing at ${serverTemplateFilePath}`,
 							)
@@ -93,11 +97,7 @@ export class FusionSeverGeneratorPlugin {
 		)
 	}
 	
-	private generateServerManifestImports(
-		productionFnManifest: Map<string, string>,
-		context: RsbuildContext,
-		compilation: Rspack.Compilation,
-	): string {
+	private generateServerManifestImports(context: RsbuildContext, compilation: Rspack.Compilation): string {
 		const {logLevel} = this._options
 		
 		if(context.action !== "build") {
@@ -111,16 +111,42 @@ export class FusionSeverGeneratorPlugin {
 		
 		// Use a clean, isolated MagicString instance container local strictly to this execution pass execution
 		const msImports = new MagicString("")
-		if(productionFnManifest.size === 0) {
+		const productionFunctions = new Map<string, Map<string, FusionServerFunctionMetadata>>()
+		for(const module of compilation.modules) {
+			if(!("resource" in module) || typeof module.resource !== "string") {
+				continue
+			}
+
+			const sourcePath = module.resource.split(/[?#]/, 1)[0]
+			if(!sourcePath.endsWith(".server.ts")) {
+				continue
+			}
+
+			const moduleSource = module.originalSource()
+			if(moduleSource) {
+				for(const fn of parseServerFunctionStubs(sourcePath, moduleSource.source().toString())) {
+					let fileFunctions = productionFunctions.get(sourcePath)
+					if(!fileFunctions) {
+						fileFunctions = new Map()
+						productionFunctions.set(sourcePath, fileFunctions)
+					}
+					fileFunctions.set(fn.id, fn)
+				}
+			}
+		}
+
+		if(productionFunctions.size === 0) {
 			console.error("Did not find any functions")
 			process.exit(1)
 		}
 		
-		for(const [serverFnId, srcFilePath] of productionFnManifest.entries()) {
+		for(const [srcFilePath, fileFunctions] of productionFunctions) {
 			const serverFn = readFileSync(srcFilePath, "utf-8")
+			const moduleId = createHash("sha256").update(srcFilePath).digest("hex").slice(0, 12)
+			const moduleName = `serverModule_${moduleId}`
 			
 			if(logLevel === "verbose") {
-				log.info("Generating server manifest")
+				log.info(`Generating server manifest for ${srcFilePath}`)
 			}
 			
 			const transpiledServerFn = rspack.experiments.swc.transformSync(
@@ -151,24 +177,19 @@ export class FusionSeverGeneratorPlugin {
 				},
 			).code
 			
-			// Create a separate, localized variable snapshot container for this iteration loop pass
-			const currentFnId = String(serverFnId)
-			const msServerFnId = new MagicString(currentFnId)
-			
-			const hashEndIndex = currentFnId.lastIndexOf("_")
-			msServerFnId.remove(0, hashEndIndex + 1)
-			
-			
-			compilation.emitAsset(`server-fn/${msServerFnId.toString()}.js`, new rspack.sources.RawSource(transpiledServerFn))
+			const assetPath = `server-fn/${moduleId}.js`
+			compilation.emitAsset(assetPath, new rspack.sources.RawSource(transpiledServerFn))
 			
 			if(logLevel === "verbose") {
-				log.info(`Wrote ${msServerFnId.toString()}.js to ${serverFnOutputDir}`)
+				log.info(`Wrote ${assetPath} to ${serverFnOutputDir}`)
 			}
 			
-			// Append utilizing un-mutated string fields to prevent internal pointer duplication crashes
-			msImports.prepend(
-				`import {${msServerFnId.toString()}} from "./server-fn/${msServerFnId.toString()}"\nserverFns.set("${serverFnId}", ${msServerFnId.toString()})\n`,
-			)
+			msImports.append(`import * as ${moduleName} from "./${assetPath}"\n`)
+			for(const {id, method} of fileFunctions.values()) {
+				msImports.append(
+					`serverFns.set(${JSON.stringify(id)}, ${moduleName}[${JSON.stringify(method)}])\n`,
+				)
+			}
 		}
 		msImports.prepend(`let serverFns = new Map()\n`)
 		return msImports.toString()

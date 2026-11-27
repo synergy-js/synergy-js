@@ -6,7 +6,7 @@
 			"ESNext"
 		],
 		"jsx": "react-jsx",
-		"jsxImportSource": "@synergy-js/jsxr",
+		"jsxImportSource": "@synergy-js/kinetic",
 		"types": ["bun", "node"],
 	}
 }

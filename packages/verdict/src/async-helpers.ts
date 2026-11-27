@@ -5,19 +5,17 @@ import { isAppError } from "./utils.ts"
 
 /**
  * Unified, thenable async Result wrapper.
- * Supports direct `await` (via PromiseLike) as well as fluent chaining.
- */
-/**
- * Unified, thenable async Result wrapper.
- * Supports direct `await` (via PromiseLike) as well as fluent chaining.
+ * Supports direct `await` (which resolves to a Result) and async fluent chaining.
  */
 export class ResultAsync<T, E> implements PromiseLike<Result<T, E>> {
+	/** Underlying promise; it resolves to an Ok or Err rather than rejecting on operation failure. */
 	public readonly promise: Promise<Result<T, E>>
 	
 	constructor(promise: Promise<Result<T, E>>) {
 		this.promise = promise
 	}
 	
+	/** Convert a promise into a ResultAsync using `onError` to map rejection reasons. */
 	static fromPromise<T, E = unknown>(
 		promise: Promise<T>,
 		onError: (cause: unknown) => E = (cause) => cause as E,
@@ -30,16 +28,19 @@ export class ResultAsync<T, E> implements PromiseLike<Result<T, E>> {
 		)
 	}
 	
+	/** Convert a promise known not to reject into a ResultAsync. */
 	static fromSafePromise<T>(promise: Promise<T>): ResultAsync<T, never> {
 		return new ResultAsync(promise.then((value) => new Ok(value)))
 	}
 	
+	/** Wrap a Result or promised Result without changing its error value. */
 	static fromResult<T, E>(
 		result: Result<T, E> | Promise<Result<T, E>>,
 	): ResultAsync<T, E> {
 		return new ResultAsync(Promise.resolve(result))
 	}
 	
+	/** Implement PromiseLike so awaiting this value resolves to `Result<T, E>`. */
 	then<TResult1 = Result<T, E>, TResult2 = never>(
 		onfulfilled?:
 			
@@ -50,6 +51,7 @@ export class ResultAsync<T, E> implements PromiseLike<Result<T, E>> {
 		return this.promise.then(onfulfilled, onrejected)
 	}
 	
+	/** Transform the successful value; the callback is skipped for Err. */
 	map<U>(fn: (val: T) => U | Promise<U>): ResultAsync<U, E> {
 		return new ResultAsync(
 			this.promise.then(async (res): Promise<Result<U, E>> => {
@@ -59,6 +61,7 @@ export class ResultAsync<T, E> implements PromiseLike<Result<T, E>> {
 		)
 	}
 	
+	/** Transform the error value; the callback is skipped for Ok. */
 	mapErr<E2>(fn: (err: E) => E2 | Promise<E2>): ResultAsync<T, E2> {
 		return new ResultAsync(
 			this.promise.then(async (res): Promise<Result<T, E2>> => {
@@ -68,6 +71,7 @@ export class ResultAsync<T, E> implements PromiseLike<Result<T, E>> {
 		)
 	}
 	
+	/** Chain a Result-producing operation after a successful value. */
 	andThen<U, E2>(
 		fn: (val: T) => Result<U, E2> | Promise<Result<U, E2>> | ResultAsync<U, E2>,
 	): ResultAsync<U, E | E2> {
@@ -80,6 +84,7 @@ export class ResultAsync<T, E> implements PromiseLike<Result<T, E>> {
 		)
 	}
 	
+	/** Recover from an error with another Result-producing operation. */
 	orElse<T2, E2>(
 		fn: (err: E) => Result<T2, E2> | Promise<Result<T2, E2>> | ResultAsync<T2, E2>,
 	): ResultAsync<T | T2, E2> {
@@ -92,6 +97,7 @@ export class ResultAsync<T, E> implements PromiseLike<Result<T, E>> {
 		)
 	}
 	
+	/** Turn a successful value into Err when its async predicate returns false. */
 	filter<E2>(
 		predicate: (val: T) => boolean | Promise<boolean>,
 		onFalse: (val: T) => E2 | Promise<E2>,
@@ -106,6 +112,7 @@ export class ResultAsync<T, E> implements PromiseLike<Result<T, E>> {
 		)
 	}
 	
+	/** Run an async side effect for Ok and preserve the Result. */
 	inspect(fn: (val: T) => void | Promise<void>): ResultAsync<T, E> {
 		return new ResultAsync(
 			this.promise.then(async (res) => {
@@ -115,6 +122,7 @@ export class ResultAsync<T, E> implements PromiseLike<Result<T, E>> {
 		)
 	}
 	
+	/** Run an async side effect for Err and preserve the Result. */
 	inspectErr(fn: (err: E) => void | Promise<void>): ResultAsync<T, E> {
 		return new ResultAsync(
 			this.promise.then(async (res) => {
@@ -124,30 +132,36 @@ export class ResultAsync<T, E> implements PromiseLike<Result<T, E>> {
 		)
 	}
 	
+	/** Resolve to the wrapped Result; unlike `unwrap` on Err, this does not throw. */
 	async unwrap(): Promise<Result<T, E>> {
 		return this.promise
 	}
 	
+	/** Resolve to the success value or the supplied fallback. */
 	async unwrapOr<T2>(fallback: T2): Promise<T | T2> {
 		const res = await this.promise
 		return res.unwrapOr(fallback)
 	}
 	
+	/** Compute a fallback from the error and resolve to it or the success value. */
 	async unwrapOrElse<T2>(fn: (err: E) => T2 | Promise<T2>): Promise<T | T2> {
 		const res = await this.promise
 		return res.isOk() ? res.value : fn(res.error)
 	}
 	
+	/** Resolve to the success value or null. */
 	async toNullable(): Promise<T | null> {
 		const res = await this.promise
 		return res.toNullable()
 	}
 	
+	/** Resolve to the `[error, value]` tuple convention. */
 	async toTuple(): Promise<[E, null] | [null, T]> {
 		const res = await this.promise
 		return res.toTuple()
 	}
 	
+	/** Resolve the Result and call its corresponding handler. */
 	async match<R>(handlers: {
 		Ok: (v: T) => R | Promise<R>
 		Err: (e: E) => R | Promise<R>
@@ -157,6 +171,7 @@ export class ResultAsync<T, E> implements PromiseLike<Result<T, E>> {
 	}
 }
 
+/** Start an async pipeline from a Result, Promise<Result>, or ResultAsync. */
 export function pipeAsync<T, E>(
 	initial: Result<T, E> | Promise<Result<T, E>> | ResultAsync<T, E>,
 ): ResultAsync<T, E>
@@ -212,6 +227,11 @@ const sleep = (ms: number, signal?: AbortSignal): Promise<void> => {
 	})
 }
 
+/**
+ * Execute an async operation and return a ResultAsync.
+ * `attempts` is the maximum total invocation count; optional delays grow by
+ * `backoffFactor`, and cancellation stops pending retries and abort-aware work.
+ */
 export function tryAsync<T>(
 	fn: () => Promise<T>,
 	optionsOrFallbackCode?: Omit<TryAsyncOptions<AppError>, "mapError"> | string,

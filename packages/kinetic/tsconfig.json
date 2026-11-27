@@ -6,7 +6,7 @@
 			"esnext"
 		],
 		"jsx": "react-jsx",
-		"jsxImportSource": "@synergy-js/jsxr",
+		"jsxImportSource": "@synergy-js/kinetic",
 		"rootDir": "src",
 		"outDir": "./dist",
 		"declarationDir": "./dist",

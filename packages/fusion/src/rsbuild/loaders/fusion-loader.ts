@@ -1,7 +1,7 @@
-import { Rspack } from "@rsbuild/core"
-import { developmentFnManifest, type PluginOptions, productionFnManifest } from "../../common/types.ts"
-import { generateHash, log, parseFns } from "../../common/utils.ts"
-import {} from "@synergy-js/scribe"
+import { log } from "@synergy-js/scribe"
+import type { Rspack } from "rstack/app"
+import type { PluginOptions } from "../../common/types.ts"
+import { generateHash, parseFns } from "../../common/utils.ts"
 
 export default function fusionLoader(
 	this: Rspack.LoaderContext<PluginOptions>,
@@ -35,21 +35,14 @@ export default function fusionLoader(
 				}).then(r => r.json()).then(d => d.result)
 			}
 		`)
-		// If building for production, add the function id and its file path to the manifest
-		// Otherwise, pass the filepath of the function for dynamic execution
-		isBuild
-		? productionFnManifest.set(fnId, filePath)
-		: developmentFnManifest.set(fnId, new Function(`return "${filePath}"`)())
-		
 		if(logLevel === "verbose" || logLevel === "debug") {
 			log.badge(
 				"[Loader]",
-				`Added ${fnId} and ${filePath} to production manifest\n`,
+				`Registered ${fnId} for ${filePath}\n`,
 			)
-			//console.log(colors.magenta(`Added ${fnId} and ${filePath} to production manifest\n`))
 		}
 	}
-	
+
 	// Send the client code down the pipeline
 	return clientSource.join("\n")
 }

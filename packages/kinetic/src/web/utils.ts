@@ -1,5 +1,5 @@
-import { createEffect, runWithOwner } from "@synergy-js/signals"
-import type { JSXRenderNode, JSXChild, MatchDescriptor } from "./types.js"
+import { createEffect, runWithOwner } from "../signals"
+import type { JSXElement, JSXChild } from "../types.ts"
 
 // Iterative flattening of any resolved JSXChild into real DOM Nodes
 const normalizeToNodes = (root: unknown, out: Node[] = []): Node[] => {
@@ -37,7 +37,7 @@ const normalizeToNodes = (root: unknown, out: Node[] = []): Node[] => {
 		}
 		
 		if(typeof value === "object" && "dom" in value) {
-			stack.push((value as JSXRenderNode).dom)
+			stack.push((value as JSXElement).dom)
 			continue
 		}
 		
@@ -47,6 +47,7 @@ const normalizeToNodes = (root: unknown, out: Node[] = []): Node[] => {
 	return out
 }
 
+/** Apply a normalized JSX prop value to a DOM element. */
 export const applyAttribute = (el: HTMLElement, name: string, value: unknown): void => {
 	if(name === "style" && typeof value === "object" && value !== null) {
 		Object.assign(el.style, value)
@@ -68,6 +69,7 @@ export const applyAttribute = (el: HTMLElement, name: string, value: unknown): v
 	}
 }
 
+/** Append children, wiring function children to reactive DOM updates. */
 export const appendDomChildren = (parent: Node, child: JSXChild): void => {
 	const stack: JSXChild[] = [child]
 	
@@ -160,7 +162,8 @@ const serializeStyleObject = (styleObj: Record<string, unknown>): string => {
 	return out
 }
 
-export const renderFragment = (rawChildren: JSXChild): JSXRenderNode => {
+/** Wrap children in a fragment-like JSX element without adding a DOM wrapper. */
+export const renderFragment = (rawChildren: JSXChild): JSXElement => {
 	const children: JSXChild[] = rawChildren == null ? [] : Array.isArray(rawChildren) ? rawChildren : [rawChildren]
 	
 	if(typeof document === "undefined") {
@@ -183,6 +186,11 @@ export const renderFragment = (rawChildren: JSXChild): JSXRenderNode => {
 	}
 }
 
+/**
+ * Serialize JSX to HTML synchronously without mounting it into the document.
+ * This is a basic renderer, not hydration; DOM-dependent control-flow components
+ * should be rendered in a browser environment.
+ */
 export const renderToString = (app: unknown): string => {
 	const owned = runWithOwner(() => (typeof app === "function" ? (app as () => JSXChild)() : (app as JSXChild)))
 	try {

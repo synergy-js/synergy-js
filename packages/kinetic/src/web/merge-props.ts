@@ -2,6 +2,7 @@ export type MergeSources<T extends readonly Record<string, unknown>[]> = { [K in
 
 export type UnionToIntersection<U> = (U extends unknown ? (k: U) => void : never) extends (k: infer I) => void ? I : never
 
+/** Merge sources lazily; later sources take precedence and getters remain live. */
 export const mergeProps = <T extends readonly object[]>(...sources: T): UnionToIntersection<T[number]> & object => {
 	return new Proxy({} as UnionToIntersection<T[number]> & object, {
 		get(_, prop) {
@@ -50,5 +51,4 @@ export const mergeProps = <T extends readonly object[]>(...sources: T): UnionToI
 		},
 	})
 }
-
 

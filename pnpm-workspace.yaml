@@ -27,6 +27,7 @@ catalog:
   "taze": "^21.3.0"
   "wireit": "^0.15.0"
   "oxc-parser": "^0.160.0"
+  "happy-dom": "^21.0.4"
 
 lockfile:
   includeResolutionSettings: true

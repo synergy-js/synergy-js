@@ -1,6 +1,6 @@
 import { RsdoctorRspackPlugin } from "@rsdoctor/rspack-plugin"
+import { kineticPlugin } from "@synergy-js/rsbuild-plugin-kinetic"
 import { define } from "rstack"
-//@ts-ignore
 import { sharedConfig } from "../../shared.config.ts"
 
 define.extends([sharedConfig])
@@ -17,7 +17,7 @@ define.lib({
 			},
 			source: {
 				entry: {
-					index: ["src/**", "!src/__*.ts", "router/**"],
+					index: ["src/**", "!src/__*.ts", "router/**", "signals"],
 				},
 			},
 		},
@@ -31,5 +31,18 @@ define.lib({
 	},
 })
 define.test({
+	plugins: [kineticPlugin()],
 	testEnvironment: "happy-dom",
+	tools: {
+		swc: {
+			jsc: {
+				transform: {
+					react: {
+						runtime: "automatic",
+						importSource: "@synergy-js/kinetic",
+					},
+				},
+			},
+		},
+	},
 })

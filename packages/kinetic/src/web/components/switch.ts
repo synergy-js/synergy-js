@@ -1,5 +1,5 @@
-import { type Accessor, createEffect, onCleanup, runWithOwner } from "@synergy-js/signals"
-import type { JSXChild, JSXRenderNode, MatchDescriptor } from "../types.ts"
+import { createEffect, onCleanup, runWithOwner } from "../../signals"
+import type { JSXChild, JSXElement, MatchDescriptor, Accessor } from "../../types.ts"
 import { renderFragment } from "../utils.js"
 
 export interface SwitchProps {
@@ -7,19 +7,7 @@ export interface SwitchProps {
 	children?: JSXChild
 }
 
-// export const collectMatches = (raw: JSXChild, out: MatchDescriptor[]): void => {
-// 	if(Array.isArray(raw)) {
-// 		for(let i = 0; i < raw.length; i++) {
-// 			collectMatches(raw[i], out)
-// 		}
-// 		return
-// 	}
-// 	if(typeof raw === "object" && raw !== null && "__jsxrMatch" in raw) {
-// 		out.push(raw as unknown as MatchDescriptor)
-// 	}
-// }
-
-// Iterative <Switch> collector supporting thunks, arrays, and fragment JSXRenderNodes
+// Iterative <Switch> collector supporting thunks, arrays, and fragment JSXElements
 const _collectSwitchMatches = (raw: JSXChild, out: MatchDescriptor[]): void => {
 	const stack: JSXChild[] = [raw]
 	
@@ -41,8 +29,8 @@ const _collectSwitchMatches = (raw: JSXChild, out: MatchDescriptor[]): void => {
 			if("__jsxrMatch" in current) {
 				out.push(current as unknown as MatchDescriptor)
 			}
-			else if("children" in current && Array.isArray((current as JSXRenderNode).children)) {
-				const children = (current as JSXRenderNode).children
+			else if("children" in current && Array.isArray((current as JSXElement).children)) {
+				const children = (current as JSXElement).children
 				for(let i = children.length - 1; i >= 0; i--) {
 					stack.push(children[i])
 				}
@@ -51,7 +39,8 @@ const _collectSwitchMatches = (raw: JSXChild, out: MatchDescriptor[]): void => {
 	}
 }
 
-export const Switch = (props: SwitchProps): JSXRenderNode => {
+/** Render the first truthy `Match` branch, or the fallback if none match. */
+export const Switch = (props: SwitchProps): JSXElement => {
 	const matches: MatchDescriptor[] = []
 	_collectSwitchMatches(props.children, matches)
 	

@@ -1,6 +1,6 @@
-import { type Accessor, createEffect, onCleanup, runWithOwner } from "@synergy-js/signals"
-import type { JSXRenderNode, JSXChild } from "../types.ts"
+import type { JSXElement, JSXChild, Accessor } from "../../types.ts"
 import { renderFragment } from "../utils.js"
+import { createEffect, onCleanup, runWithOwner } from "../../signals"
 
 export interface ShowProps<T> {
 	when: T | undefined | null | false | Accessor<T | undefined | null | false>
@@ -8,7 +8,8 @@ export interface ShowProps<T> {
 	children?: JSXChild | ((item: NonNullable<T>) => JSXChild)
 }
 
-export const Show = <T>(props: ShowProps<T>): JSXRenderNode => {
+/** Render children when `when` is truthy, otherwise render the optional fallback. */
+export const Show = <T>(props: ShowProps<T>): JSXElement => {
 	const resolveCondition = (): T | undefined | null | false => {
 		const raw = props.when
 		return typeof raw === "function" ? (raw as Accessor<T | undefined | null | false>)() : raw

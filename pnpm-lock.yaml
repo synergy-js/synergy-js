@@ -202,6 +202,9 @@ catalogs:
     '@types/node':
       specifier: ^25.9.9
       version: 25.9.12
+    happy-dom:
+      specifier: ^21.0.4
+      version: 21.0.4
     magic-string:
       specifier: ^1.4.5
       version: 1.4.5
@@ -360,20 +363,25 @@ importers:
         version: 0.15.0
 
   packages/kinetic:
-    dependencies:
-      '@synergy-js/signals':
-        specifier: workspace:*
-        version: link:../signals
     devDependencies:
       '@rsdoctor/rspack-plugin':
         specifier: 'catalog:'
         version: 1.6.5(@emnapi/core@2.0.0-beta.3)(@emnapi/runtime@2.0.0-beta.3)(@rsbuild/core@2.3.4)(@rspack/core@2.3.4(@swc/helpers@0.5.24))(supports-color@7.2.0)
+      '@rstest/adapter-rsbuild':
+        specifier: ^0.12.6
+        version: 0.12.6(@rsbuild/core@2.3.4)(@rstest/core@0.12.6(happy-dom@21.0.4))
+      '@synergy-js/rsbuild-plugin-kinetic':
+        specifier: workspace:*
+        version: link:../rsbuild-plugin-kinetic
       '@types/bun':
         specifier: 'catalog:'
         version: 1.4.5
       '@types/node':
         specifier: 'catalog:'
         version: 25.9.12
+      happy-dom:
+        specifier: 'catalog:'
+        version: 21.0.4
       rstack:
         specifier: 'catalog:'
         version: 0.9.0(happy-dom@21.0.4)(jiti@2.7.0)(typescript@7.0.2)
@@ -463,27 +471,6 @@ importers:
         version: 0.15.0
 
   packages/scribe:
-    devDependencies:
-      '@rsdoctor/rspack-plugin':
-        specifier: 'catalog:'
-        version: 1.6.5(@emnapi/core@2.0.0-beta.3)(@emnapi/runtime@2.0.0-beta.3)(@rsbuild/core@2.3.4)(@rspack/core@2.3.4(@swc/helpers@0.5.24))(supports-color@7.2.0)
-      '@types/bun':
-        specifier: 'catalog:'
-        version: 1.4.5
-      '@types/node':
-        specifier: 'catalog:'
-        version: 25.9.12
-      rstack:
-        specifier: 'catalog:'
-        version: 0.9.0(happy-dom@21.0.4)(jiti@2.7.0)(typescript@7.0.2)
-      typescript:
-        specifier: 'catalog:'
-        version: 7.0.2
-      wireit:
-        specifier: 'catalog:'
-        version: 0.15.0
-
-  packages/signals:
     devDependencies:
       '@rsdoctor/rspack-plugin':
         specifier: 'catalog:'
@@ -622,12 +609,27 @@ importers:
 
   sandboxes/kinetic-rsbuild:
     devDependencies:
+      '@synergy-js/fusion':
+        specifier: workspace:*
+        version: link:../../packages/fusion
+      '@synergy-js/infusion':
+        specifier: workspace:*
+        version: link:../../packages/infusion
+      '@synergy-js/kinetic':
+        specifier: workspace:*
+        version: link:../../packages/kinetic
+      '@synergy-js/prism':
+        specifier: workspace:*
+        version: link:../../packages/prism
+      '@synergy-js/rsbuild-plugin-kinetic':
+        specifier: workspace:*
+        version: link:../../packages/rsbuild-plugin-kinetic
+      '@synergy-js/verdict':
+        specifier: workspace:*
+        version: link:../../packages/verdict
       '@types/node':
-        specifier: ^26.6.6
-        version: 26.6.11
-      happy-dom:
-        specifier: ^21.0.4
-        version: 21.0.4
+        specifier: 'catalog:'
+        version: 25.9.12
       rstack:
         specifier: 'catalog:'
         version: 0.9.0(happy-dom@21.0.4)(jiti@2.7.0)(typescript@7.0.2)
@@ -652,9 +654,6 @@ importers:
       '@synergy-js/prism':
         specifier: 'workspace:'
         version: link:../../packages/prism
-      '@synergy-js/signals':
-        specifier: workspace:*
-        version: link:../../packages/signals
     devDependencies:
       '@types/bun':
         specifier: 'catalog:'
@@ -1794,9 +1793,6 @@ packages:
 
   '@types/node@25.9.12':
     resolution: {integrity: sha512-49uWGmIcvfuuEnFIm83Pn7MGcDvdY8UQ3v3DF4O0ouWbElWTaT/HudacSntQwFrnLAgiMoKtXEVV5dFC+DZ2cQ==}
-
-  '@types/node@26.6.11':
-    resolution: {integrity: sha512-uUyQ2XLEz+EXh34lmS3GhKrkqn/8FU7KUiKRpk347At2bmnMVWss45yz8b4FG/tUtmV1tV/+TVkITItPROyeeQ==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -3019,9 +3015,6 @@ packages:
   undici-types@8.13.1:
     resolution: {integrity: sha512-wEtfquPVc1e9umZh73XVwnPauVuGQp20M/u/4ENuWMRkZ8NZx0ut6q3HLLdMUb9awNlxxHcsaGVhaerZu/2SSw==}
 
-  undici-types@8.9.0:
-    resolution: {integrity: sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg==}
-
   unist-util-is@4.1.0:
     resolution: {integrity: sha512-ZOQSsnce92GrxSqlnEEseX0gi7GH9zTJZ0p9dtu87WRb/37mMPO2Ilx1s/t9vBHrFhbgweUwb+t7cIn5dxPhZg==}
 
@@ -4151,10 +4144,6 @@ snapshots:
     dependencies:
       undici-types: 7.24.6
 
-  '@types/node@26.6.11':
-    dependencies:
-      undici-types: 8.9.0
-
   '@types/normalize-package-data@2.4.4': {}
 
   '@types/npm-package-arg@6.1.4': {}
@@ -4320,7 +4309,7 @@ snapshots:
 
   buffer-image-size@0.6.4:
     dependencies:
-      '@types/node': 26.6.11
+      '@types/node': 25.9.12
 
   bun-types@1.4.5:
     dependencies:
@@ -4584,7 +4573,7 @@ snapshots:
 
   happy-dom@21.0.4:
     dependencies:
-      '@types/node': 26.6.11
+      '@types/node': 25.9.12
       '@types/whatwg-mimetype': 3.0.2
       '@types/ws': 8.18.2
       buffer-image-size: 0.6.4
@@ -5320,8 +5309,6 @@ snapshots:
   undici-types@7.24.6: {}
 
   undici-types@8.13.1: {}
-
-  undici-types@8.9.0: {}
 
   unist-util-is@4.1.0: {}
 

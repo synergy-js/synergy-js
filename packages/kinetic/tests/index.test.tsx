@@ -1,31 +1,55 @@
-/** @jsxImportSource @synergy-js/jsxr */
-import { afterEach, beforeEach, describe, expect, test, rs } from "rstack/test"
-import { createSignal } from "@synergy-js/signals"
-import { For, mount, onMount, Show } from "../src/index.js"
+import { afterEach, beforeEach, describe, expect, it, rs } from "rstack/test"
+import {
+	createEffect,
+	createSignal,
+	For,
+	mount,
+	onCleanup,
+	Show,
+	type ParentProps,
+} from "@synergy-js/kinetic"
 
-describe("@synergy-js/jsxr", () => {
-	let root: HTMLElement
-	
-	beforeEach(() => {
-		root = document.createElement("div")
-		root.id = "root"
-		document.body.appendChild(root)
-	})
-	
-	afterEach(() => {
-		root.remove()
-	})
-	
-	test("renders intrinsic HTML elements, attributes, classes, and nested children", () => {
-		const dispose = mount(
-			() => (
-				<section id="hero" class="card primary" data-testid="banner">
-					<h1>Welcome</h1>
-					<p>Synergy UI</p>
-				</section>
-			),
-			root,
-		)
+type MountedApp = Parameters<typeof mount>[0]
+
+let root: HTMLElement
+let activeDisposers: Array<() => void>
+
+const renderApp = (app: MountedApp): (() => void) => {
+	const dispose = mount(app, root)
+	activeDisposers.push(dispose)
+	return dispose
+}
+
+const disposeApp = (dispose: () => void): void => {
+	dispose()
+	activeDisposers = activeDisposers.filter((activeDispose) => activeDispose !== dispose)
+}
+
+const textContents = (elements: NodeListOf<Element>): Array<string | null> =>
+	Array.from(elements, (element) => element.textContent)
+
+beforeEach(() => {
+	root = document.createElement("div")
+	root.id = "root"
+	document.body.appendChild(root)
+	activeDisposers = []
+})
+
+afterEach(() => {
+	for(const dispose of activeDisposers.splice(0)) {
+		dispose()
+	}
+	root.remove()
+})
+
+describe("Kinetic: DOM rendering", () => {
+	it("renders intrinsic elements, attributes, and nested children", () => {
+		renderApp(() => (
+			<section id="hero" class="card primary" data-testid="banner">
+				<h1>Welcome</h1>
+				<p>Synergy UI</p>
+			</section>
+		))
 		
 		const section = root.querySelector("section")
 		expect(section).not.toBeNull()
@@ -34,74 +58,106 @@ describe("@synergy-js/jsxr", () => {
 		expect(section?.getAttribute("data-testid")).toBe("banner")
 		expect(section?.querySelector("h1")?.textContent).toBe("Welcome")
 		expect(section?.querySelector("p")?.textContent).toBe("Synergy UI")
-		
-		dispose()
-		expect(root.innerHTML).toBe("")
 	})
 	
-	test("supports Fragments (<>...</>) and arrays of children", () => {
+	it("supports fragments, arrays, and null children", () => {
 		const items = ["One", "Two", "Three"]
-		
-		const dispose = mount(
-			() => (
-				<>
-					<span>Header</span>
-					<ul>
-						{items.map((item) => (
-							<li>{item}</li>
-						))}
-					</ul>
-				</>
-			),
-			root,
-		)
+		renderApp(() => (
+			<>
+				<span>Header</span>
+				<ul>
+					{items.map((item) => <li>{item}</li>)}
+					{null}
+				</ul>
+			</>
+		))
 		
 		expect(root.querySelector("span")?.textContent).toBe("Header")
-		const liTexts = Array.from(root.querySelectorAll("li")).map((li) => li.textContent)
-		expect(liTexts).toEqual(["One", "Two", "Three"])
-		
-		dispose()
+		expect(textContents(root.querySelectorAll("li"))).toEqual(["One", "Two", "Three"])
 	})
 	
-	test("updates text nodes and attributes reactively when signals change", () => {
+	it("maps className to the DOM class attribute and assigns refs", () => {
+		let referencedElement: HTMLElement | undefined
+		renderApp(() => (
+			<div
+				className="using-class-name"
+				ref={(element) => {
+					referencedElement = element
+				}}
+			/>
+		))
+		
+		expect(root.firstElementChild?.className).toBe("using-class-name")
+		expect(referencedElement).toBe(root.firstElementChild)
+	})
+	
+	it("disposes the mounted owner and clears its DOM", () => {
+		const dispose = renderApp(() => <section>Mounted</section>)
+		expect(root.textContent).toBe("Mounted")
+		
+		disposeApp(dispose)
+		expect(root.innerHTML).toBe("")
+	})
+})
+
+describe("Kinetic: Reactivity", () => {
+	it("updates text, attributes, and event-driven signals", () => {
 		const [count, setCount] = createSignal(0)
 		const [active, setActive] = createSignal(false)
-		
-		const dispose = mount(
-			() => (
-				<div>
-					<span class={() => (active() ? "on" : "off")}>Count: {count}</span>
-					<button type="button" disabled={active} onClick={() => setCount((c) => c + 1)}>
-						Increment
-					</button>
-				</div>
-			),
-			root,
-		)
+		renderApp(() => (
+			<div>
+				<span class={() => (active() ? "on" : "off")}>
+					{() => `Count: ${count()}`}
+				</span>
+				<button
+					type="button"
+					disabled={active}
+					onClick={() => setCount((current) => current + 1)}
+				>
+					Increment
+				</button>
+			</div>
+		))
 		
 		const span = root.querySelector("span")!
 		const button = root.querySelector("button")!
-		
 		expect(span.textContent).toBe("Count: 0")
 		expect(span.className).toBe("off")
 		expect(button.disabled).toBe(false)
 		
 		button.click()
 		expect(span.textContent).toBe("Count: 1")
-		
 		setActive(true)
 		expect(span.className).toBe("on")
 		expect(button.disabled).toBe(true)
-		
-		dispose()
 	})
 	
-	test("passes props and children to functional components without tracking parent signals", () => {
-		const spy = rs.fn()
+	it("runs effect cleanups when the mounted owner is disposed", () => {
+		const events: string[] = []
+		
+		const Widget = () => {
+			createEffect(() => {
+				events.push("mounted")
+				onCleanup(() => events.push("unmounted"))
+			})
+			return <div class="widget">Ready</div>
+		}
+		
+		const dispose = renderApp(() => <Widget />)
+		expect(root.querySelector(".widget")?.textContent).toBe("Ready")
+		expect(events).toEqual(["mounted"])
+		
+		disposeApp(dispose)
+		expect(events).toEqual(["mounted", "unmounted"])
+	})
+	
+	it("does not rerun components for unrelated parent signal updates", () => {
+		const componentRuns = rs.fn()
 		const [parentSignal, setParentSignal] = createSignal("a")
 		
-		const Badge = (props: {label: string; children?: unknown}) => {
-			spy()
+		
+		const Badge = (props: ParentProps<{label: string}>) => {
+			componentRuns()
 			return (
 				<div class="badge">
 					<strong>{props.label}</strong>
@@ -110,98 +166,77 @@ describe("@synergy-js/jsxr", () => {
 			)
 		}
 		
-		const dispose = mount(
-			() => (
-				<div>
-					<p>{parentSignal}</p>
-					<Badge label="Pro">
-						<span>Member</span>
-					</Badge>
-				</div>
-			),
-			root,
-		)
+		renderApp(() => (
+			<div>
+				<p>{() => parentSignal()}</p>
+				<Badge label="Pro">
+					<span>Member</span>
+				</Badge>
+			</div>
+		))
 		
-		expect(spy).toHaveBeenCalledTimes(1)
+		expect(componentRuns).toHaveBeenCalledTimes(1)
 		expect(root.querySelector(".badge strong")?.textContent).toBe("Pro")
 		expect(root.querySelector(".badge span")?.textContent).toBe("Member")
 		
-		// Updating parent signal should NOT re-instantiate Badge
 		setParentSignal("b")
-		expect(spy).toHaveBeenCalledTimes(1)
+		expect(componentRuns).toHaveBeenCalledTimes(1)
 		expect(root.querySelector("p")?.textContent).toBe("b")
-		
-		dispose()
 	})
-	
-	test("runs onMount callbacks on setup and registers cleanup on dispose", () => {
-		const events: string[] = []
-		
-		const Widget = () => {
-			onMount(() => {
-				events.push("mounted")
-				return () => events.push("unmounted")
-			})
-			
-			return <div class="widget">Ready</div>
-		}
-		
-		const dispose = mount(() => <Widget />, root)
-		expect(root.querySelector(".widget")?.textContent).toBe("Ready")
-		expect(events).toEqual(["mounted"])
-		
-		dispose()
-		expect(events).toEqual(["mounted", "unmounted"])
-	})
-	
-	test("<For> renders lists reactively across reorders and updates", () => {
+})
+
+describe("Kinetic: Control Flow Components", () => {
+	it("renders, reorders, and removes For rows while retaining keyed row nodes", () => {
 		interface Todo {
 			id: number
 			text: string
 		}
 		
-		const [todos, setTodos] = createSignal<Todo[]>([
-			{id: 1, text: "First"},
-			{id: 2, text: "Second"},
+		const first: Todo = {id: 1, text: "First"}
+		const second: Todo = {id: 2, text: "Second"}
+		const third: Todo = {id: 3, text: "Third"}
+		const [todos, setTodos] = createSignal<readonly Todo[]>([first, second])
+		
+		renderApp(() => (
+			<ul>
+				<For each={todos}>
+					{(todo, index) => (
+						<li data-id={String(todo.id)}>
+							{() => `${index()}: ${todo.text}`}
+						</li>
+					)}
+				</For>
+			</ul>
+		))
+		
+		const initialRows = Array.from(root.querySelectorAll("li"))
+		expect(textContents(root.querySelectorAll("li"))).toEqual([
+			"0: First",
+			"1: Second",
 		])
 		
-		const dispose = mount(
-			() => (
-				<ul>
-					<For each={todos}>{(item) => <li data-id={String(item.id)}>{item.text}</li>}</For>
-				</ul>
-			),
-			root,
-		)
-		
-		const ul = root.querySelector("ul")!
-		expect(Array.from(ul.querySelectorAll("li")).map((el) => el.textContent)).toEqual(["First", "Second"])
-		
-		// Reorder and append item
-		setTodos([
-			{id: 2, text: "Second"},
-			{id: 3, text: "Third"},
-			{id: 1, text: "First"},
+		setTodos([second, third, first])
+		const reorderedRows = Array.from(root.querySelectorAll("li"))
+		expect(textContents(root.querySelectorAll("li"))).toEqual([
+			"0: Second",
+			"1: Third",
+			"2: First",
 		])
+		expect(reorderedRows[0]).toBe(initialRows[1])
+		expect(reorderedRows[2]).toBe(initialRows[0])
 		
-		const updatedLis = Array.from(ul.querySelectorAll("li"))
-		expect(updatedLis.map((el) => el.textContent)).toEqual(["Second", "Third", "First"])
-		expect(updatedLis.map((el) => el.getAttribute("data-id"))).toEqual(["2", "3", "1"])
-		
-		dispose()
+		setTodos([third])
+		expect(textContents(root.querySelectorAll("li"))).toEqual(["0: Third"])
+		expect(root.querySelector("li")?.getAttribute("data-id")).toBe("3")
 	})
 	
-	test("<Show> conditionally mounts and swaps fallback content reactively", () => {
+	it("switches Show between fallback and content as its condition changes", () => {
 		const [loggedIn, setLoggedIn] = createSignal(false)
-		
-		const dispose = mount(
-			() => (
-				<Show when={loggedIn} fallback={<p class="guest">Please sign in</p>}>
-					<p class="user">Welcome back</p>
-				</Show>
-			),
-			root,
-		)
+		renderApp(() => (
+			<Show when={loggedIn} fallback={<p class="guest">Please sign in</p>}>
+				<p class="user">Welcome back</p>
+			</Show>
+		))
 		
 		expect(root.querySelector(".guest")?.textContent).toBe("Please sign in")
 		expect(root.querySelector(".user")).toBeNull()
@@ -213,7 +248,5 @@ describe("@synergy-js/jsxr", () => {
 		setLoggedIn(false)
 		expect(root.querySelector(".guest")?.textContent).toBe("Please sign in")
 		expect(root.querySelector(".user")).toBeNull()
-		
-		dispose()
 	})
 })

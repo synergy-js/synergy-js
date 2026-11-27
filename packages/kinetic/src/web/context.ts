@@ -1,5 +1,5 @@
-import { type BaseContext, createBaseContext, onCleanup, runWithOwner } from "@synergy-js/signals"
-import type { JSXChild, JSXRenderNode } from "./types.ts"
+import { onCleanup, runWithOwner } from "../signals"
+import type { JSXChild, JSXElement, BaseContext } from "./../types.ts"
 import { renderFragment } from "./utils.ts"
 
 export interface ContextProviderProps<T> {
@@ -7,14 +7,16 @@ export interface ContextProviderProps<T> {
 	children?: JSXChild | (() => JSXChild)
 }
 
+/** A typed context and its provider component. */
 export interface Context<T> extends BaseContext<T> {
-	Provider: (props: ContextProviderProps<T>) => JSXRenderNode
+	Provider: (props: ContextProviderProps<T>) => JSXElement
 }
 
+/** Create a context whose value defaults to `defaultValue` outside a provider. */
 export const createContext = <T>(defaultValue: T): Context<T> => {
 	const base: BaseContext<T> = createBaseContext(defaultValue)
 	
-	const Provider = (props: ContextProviderProps<T>): JSXRenderNode => {
+	const Provider = (props: ContextProviderProps<T>): JSXElement => {
 		const owned = runWithOwner(() => {
 				const resolved =
 					typeof props.children === "function"
@@ -30,4 +32,11 @@ export const createContext = <T>(defaultValue: T): Context<T> => {
 	}
 	
 	return {...base, Provider}
+}
+
+export const createBaseContext = <T>(defaultValue: T): BaseContext<T> => {
+	return {
+		id: Symbol("kinetic.context"),
+		defaultValue,
+	}
 }
