@@ -8,19 +8,30 @@ on:
         required: true
         type: choice
         options:
-          - events
+          - env-guard
           - fusion
-          - hookr
           - httpx
           - infusion
-          - jsxr
+          - kinetic
+          - nexus
           - prism
-          - rsbuild-plugin-jsxr
+          - rsbuild-plugin-nexus
           - scribe
           - signals
-          - srvr
-          - typed-env
+          - tap
           - verdict
+      tag:
+        description: "Create new Git tag"
+        required: true
+        type: boolean
+      release-tag-version:
+        description: "Tag version (pkg@0.1.0-alpha, beta, ...")
+        required: true
+        type: choice
+        options:
+          - alpha
+          - beta
+          - stable
       bump:
         description: "Version bump"
         required: true
@@ -39,6 +50,7 @@ on:
 permissions:
   contents: write
   id-token: write
+  actions: write
 
 jobs:
   publish:
@@ -56,6 +68,8 @@ jobs:
         with:
           node-version: 24
 
+      - uses: google/wireit@setup-github-actions-caching/v2
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
@@ -70,10 +84,11 @@ jobs:
         run: |
           PKG_FILTER="@synergy-js/${{ inputs.package }}"
           PKG_DIR="packages/${{ inputs.package }}"
+          DIST_TAG="${{ inputs.release-tag-version }}"
 
           # 1. Bump version while working tree is clean
           if [ "${{ inputs.bump }}" = "prerelease" ]; then
-            pnpm --filter "$PKG_FILTER" version prerelease --preid alpha --no-git-tag-version
+            pnpm --filter "$PKG_FILTER" version prerelease --preid "$DIST_TAG" --no-git-tag-version
           else
             pnpm --filter "$PKG_FILTER" version "${{ inputs.bump }}" --no-git-tag-version
           fi
@@ -81,20 +96,25 @@ jobs:
           # 2. Build the newly bumped package
           pnpm --filter "$PKG_FILTER" build
 
-          # 3. Publish with OIDC provenance (--no-git-checks is required here because step 1 modified package.json)
+          # 3. Publish with OIDC provenance
           if [ "${{ inputs.bump }}" = "prerelease" ]; then
-            pnpm --filter "$PKG_FILTER" publish --tag alpha --provenance --access public --no-git-checks
+            pnpm --filter "$PKG_FILTER" publish --tag "$DIST_TAG" --provenance --access public --no-git-checks
           else
             pnpm --filter "$PKG_FILTER" publish --provenance --access public --no-git-checks
           fi
 
-          # 4. Commit bumped package.json and push package-scoped tag
+          # 4. Commit bumped package.json and optionally push package-scoped tag
           VER=$(node -p "require('./${PKG_DIR}/package.json').version")
           TAG="${{ inputs.package }}@${VER}"
 
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@://github.com"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "${PKG_DIR}/package.json"
           git commit -m "release(${{ inputs.package }}): v${VER}"
-          git tag -a "$TAG" -m "Release $TAG"
-          git push origin "HEAD:${{ github.ref_name }}" "$TAG"
+
+          if [ "${{ inputs.tag }}" = "true" ]; then
+            git tag -a "$TAG" -m "Release $TAG"
+            git push origin "HEAD:${{ github.ref_name }}" "$TAG"
+          else
+            git push origin "HEAD:${{ github.ref_name }}"
+          fi
