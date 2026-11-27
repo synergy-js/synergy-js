@@ -10,6 +10,11 @@ export const isComponentTag = (nameNode: JSXElementName): boolean => {
 	return nameNode.type === "JSXMemberExpression"
 }
 
+/**
+ * returns true for CallExpression (setCount((_n) => count() + 1))
+ * @param {Expression | JSXEmptyExpression} expr
+ * @returns {expr is Expression}
+ */
 export const isDynamicExpr = (expr: Expression | JSXEmptyExpression): expr is Expression => {
 	switch(expr.type) {
 		case "JSXEmptyExpression": // Prevents {/* comments */} from turning into {() => (/* comments */)}!

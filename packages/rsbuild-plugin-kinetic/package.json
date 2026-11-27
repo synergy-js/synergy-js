@@ -1,17 +1,32 @@
 {
-	"name": "@synergy-js/rsbuild-plugin-jsxr",
+	"name": "@synergy-js/rsbuild-plugin-kinetic",
 	"version": "1.0.1",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/synergy-js/synergy-js.git",
-		"directory": "packages/rsbuild-plugin-jsxr"
+		"directory": "packages/rsbuild-plugin-kinetic"
 	},
 	"type": "module",
 	"files": [
 		"dist",
 		"README.md"
 	],
+	"scripts": {
+		"build": "wireit"
+	},
+	"wireit": {
+		"build": {
+			"command": "rs lib",
+			"clean": "if-file-deleted",
+			"files": [
+				"src/**/*.ts"
+			],
+			"output": [
+				"dist/**"
+			]
+		}
+	},
 	"exports": {
 		".": {
 			"import": "./dist/index.js",
@@ -27,14 +42,15 @@
 		}
 	},
 	"dependencies": {
-		"magic-string": "^1.4.5",
-		"oxc-parser": "^0.158.0"
+		"magic-string": "catalog:",
+		"oxc-parser": "catalog:"
 	},
 	"devDependencies": {
 		"@rsdoctor/rspack-plugin": "catalog:",
 		"@types/bun": "catalog:",
 		"@types/node": "catalog:",
 		"rstack": "catalog:",
-		"typescript": "catalog:"
+		"typescript": "catalog:",
+		"wireit": "catalog:"
 	}
 }

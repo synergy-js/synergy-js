@@ -12,15 +12,9 @@ define.lib({
 			dts: {
 				isolated: true,
 			},
-			output: {
-				cleanDistPath: true,
-				minify: true,
-				target: "web",
-			},
 			source: {
-				//tsconfigPath: "tsconfig.lib.json",
 				entry: {
-					index: ["src/**", "!src/**__*.ts", "compiler"],
+					index: ["src/**", "!src/**__*.ts", "!src/*.png"],
 				},
 			},
 		},
@@ -31,8 +25,5 @@ define.lib({
 				process.env.RSDOCTOR ? new RsdoctorRspackPlugin({port: 8000}) : null,
 			],
 		},
-	},
-	splitChunks: {
-		preset: "default",
 	},
 })

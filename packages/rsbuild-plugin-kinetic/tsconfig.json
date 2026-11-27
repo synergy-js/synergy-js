@@ -5,14 +5,15 @@
 		"rootDir": "src",
 		"declarationDir": "dist",
 		"lib": [
-			"dom"
+			"dom",
+			"esnext"
 		],
 		"jsx": "react-jsx",
 		"jsxImportSource": "@synergy-js/jsx"
 	},
 	"exclude": [
+		"dist",
 		"tests",
-		"playground",
 		"playground"
-	]
+	],
 }

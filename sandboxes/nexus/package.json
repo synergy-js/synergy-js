@@ -1,0 +1,23 @@
+{
+	"name": "nexus-sandbox",
+	"private": true,
+	"scripts": {
+		"dev": " bun --watch entry.ts",
+		"clean:node": "rm -rf node_modules",
+		"clean:dist": "rm -rf dist"
+	},
+	"dependencies": {
+		"@synergy-js/infusion": "workspace:*",
+		"@synergy-js/kinetic": "workspace:*",
+		"@synergy-js/prism": "workspace:",
+		"@synergy-js/signals": "workspace:*",
+		"@synergy-js/nexus": "workspace:*"
+	},
+	"devDependencies": {
+		"@types/bun": "catalog:",
+		"@types/node": "catalog:",
+		"rstack": "catalog:",
+		"typescript": "catalog:",
+		"wireit": "catalog:"
+	}
+}
