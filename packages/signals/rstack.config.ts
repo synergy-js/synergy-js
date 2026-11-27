@@ -9,7 +9,7 @@ define.lib({
 			id: "signals",
 			bundle: false,
 			dts: {
-				isolated: true,
+				build: true,
 			},
 			output: {
 				cleanDistPath: true,
@@ -17,7 +17,6 @@ define.lib({
 				target: "web",
 			},
 			source: {
-				tsconfigPath: "tsconfig.lib.json",
 				entry: {
 					index: ["src/**", "!src/**__*.ts"],
 				},

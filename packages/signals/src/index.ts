@@ -9,7 +9,7 @@ import type {
 	StoreSetter,
 } from "./types.js"
 
-export type { Accessor, BaseContext, Listener, Owner, Resource, ResourceActions, Setter, StoreSetter } from "./types.js"
+export type { Accessor, BaseContext, Listener, Owner, Resource, ResourceActions, Setter, StoreSetter } from "./types.ts"
 
 let currentListener: Listener | null = null
 
@@ -19,7 +19,7 @@ let batchDepth = 0
 
 const pendingListeners = new Set<Listener>()
 
-const RAW_TARGET = Symbol("usrv.store.raw")
+const RAW_TARGET = Symbol("syn.store.raw")
 
 const PROXY_CACHE = new WeakMap<object, object>()
 
@@ -96,13 +96,6 @@ export const createSignal = <T>(initial: T): [Accessor<T>, Setter<T>] => {
 	return [read, write]
 }
 
-// export const createMemo = <T>(fn: () => T): Accessor<T> => {
-// 	const [get, set] = createSignal<T>(undefined as T)
-// 	createEffect(() => {
-// 		set(() => fn())
-// 	})
-// 	return get
-// }
 export const createMemo = <T>(fn: () => T): Accessor<T> => {
 	let value: T
 	let initialized = false
@@ -202,7 +195,6 @@ export const createEffect = (fn: () => void): void => {
 	run()
 }
 
-
 export const createBaseContext = <T>(defaultValue: T): BaseContext<T> => {
 	return {
 		id: Symbol("usrv.context"),
@@ -220,7 +212,6 @@ export const useContext = <T>(context: BaseContext<T>): T => {
 	}
 	return context.defaultValue
 }
-
 
 export function createResource<T, S = true>(fetcher: (source: S) => Promise<T>): [Resource<T>, ResourceActions<T>]
 

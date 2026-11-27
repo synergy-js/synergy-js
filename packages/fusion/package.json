@@ -1,29 +1,29 @@
 {
 	"name": "@synergy-js/fusion",
-	"version": "1.0.0",
+	"version": "0.0.1",
 	"type": "module",
-	"scripts": {
-		"test": "bun --bun rstest",
-		"fusion-build": "rs lib",
-		"fusion-build-rsdoctor": "RSDOCTOR=true rs lib",
-		"fusion-test": "rs test"
-	},
+	"files": [
+		"dist",
+		"README.md"
+	],
 	"dependencies": {
-		"oxc-parser": "^0.157.0",
-		"zimmerframe": "^1.1.5",
-		"acorn": "^8.19.0",
 		"@sveltejs/acorn-typescript": "^1.0.13",
-		"magic-string": "catalog:",
-		"@synergy-js/infusion": "workspace:*",
-		"@synergy-js/verdict": "workspace:*",
 		"@synergy-js/scribe": "workspace:*",
-		"@types/estree": "^1.0.10"
+		"@synergy-js/verdict": "workspace:*",
+		"@types/estree": "^1.0.10",
+		"acorn": "^8.19.0",
+		"magic-string": "catalog:",
+		"oxc-parser": "^0.157.0",
+		"zimmerframe": "^1.1.5"
 	},
 	"devDependencies": {
-		"@types/node": "catalog:",
-		"@rstest/adapter-rsbuild": "catalog:",
+		"@rsbuild/core": "catalog:",
 		"@rsdoctor/rspack-plugin": "catalog:",
+		"@rstest/adapter-rsbuild": "catalog:",
 		"@types/bun": "catalog:",
+		"@types/node": "catalog:",
+		"rstack": "catalog:",
+		"typescript": "catalog:",
 		"vite": "catalog:"
 	},
 	"exports": {

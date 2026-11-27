@@ -7,8 +7,7 @@ import type { RouteData, RouteParams } from "./types"
 //
 // export const outletStack: Array<() => JSXRenderNode> = []
 // export const dataStack: Array<RouteData | null> = []
-
-const pathSignal = createSignal<string>(window.location.pathname)
+const pathSignal = createSignal<string>("/")
 export const currentPath: () => string = pathSignal[0]
 export const setCurrentPath: (value: string) => void = pathSignal[1]
 

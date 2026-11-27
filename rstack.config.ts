@@ -1,10 +1,6 @@
-import { withRsbuildConfig } from "@rstest/adapter-rsbuild"
 import { define } from "rstack"
 
-define.test({
-	extends: withRsbuildConfig(),
-	globals: true,
-})
+define.test({})
 
 define.lint(({js, ts}) => [js.configs.recommended, ts.configs.recommended])
 

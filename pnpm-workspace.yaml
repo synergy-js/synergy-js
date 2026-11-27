@@ -3,47 +3,45 @@ concurrencyGroups:
 
 packages:
   - packages/*
-  - apps/*
+  - sandboxes/*
   - docs/*
 
 catalog:
   "typescript": "^7.0.2"
   "unocss": "66.10.5"
-  "@types/node": "^25.9.1"
+  "@types/node": "^25.9.9"
   "@types/bun": "^1.4.4"
-  "@rslib/core": "^1.0.3"
-  "@rsdoctor/rspack-plugin": "^1.6.3"
-  "@rsbuild/core": "^2.3.1"
-  "cross-env": "^10.1.0"
-  "@rspress/core": "^2.0.22"
-  "@types/react": "^19.2.18"
-  "@types/react-dom": "^19.2.7"
-  "react": "^19.2.8"
-  "react-dom": "^19.2.8"
+  "@rslib/core": "^1.0.7"
+  "@rsdoctor/rspack-plugin": "^1.6.5"
+  "@rsbuild/core": "^2.3.4"
+  "@rspress/core": "^2.1.2"
+  "@types/react": "^19.3.0"
+  "@types/react-dom": "^19.3.0"
+  "react": "^19.3.1"
+  "react-dom": "^19.3.1"
   "magic-string": "^1.4.5"
-  "vite": "^8.3.6"
+  "vite": "^8.3.8"
   "@rstest/adapter-rsbuild": "^0.12.6"
   "@rstest/core": "^0.12.6"
   "@rstest/playwright": "^0.12.6"
   "tailwindcss": "^4.3.5"
-  "solid-js": "^1.9.18"
+  "solid-js": "^1.9.20"
   "rstack": "0.9.0"
+  "taze": "^21.3.0"
 
-#registries:
-#  https://registry.mpaynesecurity.net/:
-#    scopes: [ "@syngery-js" ]
-#    serverType: npm
 
 dedupeDirectDeps: true
-autoDedupe: false
+autoDedupe: true
+
 nodeLinker: isolated
+
 dedupePeerDependents: true
+
 color: always
+
 lockfile:
   includeResolutionSettings: true
-versioning:
-  changelog:
-    storage: registry
+
 minimumReleaseAgeExclude:
   - tailwindcss@4.3.5
   - "@tailwindcss/node@4.3.5"
@@ -61,3 +59,18 @@ minimumReleaseAgeExclude:
   - "@tailwindcss/oxide-win32-x64-msvc@4.3.5"
   - "@tailwindcss/oxide@4.3.5"
   - "@tailwindcss/vite@4.3.5"
+versioning:
+  ignore:
+    - './sandboxes/fusion-sandbox-rsbuild'
+    - './sandboxes/fusion-sandbox-vite'
+    - './sandboxes/jsxr'
+    - './sandboxes/srvr-sandbox'
+  lanes:
+    '@synergy-js/infusion': beta
+    '@synergy-js/httpx': beta
+    '@synergy-js/events': beta
+  changelog:
+    storage: registry
+allowBuilds:
+  just-install: true
+gitChecks: true

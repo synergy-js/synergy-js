@@ -1,6 +1,6 @@
 {
 	"name": "@synergy-js/scribe",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "",
 	"license": "MIT",
 	"repository": {
@@ -9,22 +9,21 @@
 		"directory": "packages/scribe"
 	},
 	"type": "module",
+	"files": [
+		"dist",
+		"README.md"
+	],
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
 			"import": "./dist/index.js"
 		}
 	},
-	"scripts": {
-		"clean:node": "rm -rf node_modules",
-		"clean:dist": "rm -rf dist",
-		"scribe-build": "rs lib",
-		"scribe-test": "bun test",
-		"scribe-sandbox": "bun tests/sandbox.ts"
-	},
 	"devDependencies": {
+		"@rsdoctor/rspack-plugin": "catalog:",
 		"@types/bun": "catalog:",
 		"@types/node": "catalog:",
-		"@rsdoctor/rspack-plugin": "catalog:"
+		"rstack": "catalog:",
+		"typescript": "catalog:"
 	}
 }

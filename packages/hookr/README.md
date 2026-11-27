@@ -25,7 +25,7 @@ import { createHooks, definePlugin } from "@synergy-js/hookr"
 type AppHooks = {
 	"request": (req: Request) => void | Promise<void>
 	"response": (res: Response) => void | Promise<void>
-};
+}
 
 interface AppContext {
 	env: string;

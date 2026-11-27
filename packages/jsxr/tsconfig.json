@@ -1,13 +1,17 @@
 {
-	"extends": "../../tsconfig.json",
+	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
-		"isolatedDeclarations": true,
-		"rootDir": "src",
-		"declarationDir": "dist",
 		"lib": [
 			"dom"
 		],
 		"jsx": "react-jsx",
-		"jsxImportSource": "@synergy-js/jsxr/web"
-	}
+		"jsxImportSource": "@synergy-js/jsxr",
+		"rootDir": "./src",
+		"outDir": "./dist",
+		"declarationDir": "./dist",
+		"composite": true,
+		"declaration": true,
+		"isolatedDeclarations": true
+	},
+	"exclude": ["tests", "playground"]
 }

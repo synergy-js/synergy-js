@@ -48,4 +48,9 @@ export const sharedConfig: RstackConfig = {
 			},
 		},
 	},
+	test: {
+		bail: 1,
+		globals: true,
+		include: ["**/*.test.ts"],
+	},
 }

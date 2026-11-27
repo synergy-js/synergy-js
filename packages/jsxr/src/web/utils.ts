@@ -1,4 +1,4 @@
-import { createEffect } from "@synergy-js/signals"
+import { createEffect, runWithOwner } from "@synergy-js/signals"
 import type { JSXRenderNode, JSXChild, MatchDescriptor } from "./types.js"
 
 // Helper to flatten any resolved JSXChild into an array of real DOM Nodes
@@ -38,19 +38,6 @@ const normalizeToNodes = (value: unknown, out: Node[] = []): Node[] => {
 	
 	out.push(document.createTextNode(String(value)))
 	return out
-}
-
-export const renderFragment = (rawChildren: JSXChild): JSXRenderNode => {
-	const children: JSXChild[] = rawChildren == null ? [] : Array.isArray(rawChildren) ? rawChildren : [rawChildren]
-	const frag = document.createDocumentFragment()
-	appendDomChildren(frag, children)
-	
-	return {
-		tagName: "",
-		props: {},
-		children,
-		dom: frag,
-	}
 }
 
 export const applyAttribute = (el: HTMLElement, name: string, value: unknown): void => {
@@ -156,4 +143,66 @@ export const collectMatches = (raw: JSXChild, out: MatchDescriptor[]): void => {
 	if(typeof raw === "object" && raw !== null && "__jsxrMatch" in raw) {
 		out.push(raw as unknown as MatchDescriptor)
 	}
+}
+
+const VOID_TAGS = new Set(["area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"])
+
+const escapeHtml = (str: string): string =>
+	str.replace(/[&<>"']/g, (ch) =>
+		ch === "&" ? "&amp;" : ch === "<" ? "&lt;" : ch === ">" ? "&gt;" : ch === "\"" ? "&quot;" : "&#39;",
+	)
+
+export const renderFragment = (rawChildren: JSXChild): JSXRenderNode => {
+	const children: JSXChild[] = rawChildren == null ? [] : Array.isArray(rawChildren) ? rawChildren : [rawChildren]
+	
+	if(typeof document === "undefined") {
+		return {
+			tagName: "",
+			props: {},
+			children,
+			dom: null!,
+		}
+	}
+	
+	const frag = document.createDocumentFragment()
+	appendDomChildren(frag, children)
+	
+	return {
+		tagName: "",
+		props: {},
+		children,
+		dom: frag,
+	}
+}
+
+export const renderToString = (app: unknown): string => {
+	const owned = runWithOwner(() => (typeof app === "function" ? (app as () => JSXChild)() : (app as JSXChild)))
+	try {
+		return serializeNode(owned.result)
+	}
+	finally {
+		owned.dispose()
+	}
+}
+
+const serializeNode = (node: JSXChild): string => {
+	while(typeof node === "function") {
+		node = (node as () => JSXChild)()
+	}
+	if(node == null || typeof node === "boolean") return ""
+	if(Array.isArray(node)) return node.map(serializeNode).join("")
+	if(typeof node !== "object" || !("tagName" in node)) return escapeHtml(String(node))
+	
+	const {tagName, props, children} = node
+	if(!tagName) return children.map(serializeNode).join("") // Fragment
+	
+	let attrs = ""
+	for(const [k, rawVal] of Object.entries(props)) {
+		const val = typeof rawVal === "function" ? (rawVal as () => unknown)() : rawVal
+		if(val == null || val === false || k === "style" && typeof val !== "string") continue
+		attrs += val === true ? ` ${k}` : ` ${k}="${escapeHtml(String(val))}"`
+	}
+	
+	if(VOID_TAGS.has(tagName)) return `<${tagName}${attrs}>`
+	return `<${tagName}${attrs}>${children.map(serializeNode).join("")}</${tagName}>`
 }

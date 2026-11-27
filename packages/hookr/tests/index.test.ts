@@ -1,10 +1,15 @@
 import { describe, expect, it } from "rstack/test"
-import { createHooks, definePlugin } from "../src/index.ts"
+import { createHooks, createPlugin } from "../src/index.ts"
 
 describe("hookr", () => {
+	type Hooks = {
+		step?: (val: string) => Promise<void>
+		run?: () => Promise<void>
+	}
+	
 	it("runs hooks sequentially with callHook", async () => {
 		const order: string[] = []
-		const {hooks} = createHooks<{step: (val: string) => Promise<void>}>()
+		const {hooks} = createHooks<Hooks>()
 		
 		hooks.hook("step", async (val) => {
 			await Bun.sleep(10)
@@ -21,7 +26,7 @@ describe("hookr", () => {
 	
 	it("runs hooks concurrently with callHookParallel", async () => {
 		const order: string[] = []
-		const {hooks} = createHooks<{run: () => Promise<void>}>()
+		const {hooks} = createHooks<Hooks>()
 		
 		hooks.hook("run", async () => {
 			await Bun.sleep(20)
@@ -42,13 +47,9 @@ describe("hookr", () => {
 		let onceCount = 0
 		const {hooks} = createHooks<{ping: () => void}>()
 		
-		const off = hooks.hook("ping", () => {
-			count++
-		})
+		const off = hooks.hook("ping", () => count++)
 		
-		hooks.hookOnce("ping", () => {
-			onceCount++
-		})
+		hooks.hookOnce("ping", () => onceCount++)
 		
 		await hooks.callHook("ping")
 		off()
@@ -80,14 +81,34 @@ describe("hookr", () => {
 		expect(log).toEqual(["a1", "a2", "b1"])
 	})
 	
+	it("creates and passes a simple context object", async () => {
+		type Hooks = {
+			"increment": (val: number) => void
+		}
+		
+		interface Context {
+			env: string
+			db?: {close: () => Promise<void>}
+		}
+		
+		// 2. Create the app instance
+		const appHooks = createHooks<Hooks, Context>({
+			env: "production",
+		})
+		
+		expect(appHooks.context.env).toBe("production")
+	})
+	
 	it("preserves typed context without mutating the initial context", async () => {
 		const initial = Object.freeze({env: "it", count: 0})
+		
 		const app = createHooks<
 			{increment: () => void},
-			{env: string; count: number}
+			{env: string, count: number}
 		>({...initial})
 		
-		const plugin = definePlugin<typeof app>()
+		const plugin = createPlugin<typeof app>()
+		
 		const counterPlugin = plugin(({context, hooks}) => {
 			hooks.hook("increment", () => {
 				context.count += 1
@@ -102,12 +123,14 @@ describe("hookr", () => {
 	})
 	
 	it("profiles per-plugin execution with beforeEach and afterEach", async () => {
-		const traces: {plugin: string; duration: number}[] = []
+		const traces: {
+			plugin: string,
+			duration: number
+		}[] = []
+		
 		const {hooks} = createHooks<{work: () => Promise<void>}>()
 		
-		hooks.beforeEach((e) => {
-			e.context.start = performance.now()
-		})
+		hooks.beforeEach((e) => e.context.start = performance.now())
 		
 		hooks.afterEach((e) => {
 			traces.push({
@@ -120,13 +143,7 @@ describe("hookr", () => {
 			await Bun.sleep(5)
 		})
 		
-		hooks.hook(
-			"work",
-			async () => {
-				await Bun.sleep(5)
-			},
-			{name: "labeledWorker"},
-		)
+		hooks.hook("work", async () => await Bun.sleep(5), {name: "labeledWorker"})
 		
 		await hooks.callHook("work")
 		

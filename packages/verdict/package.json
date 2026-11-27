@@ -1,6 +1,6 @@
 {
 	"name": "@synergy-js/verdict",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Rust-style Result monad implementation",
 	"keywords": [
 		"Javascript error handling",
@@ -25,18 +25,11 @@
 			"import": "./dist/index.js"
 		}
 	},
-	"scripts": {
-		"verdict-test": "bun test",
-		"verdict-build": "rs lib",
-		"clean:node": "rm -rf node_modules",
-		"clean:dist": "rm -rf dist",
-		"publish:local": "npm publish --registry https://registry.mpaynesecurity.net",
-		"unpublish:local": "npm unpublish @mpaynesecurity/rsbuild-plugin-fusion --registry https://registry.mpaynesecurity.net --force",
-		"publish:git": "bun publish . --registry https://npm.pkg.github.com --no-workspaces"
-	},
 	"devDependencies": {
+		"@rsdoctor/rspack-plugin": "catalog:",
 		"@types/bun": "catalog:",
 		"@types/node": "catalog:",
-		"@rsdoctor/rspack-plugin": "catalog:"
+		"rstack": "catalog:",
+		"typescript": "catalog:"
 	}
 }

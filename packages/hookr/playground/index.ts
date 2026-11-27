@@ -1,4 +1,4 @@
-import { createHooks, definePlugin } from "../src"
+import { createHooks, createPlugin } from "../src"
 
 type Hooks = {
 	"request": (req: Request) => void | Promise<void>
@@ -16,12 +16,12 @@ const appHooks = createHooks<Hooks, Context>({
 	env: "dev",
 })
 
-const app = definePlugin<typeof appHooks>()
+const appPlugin = createPlugin<typeof appHooks>()
 
-const dbPlugin = app(({context, hooks}) => {
+const dbPlugin = appPlugin(({context, hooks}) => {
 	hooks.hook("error", (error, context) => {
 		console.log(context?.source)
 	})
 })
 
-app((app) => app.context.env)
+appPlugin((app) => app.context.env)

@@ -1,5 +1,5 @@
 {
-	"extends": "../../tsconfig.json",
+	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
 		"isolatedDeclarations": true,
 		"rootDir": "src",
@@ -9,5 +9,10 @@
 		],
 		"jsx": "react-jsx",
 		"jsxImportSource": "@synergy-js/jsx"
-	}
+	},
+	"exclude": [
+		"tests",
+		"playground",
+		"playground"
+	]
 }

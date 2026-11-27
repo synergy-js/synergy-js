@@ -16,9 +16,8 @@ define.lib({
 				minify: true,
 			},
 			source: {
-				tsconfigPath: "tsconfig.lib.json",
 				entry: {
-					index: ["src/**", "!src/old__*.ts"],
+					index: ["src/**"],
 				},
 			},
 		},

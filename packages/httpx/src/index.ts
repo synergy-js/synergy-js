@@ -24,25 +24,25 @@
  * Custom error class to handle non-2xx responses
  * */
 export class HttpError extends Response {
-    status: number
-
-    message: string
-
-    // Accept a raw number and a message
-    constructor(status: number, message: string = "An http error occurred") {
-        // Create the JSON response string
-        const body = JSON.stringify({ error: message })
-
-        // Pass it directly to the native Response engine
-        super(body, {
-            status: status,
-            statusText: message,
-            headers: { "Content-Type": "application/json" },
-        })
-
-        this.status = status
-        this.message = message
-    }
+	status: number
+	
+	message: string
+	
+	// Accept a raw number and a message
+	constructor(status: number, message: string = "An http error occurred") {
+		// Create the JSON response string
+		const body = JSON.stringify({error: message})
+		
+		// Pass it directly to the native Response engine
+		super(body, {
+			status: status,
+			statusText: message,
+			headers: {"Content-Type": "application/json"},
+		})
+		
+		this.status = status
+		this.message = message
+	}
 }
 
 /**
@@ -78,258 +78,267 @@ export class HttpError extends Response {
  * ```
  */
 export interface Interceptors {
-    /**
-     * @example Append Auth token to default headers
-     * ```ts
-     * export const mainApi = new HttpClient('https://mycompany.com')
-     * mainApi.interceptors.request = (options) => {
-     *   options.headers = { ...options.headers, Authorization: `Bearer ${localStorage.getItem('token')}` }
-     *   return options
-     * }
-     * ```
-     */
-    request?: (options: IHttpClientOptions) => IHttpClientOptions | Promise<IHttpClientOptions>
-    /**
-     * Many backends wrap their real data inside an envelope payload like { success: true, statusCode: 200, data: { username: "Alice" }}.
-     *
-     * With a response interceptor, you can strip away the boilerplate wrapper globally
-     *
-     * @example
-     * ```ts
-     * httpClient.interceptors.response = (response, serverPayload: any) => {
-     *   console.log("Response arrived from server!")
-     *
-     *   // If the server payload contains an envelope, unwrap it right here
-     *   if (serverPayload && serverPayload.data !== undefined) {
-     *     return serverPayload.data // Now the component only gets { username: "Alice" }
-     *   }
-     *
-     *   return serverPayload
-     * }
-     * ```
-     */
-    response?: <T>(response: Response, data: T) => T | Promise<T>
-    /**
-     * If the server returns a 4xx or 5xx error code, the code skips the response interceptor and jumps straight into the error interceptor. This is incredibly useful for global security routing
-     * @example
-     * ```ts
-     * httpClient.interceptors.error = (error) => {
-     *   // Check if the error is an HttpError and specifically an unauthorized 401
-     *   if (error instanceof HttpError && error.response.status === 401) {
-     *     console.warn("User token is invalid or expired. Redirecting...")
-     *
-     *     localStorage.clear()
-     *     window.location.href = '/login' // Instantly kicks them out
-     *
-     *     return // Stop execution
-     *   }
-     *
-     *   // If it's a regular error (like a 500), let the component handle it locally
-     *   throw error
-     * }
-     * ```
-     */
-    error?: (error: HttpError | Error) => any | Promise<any>
+	/**
+	 * @example Append Auth token to default headers
+	 * ```ts
+	 * export const mainApi = new HttpClient('https://mycompany.com')
+	 * mainApi.interceptors.request = (options) => {
+	 *   options.headers = { ...options.headers, Authorization: `Bearer ${localStorage.getItem('token')}` }
+	 *   return options
+	 * }
+	 * ```
+	 */
+	request?: (options: HttpClientOptions) => HttpClientOptions | Promise<HttpClientOptions>
+	/**
+	 * Many backends wrap their real data inside an envelope payload like { success: true, statusCode: 200, data: { username: "Alice" }}.
+	 *
+	 * With a response interceptor, you can strip away the boilerplate wrapper globally
+	 *
+	 * @example
+	 * ```ts
+	 * httpClient.interceptors.response = (response, serverPayload: any) => {
+	 *   console.log("Response arrived from server!")
+	 *
+	 *   // If the server payload contains an envelope, unwrap it right here
+	 *   if (serverPayload && serverPayload.data !== undefined) {
+	 *     return serverPayload.data // Now the component only gets { username: "Alice" }
+	 *   }
+	 *
+	 *   return serverPayload
+	 * }
+	 * ```
+	 */
+	response?: <T>(response: Response, data: T) => T | Promise<T>
+	/**
+	 * If the server returns a 4xx or 5xx error code, the code skips the response interceptor and jumps straight into the error interceptor. This is incredibly useful for global security routing
+	 * @example
+	 * ```ts
+	 * httpClient.interceptors.error = (error) => {
+	 *   // Check if the error is an HttpError and specifically an unauthorized 401
+	 *   if (error instanceof HttpError && error.response.status === 401) {
+	 *     console.warn("User token is invalid or expired. Redirecting...")
+	 *
+	 *     localStorage.clear()
+	 *     window.location.href = '/login' // Instantly kicks them out
+	 *
+	 *     return // Stop execution
+	 *   }
+	 *
+	 *   // If it's a regular error (like a 500), let the component handle it locally
+	 *   throw error
+	 * }
+	 * ```
+	 */
+	error?: (error: HttpError | Error) => any | Promise<any>
 }
 
 /**
  * Extends native RequestInit to allow easier body passing
  * */
-export interface IHttpClientOptions extends Omit<RequestInit, "body"> {
-    body?: Record<string, unknown> | BodyInit
-    baseUrl?: string
-    /**
-     * Removes the burden of manually concatenating ?id=123 strings onto your target paths
-     */
-    params?: Record<string, string | number | boolean | undefined>
+export interface HttpClientOptions extends Omit<RequestInit, "body"> {
+	body?: Record<string, unknown> | BodyInit
+	baseUrl?: string
+	/**
+	 * Removes the burden of manually concatenating ?id=123 strings onto your target paths
+	 */
+	params?: Record<string, string | number | boolean | undefined>
 }
 
 export class HttpClient {
-    private readonly baseUrl: string
-
-    private readonly defaultOptions: IHttpClientOptions
-
-    public interceptors: Interceptors = {}
-
-    constructor(baseUrl: string, defaultOptions: IHttpClientOptions = {}) {
-        this.baseUrl = baseUrl
-        this.defaultOptions = defaultOptions
-    }
-
-    public async request<TResponse>(
-        path: string,
-        options: IHttpClientOptions,
-    ): Promise<TResponse> {
-        // Merge default options with request options
-        let mergedOptions: IHttpClientOptions = {
-            ...this.defaultOptions,
-            ...options,
-            headers: {
-                ...(this.defaultOptions.headers as Record<string, string>),
-                ...(options.headers as Record<string, string>),
-            },
-            baseUrl: options.baseUrl || this.baseUrl,
-        }
-
-        // Execute request interceptor
-        if (this.interceptors.request) {
-            mergedOptions = await this.interceptors.request(mergedOptions)
-        }
-
-        const { body, baseUrl, params, ...customConfig } = mergedOptions
-
-        // Convert headers into a standard Headers collection instance
-        const headers = new Headers(
-            customConfig.headers as Record<string, string>,
-        )
-
-        // Only assign JSON Content-Type if there's a payload, and it isn't raw binary, form data
-        if (body && !(body instanceof FormData) && !(body instanceof Blob)) {
-            if (!headers.has("Content-Type")) {
-                headers.set("Content-Type", "application/json")
-            }
-        }
-
-        // Clear content headers entirely for empty read requests (GET / DELETE)
-        if (!body) {
-            headers.delete("Content-Type")
-        }
-
-        let serializedBody: BodyInit | undefined
-
-        if (body) {
-            // This guarantees that if someone passes a Uint8Array, a custom class constructor, or any other native binary type as a body payload, the client won't accidentally corrupt it into a broken "{}" JSON string.
-            const isPlainObject =
-                typeof body === "object" &&
-                Object.getPrototypeOf(body) === Object.prototype
-            serializedBody = isPlainObject
-                ? JSON.stringify(body)
-                : (body as BodyInit)
-        }
-
-        // Use regex to strip accidental double-slashes and handles missing base URLs
-        let finalUrl = baseUrl
-            ? `${baseUrl.replace(/\/+$/, "")}/${path.replace(/^\/+/, "")}`
-            : path
-
-        if (params) {
-            const searchParams = new URLSearchParams()
-            Object.entries(params).forEach(([key, val]) => {
-                if (val !== undefined && val !== null)
-                    searchParams.append(key, String(val))
-            })
-
-            const queryString = searchParams.toString()
-            if (queryString) {
-                finalUrl += (finalUrl.includes("?") ? "&" : "?") + queryString
-            }
-        }
-
-        const finalConfig: RequestInit = {
-            ...customConfig,
-            headers,
-            ...(serializedBody && { body: serializedBody }),
-        }
-
-        try {
-            const response = await fetch(finalUrl, finalConfig)
-
-            // 3. Process Failure Lifecycle
-            if (!response.ok) {
-                new HttpError(response.status)
-            }
-
-            // 4. Handle Empty Content or specific success actions
-            const isNoContent = response.status === 204
-            const contentType = response.headers.get("content-type")
-            const isJson =
-                contentType && contentType.includes("application/json")
-
-            let data =
-                isNoContent || !isJson
-                    ? ({} as TResponse)
-                    : ((await response.json()) as TResponse)
-
-            // 5. Execute Global Response Interceptor
-            if (this.interceptors.response) {
-                data = await this.interceptors.response(response, data)
-            }
-
-            return data
-        } catch (error: any) {
-            // 6. Execute Global Error Interceptor
-            if (this.interceptors.error) {
-                return await this.interceptors.error(error)
-            }
-            throw error
-        }
-    }
-
-    public get = <T>(path: string, config?: IHttpClientOptions): Promise<T> =>
-        this.request<T>(path, { method: "GET", ...config })
-
-    public post = <T>(
-        path: string,
-        body?: any,
-        config?: IHttpClientOptions,
-    ): Promise<T> => this.request<T>(path, { method: "POST", body, ...config })
-
-    public put = <T>(
-        path: string,
-        body?: any,
-        config?: IHttpClientOptions,
-    ): Promise<T> => this.request<T>(path, { method: "PUT", body, ...config })
-
-    public delete = <T>(
-        path: string,
-        config?: IHttpClientOptions,
-    ): Promise<T> => this.request<T>(path, { method: "DELETE", ...config })
+	private readonly baseUrl: string
+	
+	private readonly defaultOptions: HttpClientOptions
+	
+	public interceptors: Interceptors = {}
+	
+	constructor(baseUrl: string, defaultOptions: HttpClientOptions = {}) {
+		this.baseUrl = baseUrl
+		this.defaultOptions = defaultOptions
+	}
+	
+	public async request<TResponse>(path: string,
+		options: HttpClientOptions): Promise<TResponse> {
+		// Merge default options with request options
+		let mergedOptions: HttpClientOptions = {
+			...this.defaultOptions,
+			...options,
+			headers: {
+				...(this.defaultOptions.headers as Record<string, string>),
+				...(options.headers as Record<string, string>),
+			},
+			baseUrl: options.baseUrl || this.baseUrl,
+		}
+		
+		// Execute request interceptor
+		if(this.interceptors.request) {
+			mergedOptions = await this.interceptors.request(mergedOptions)
+		}
+		
+		const {body, baseUrl, params, ...customConfig} = mergedOptions
+		
+		// Convert headers into a standard Headers collection instance
+		const headers = new Headers(
+			customConfig.headers as Record<string, string>,
+		)
+		
+		// Only assign JSON Content-Type if there's a payload, and it isn't raw binary, form data
+		if(body && !(body instanceof FormData) && !(body instanceof Blob)) {
+			if(!headers.has("Content-Type")) {
+				headers.set("Content-Type", "application/json")
+			}
+		}
+		
+		// Clear content headers entirely for empty read requests (GET / DELETE)
+		if(!body) {
+			headers.delete("Content-Type")
+		}
+		
+		let serializedBody: BodyInit | undefined
+		
+		if(body) {
+			// This guarantees that if someone passes a Uint8Array, a custom class constructor, or any other native binary type as a body payload, the client won't accidentally corrupt it into a broken "{}" JSON string.
+			const isPlainObject =
+				typeof body === "object" &&
+				Object.getPrototypeOf(body) === Object.prototype
+			serializedBody = isPlainObject
+			                 ? JSON.stringify(body)
+			                 : (body as BodyInit)
+		}
+		
+		// Use regex to strip accidental double-slashes and handles missing base URLs
+		let finalUrl = baseUrl
+		               ? `${baseUrl.replace(/\/+$/, "")}/${path.replace(/^\/+/, "")}`
+		               : path
+		
+		if(params) {
+			const searchParams = new URLSearchParams()
+			Object.entries(params).forEach(([key, val]) => {
+				if(val !== undefined && val !== null)
+					searchParams.append(key, String(val))
+			})
+			
+			const queryString = searchParams.toString()
+			if(queryString) {
+				finalUrl += (finalUrl.includes("?") ? "&" : "?") + queryString
+			}
+		}
+		
+		const finalConfig: RequestInit = {
+			...customConfig,
+			headers,
+			...(serializedBody && {body: serializedBody}),
+		}
+		
+		try {
+			const response = await fetch(finalUrl, finalConfig)
+			
+			// 3. Process Failure Lifecycle
+			if(!response.ok) {
+				throw new HttpError(response.status, response.statusText || "An http error occurred")
+			}
+			
+			// 4. Handle Empty Content or specific success actions
+			const isNoContent = response.status === 204
+			const contentType = response.headers.get("content-type")
+			const isJson =
+				contentType && contentType.includes("application/json")
+			
+			let data: TResponse
+			if(isNoContent) {
+				data = {} as TResponse
+			}
+			else if(isJson) {
+				data = (await response.json()) as TResponse
+			}
+			else if(contentType?.includes("text/")) {
+				data = (await response.text()) as TResponse
+			}
+			else {
+				data = {} as TResponse
+			}
+			
+			
+			// 5. Execute Global Response Interceptor
+			if(this.interceptors.response) {
+				data = await this.interceptors.response(response, data)
+			}
+			
+			return data
+		}
+		catch(error: any) {
+			// 6. Execute Global Error Interceptor
+			if(this.interceptors.error) {
+				return await this.interceptors.error(error)
+			}
+			throw error
+		}
+	}
+	
+	public get = <T>(path: string, config?: HttpClientOptions): Promise<T> =>
+		this.request<T>(path, {method: "GET", ...config})
+	
+	public post = <T>(
+		path: string,
+		body?: any,
+		config?: HttpClientOptions,
+	): Promise<T> => this.request<T>(path, {method: "POST", body, ...config})
+	
+	public put = <T>(
+		path: string,
+		body?: any,
+		config?: HttpClientOptions,
+	): Promise<T> => this.request<T>(path, {method: "PUT", body, ...config})
+	
+	public delete = <T>(
+		path: string,
+		config?: HttpClientOptions,
+	): Promise<T> => this.request<T>(path, {method: "DELETE", ...config})
 }
 
 /**
  * Collection of common http status codes
  */
 export const HttpStatusCodes = {
-    /** Request has succeeded
-     * @see https://datatracker.ietf.org/doc/html/rfc7231#section-6.3.1
-     */
-    OK: 200,
-
-    /**
-     * The request has succeeded and a new resource has been created as a result of it. This is typically the response sent after a PUT request.
-     * @see https://tools.ietf.org/html/rfc7231#section-6.3.2
-     */
-    CREATED: 201,
-
-    /**
-     * The request has been accepted for processing, but the processing has not been completed.
-     * @see https://datatracker.ietf.org/doc/html/rfc7231#section-6.3.3
-     */
-    ACCEPTED: 202,
-
-    /**
-     *  The server has successfully fulfilled the request and that there is no additional
-     *  content to send in the response payload body.
-     *  @see https://datatracker.ietf.org/doc/html/rfc7231#section-6.3.5
-     */
-    NO_CONTENT: 204,
-
-    /**
-     * Indicates that the server cannot or will not process the request due to something that is perceived to be
-     * a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
-     * @see https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1
-     */
-    BAD_REQUEST: 400,
-
-    /**
-     * The server encountered an unexpected condition that prevented it from fulfilling the request.
-     * @see https://tools.ietf.org/html/rfc7231#section-6.6.1
-     */
-    INTERNAL_SERVER_ERROR: 500,
-
-    /***
-     * This error response means that the server, while working as a gateway to get a response needed to handle the request, got an invalid response.
-     * @see https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.3
-     */
-    BAD_GATEWAY: 502,
+	/** Request has succeeded
+	 * @see https://datatracker.ietf.org/doc/html/rfc7231#section-6.3.1
+	 */
+	OK: 200,
+	
+	/**
+	 * The request has succeeded and a new resource has been created as a result of it. This is typically the response sent after a PUT request.
+	 * @see https://tools.ietf.org/html/rfc7231#section-6.3.2
+	 */
+	CREATED: 201,
+	
+	/**
+	 * The request has been accepted for processing, but the processing has not been completed.
+	 * @see https://datatracker.ietf.org/doc/html/rfc7231#section-6.3.3
+	 */
+	ACCEPTED: 202,
+	
+	/**
+	 *  The server has successfully fulfilled the request and that there is no additional
+	 *  content to send in the response payload body.
+	 *  @see https://datatracker.ietf.org/doc/html/rfc7231#section-6.3.5
+	 */
+	NO_CONTENT: 204,
+	
+	/**
+	 * Indicates that the server cannot or will not process the request due to something that is perceived to be
+	 * a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+	 * @see https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1
+	 */
+	BAD_REQUEST: 400,
+	
+	/**
+	 * The server encountered an unexpected condition that prevented it from fulfilling the request.
+	 * @see https://tools.ietf.org/html/rfc7231#section-6.6.1
+	 */
+	INTERNAL_SERVER_ERROR: 500,
+	
+	/***
+	 * This error response means that the server, while working as a gateway to get a response needed to handle the request, got an invalid response.
+	 * @see https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.3
+	 */
+	BAD_GATEWAY: 502,
 } as const

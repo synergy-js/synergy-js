@@ -1,7 +1,0 @@
-{
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "types": ["rstack/types", "node", "@testing-library/jest-dom"]
-  },
-  "include": ["./"]
-}

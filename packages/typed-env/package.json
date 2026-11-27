@@ -1,6 +1,6 @@
 {
 	"name": "@synergy-js/validate-env",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "",
 	"license": "MIT",
 	"repository": {
@@ -14,16 +14,15 @@
 			"import": "./dist/index.js"
 		}
 	},
-	"scripts": {
-		"clean:node": "rm -rf node_modules",
-		"clean:dist": "rm -rf dist",
-		"validate-env-build": "rs lib",
-		"validate-env-test": "bun test"
-	},
+	"files": [
+		"dist",
+		"README.md"
+	],
 	"devDependencies": {
+		"@rsdoctor/rspack-plugin": "catalog:",
 		"@types/bun": "catalog:",
 		"@types/node": "catalog:",
 		"rstack": "catalog:",
-		"@rsdoctor/rspack-plugin": "catalog:"
+		"typescript": "catalog:"
 	}
 }

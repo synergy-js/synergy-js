@@ -1,5 +1,5 @@
 import type {
-	AppContext,
+	Context,
 	Hookable,
 	HookConfig,
 	HookMap,
@@ -9,9 +9,15 @@ import type {
 	SystemHooks,
 } from "./types.ts"
 
-export const createHooks = <CustomHooks extends HookMap = {}, Context = {}>(initialContext: Context = {} as Context): AppContext<SystemHooks & CustomHooks, Context> => {
+/**
+ * @template T
+ * @template S
+ * @param {Context} initialContext
+ * @returns {Context<SystemHooks & T, S>}
+ */
+export const createHooks = <T extends HookMap, S = {}>(initialContext: S = {} as S): Context<SystemHooks & T, S> => {
 	
-	type AllHooks = SystemHooks & CustomHooks
+	type AllHooks = SystemHooks & T
 	
 	const registry = new Map<keyof AllHooks, Set<ListenerEntry>>()
 	const beforeListeners = new Set<(event: HookTraceEvent<AllHooks>) => void>()
@@ -105,7 +111,9 @@ export const createHooks = <CustomHooks extends HookMap = {}, Context = {}>(init
 	
 	const callHook = async <K extends keyof AllHooks>(name: K, ...args: Parameters<AllHooks[K]>): Promise<void> => {
 		const listeners = registry.get(name)
-		if(!listeners) return
+		if(!listeners) {
+			return
+		}
 		
 		for(const entry of [...listeners]) {
 			await invokeEntry(name, entry, args)
@@ -114,7 +122,9 @@ export const createHooks = <CustomHooks extends HookMap = {}, Context = {}>(init
 	
 	const callHookParallel = async <K extends keyof AllHooks>(name: K, ...args: Parameters<AllHooks[K]>): Promise<void> => {
 		const listeners = registry.get(name)
-		if(!listeners) return
+		if(!listeners) {
+			return
+		}
 		
 		await Promise.all(
 			[...listeners].map((entry) => invokeEntry(name, entry, args)),
@@ -147,8 +157,9 @@ export const createHooks = <CustomHooks extends HookMap = {}, Context = {}>(init
 /**
  * Curried helper so users can bind their app type once: `const plugin = definePlugin<typeof app>()`
  */
-export const definePlugin = <App extends AppContext<any, any>>(): <R = void | Promise<void>>(plugin: (app: App) => R) => (app: App) => R => {
+/* @TODO Fix this logic */
+export const createPlugin = <App extends Context<any, any>>(): <R = void | Promise<void>>(plugin: (app: App) => R) => (app: App) => R => {
 	return <R = void | Promise<void>>(plugin: (app: App) => R) => plugin
 }
 
-export type { AppContext, Hookable, HookCallback, HookConfig, HookMap, HookTraceEvent, ListenerEntry, Options, SystemHooks } from "./types.ts"
+export type { Context, Hookable, HookCallback, HookConfig, HookMap, HookTraceEvent, ListenerEntry, Options, SystemHooks } from "./types.ts"

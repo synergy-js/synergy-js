@@ -16,9 +16,9 @@ export type SystemHooks = {
 	"error": (error: unknown, context?: {source?: string}) => void | Promise<void>
 }
 
-export type AppContext<Hooks extends HookMap = SystemHooks, Context = {}> = {
-	context: Context
-	hooks: Hookable<Hooks>
+export type Context<S extends HookMap = SystemHooks, T = {}> = {
+	context: T
+	hooks: Hookable<S>
 }
 
 export interface HookTraceEvent<THooks extends HookMap = HookMap> {

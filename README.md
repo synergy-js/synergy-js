@@ -1,165 +1,131 @@
 # SynergyJS
 
-![NPM License](https://img.shields.io/npm/l/%40mpaynesecurity%2Frsbuild-plugin-fusion)
+TypeScript libraries for building web applications: fine-grained reactivity, dependency injection, RPC, HTTP, validation, logging, styling, and the build tooling that ties them together. Packages are published under the `@synergy-js/*` scope.
 
-**Important:**`Plugin is optimized for and only works with the Bun runtime.`
+## Packages
 
-**Important:**`Plugin is built on WinterCG-compliant web standards (Request, Response, and standard ES modules).
-If your cloud provider or runtime does not support standard web primitives, that is a limitation of the provider, not
-this tool.`
+### `@synergy-js/env-guard` — `packages/env-guard`
 
-## Using this example
+Type-safe validation of `process.env` through a small, composable schema API. `createEnv` returns a proxied object that parses values on access, so invalid configuration fails fast with clear errors.
 
-Run the following command:
+- `e.string()`, `e.number()`, `e.boolean()`, `e.enum()` and `e.array()` builders
+- Immutable refinements with `.refine()`, `.default()`, `.optional()` and `.error()`
+- Lazy validation by default, or `eager: true` to validate at creation
+- `validateAll()` aggregates every missing/invalid variable into one `EnvValidationError`
 
-```sh
-npx create-turbo@latest
-```
+### `@synergy-js/fusion` — `packages/fusion`
 
-## What's inside?
+Build-time server-function support for full-stack apps, available as separate Rsbuild and Vite plugins (`@synergy-js/fusion/rsbuild`, `@synergy-js/fusion/vite`). It turns `*.server.ts` modules into callable RPC functions while keeping server code out of the client bundle.
 
-This Turborepo includes the following packages/apps:
+- Loader that discovers exported server functions and generates a server entry
+- Client-side calls proxied through the `/fusion/rpc` dev middleware
+- Runtime presets for `bun`, `node`, `cloudflare-workers` and generic targets
+- Depends on `@synergy-js/scribe` and `@synergy-js/verdict`
 
-### Apps and Packages
+### `@synergy-js/httpx` — `packages/httpx`
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `@next/eslint-plugin-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+A thin, typed wrapper around `fetch` that removes the repetitive parts of HTTP client code.
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- Typed responses via generics (`httpClient.get<User>(url)`)
+- HTTP status codes (404, 500, …) throw catchable `HttpError` instances with response context
+- Per-instance request, response and error interceptors
+- Automatic JSON serialization of object bodies and safe handling of empty (204) responses
 
-### Utilities
+### `@synergy-js/infusion` — `packages/infusion`
 
-This Turborepo has some additional tools already setup for you:
+A lightweight, type-safe dependency injection container for TypeScript and JavaScript with no `reflect-metadata` requirement.
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+- `@Service()` class decorators and functional `inject()` resolution
+- Hierarchical scopes: `Singleton`, `Request` and `Transient`
+- Typed `InjectionToken<T>` with defaults and container overrides
+- Class/value/factory providers, multi-providers and `onDestroy()` cleanup
+- Circular-dependency detection and pluggable context resolvers (e.g. `AsyncLocalStorage`)
 
-### Build
+### `@synergy-js/kinetic` — `packages/kinetic`
 
-To build all apps and packages, run the following command:
+A fine-grained DOM JSX runtime and client-side router built on `@synergy-js/signals`. Components are setup functions that run once; DOM updates are driven by reactive effects rather than re-rendering.
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+- Automatic and development JSX runtimes with `mount()` and owner-aware disposal
+- Reactive attribute/child handling, context, and control-flow components (`Show`, `For`, `Switch`, `Match`)
+- Router with `Router`, `Outlet`, `A`, route loaders, params and location hooks
+- Subpath exports: `.`, `./web`, `./router`, `./jsx-runtime`, `./jsx-dev-runtime`
 
-```sh
-cd my-turborepo
-turbo build
-```
+### `@synergy-js/nexus` — `packages/nexus`
 
-Without global `turbo`, use your package manager:
+A small fetch-based RPC framework: declare routes with decorators on controller classes, bootstrap a server with an adapter, and call it from a typed client.
 
-```sh
-cd my-turborepo
-npx turbo build
-pnpm exec turbo build
-pnpm exec turbo build
-```
+- `@Route`, `@Get`, `@Post`, `@Patch` and `@Delete` decorators with a route table
+- Adapters for Node, Bun and Web-standard `fetch` handlers (`./adapters`)
+- Interceptors and generated client via `createClient` (`./client`)
+- Uses `@synergy-js/infusion` for service resolution
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+### `@synergy-js/prism` — `packages/prism`
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+An atomic CSS-in-JS engine with runtime theming and variant support.
 
-```sh
-turbo build --filter=docs
-```
+- True atomic deduplication: each declaration is written to the stylesheet once as a `syn-*` class
+- Constructable stylesheets (`adoptedStyleSheets`) instead of `<style>` tag mutations
+- `cx()` with deterministic last-wins slot resolution for conflicting classes
+- `defineTokens()` emits native CSS custom properties; `createVariants()` provides CVA-style recipes
+- Full `csstype`-based autocomplete for properties, values and pseudo-selectors
 
-Without global `turbo`:
+### `@synergy-js/rsbuild-plugin-kinetic` — `packages/rsbuild-plugin-kinetic`
 
-```sh
-npx turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
+The Rsbuild/Rspack companion for Kinetic: configures the automatic JSX runtime and adds a pre-loader that rewrites `.tsx` files into fine-grained reactive DOM updates.
 
-### Develop
+- Exports `jsxrPlugin()`
+- Wires SWC's automatic runtime to Kinetic's JSX entry points
+- Rewrites JSX props/children into getter thunks so reactivity survives compilation
+- Also exposes `./jsx-runtime` and `./jsx-dev-runtime` type/runtime entry points
 
-To develop all apps and packages, run the following command:
+### `@synergy-js/scribe` — `packages/scribe`
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+A structured logger with named child contexts and pluggable transports.
 
-```sh
-cd my-turborepo
-turbo dev
-```
+- `trace`/`debug`/`info`/`warn`/`error` levels and `Scribe.child()` context scopes
+- Console, file and remote-storage transports, plus level filtering with `withFilter`
+- Color helpers and live-line output utilities
+- Typed `LogPayload` / `LogTransport` interfaces for custom transports
 
-Without global `turbo`, use your package manager:
+### `@synergy-js/signals` — `packages/signals`
 
-```sh
-cd my-turborepo
-npx turbo dev
-pnpm exec turbo dev
-pnpm exec turbo dev
-```
+A zero-dependency, fine-grained reactivity system for TypeScript and JavaScript.
 
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+- `createSignal`, `createMemo`, `createEffect` with automatic dependency tracking and `batch()`
+- Proxy-based deep stores via `createStore` and race-safe `createResource` for async data
+- Ownership/cleanup (`runWithOwner`, `onCleanup`) and typed context (`createBaseContext`, `useContext`)
+- Built entirely on standard JS primitives (`Set`, `Map`, `WeakMap`, `Proxy`, `Symbol`)
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+### `@synergy-js/tap` — `packages/tap`
 
-```sh
-turbo dev --filter=web
-```
+Runtime-neutral async lifecycle hooks and plugin infrastructure for libraries and apps.
 
-Without global `turbo`:
+- Typed hook maps and a shared, typed context object
+- Sequential `callHook` and parallel `callParallel` dispatch
+- `definePlugin()` helper with full autocomplete over hooks and context
+- Per-hook `beforeEach`/`afterEach` profiling with no runtime dependencies
 
-```sh
-npx turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
+### `@synergy-js/verdict` — `packages/verdict`
 
-### Remote Caching
+Rust-inspired `Ok`/`Err` result handling with batteries included for resilient async code.
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+- `trySync`/`tryAsync` with a structured `AppError` (`code`, `message`, `status`, `context`, `cause`)
+- Built-in retries with exponential backoff, jitter and `AbortSignal` cancellation
+- Sync and async pipelines (`pipeSync`, `pipeAsync`, `ResultAsync`), tuple-preserving `result.all`
+- Escape hatches: `toTuple()`, `toNullable()`, `filter()` and other ergonomic helpers
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+## Contributing
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+1. Fork or branch from `main`.
+2. Ensure tests and builds pass for affected packages.
+3. Follow [Conventional Commits](https://conventionalcommits.org) (`feat(kinetic): ...`, `fix(verdict): ...`).
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+## License
 
-```sh
-cd my-turborepo
-turbo login
-```
+[MIT](./LICENSE.md)
 
-Without global `turbo`, use your package manager:
+## Acknowledgements
 
-```sh
-cd my-turborepo
-npx turbo login
-pnpm exec turbo login
-pnpm exec turbo login
-```
+[Rstack](https://rstack.rs) (`rsbuild, rstest, rslib`)
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo link
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo link
-pnpm exec turbo link
-pnpm exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+[Wireit](https://github.com/google/wireit)

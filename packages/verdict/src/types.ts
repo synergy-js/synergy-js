@@ -36,6 +36,8 @@ export type Result<T, E> = Ok<T> | Err<E>
  * }
  * ```
  */
+
+
 export interface AppError {
 	/** A stable, uppercase string code for machine filtering (e.g., 'AUTH_FAILED') */
 	code: string;
@@ -45,6 +47,7 @@ export interface AppError {
 	status?: number;
 	/** Optional debugging metadata or original system error details */
 	context?: Record<string, unknown>;
+	cause?: unknown
 }
 
 
@@ -83,3 +86,15 @@ export type InferOk<R> = R extends Result<infer T, any> ? T : never;
 export type InferErr<R> = R extends Result<any, infer E> ? E : never;
 
 export type ResultTuple<T, E> = [error: null, data: T] | [error: E, data: null];
+
+export interface RetryOptions<E = AppError> {
+	attempts?: number
+	delayMs?: number
+	backoffFactor?: number
+	withJitter?: boolean
+	signal?: AbortSignal
+	shouldRetry?: (err: unknown, attempt: number) => boolean
+	mapError?: (cause: unknown) => E
+}
+
+export type TryAsyncOptions<E = AppError> = RetryOptions<E>

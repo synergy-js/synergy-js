@@ -1,6 +1,6 @@
 import { createEffect, onCleanup, runWithOwner, createBaseContext, untrack, type BaseContext } from "@synergy-js/signals"
-import type { JSXComponent, JSXChild, ReactiveProps, JSXRenderNode, Context, ContextProviderProps } from "./types.js"
-import { appendDomChildren, applyAttribute, renderFragment } from "./utils.js"
+import type { JSXComponent, JSXChild, ReactiveProps, JSXRenderNode, Context, ContextProviderProps } from "./types.ts"
+import { appendDomChildren, applyAttribute, renderFragment, renderToString } from "./utils.js"
 
 export const Fragment: symbol = Symbol.for("jsxr.dom.fragment")
 
@@ -39,7 +39,20 @@ export const jsx = <TTag extends keyof HTMLElementTagNameMap, TProps extends Rec
 	
 	const refCallback = internalProps["ref"] as ((el: HTMLElement) => void) | undefined
 	delete internalProps["ref"]
-	
+	// SSR / Server branch (no DOM available)
+	if(typeof document === "undefined") {
+		const elementProps: Record<string, unknown> = {}
+		for(const [k, v] of Object.entries(internalProps)) {
+			if(k === "key" || v == null || v === false || k.toLowerCase().startsWith("on")) continue
+			elementProps[k] = v
+		}
+		return {
+			tagName: tag.toString(),
+			props: elementProps,
+			children,
+			dom: null!,
+		}
+	}
 	const el = document.createElement(tag.toString())
 	const elementProps: Record<string, unknown> = {}
 	
@@ -139,6 +152,14 @@ export namespace JSX {
 	
 	export interface ElementChildrenAttribute {
 		children: {}
+	}
+	
+	export interface ElementClass {
+		render(props: any): JSXRenderNode
+	}
+	
+	export interface ElementAttributesProperty {
+		props: {}
 	}
 	
 	export type IntrinsicElements = {

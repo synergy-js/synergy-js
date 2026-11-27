@@ -1,6 +1,6 @@
 {
 	"name": "@synergy-js/hookr",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"type": "module",
 	"exports": {
 		".": {
@@ -12,15 +12,11 @@
 		"dist",
 		"README.md"
 	],
-	"scripts": {
-		"hookr-build": "rs lib",
-		"hookr-test": "bun --bun rs test",
-		"test:watch": "bun --bun rs test --watch"
-	},
 	"devDependencies": {
-		"@types/node": "catalog:",
-		"@types/bun": "catalog:",
 		"@rsdoctor/rspack-plugin": "catalog:",
+		"@types/bun": "catalog:",
+		"@types/node": "catalog:",
+		"rstack": "catalog:",
 		"typescript": "catalog:"
 	},
 	"publishConfig": {

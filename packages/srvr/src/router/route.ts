@@ -5,14 +5,23 @@ import type {
 	RouteDefinition,
 	RouteOptionsConfig,
 	MethodDecoratorFactory,
-	Controller,
+	Controller, MethodRouteOptions,
 } from "../types.ts"
 import { ROUTE_DEFINITIONS } from "../constants.ts"
 
 import { compilePath, joinPaths } from "./utils.ts"
 
-function createRouteDecorator(httpMethod: string): RouteDecoratorFactory {
-	return function(path = "/"): MethodDecoratorFactory {
+/**
+ * `Tier 1` — Global interceptors: Passed once to bootstrap({ controllers: [...], interceptors: [globalFn] }) -> forwarded to createFetchHandler({ router, appInterceptors }).
+ *
+ * `Tier 2 `— `@Route` (controller-level) interceptors: Passed to @Route("/users", { interceptors: [controllerFn] }) -> stored in classInterceptors.
+ *
+ * `Tier 3` — `@Get / @Post / @Patch / @Delete` (HTTP method-level) interceptors: Passed to @Get("/:id", { interceptors: [methodFn] }) -> stored on each route entry in metadata.routes.
+ * @param {string} httpMethod
+ * @returns {RouteDecoratorFactory}
+ */
+function _createRouteDecorator(httpMethod: string): RouteDecoratorFactory {
+	return function(path = "/", options?: MethodRouteOptions): MethodDecoratorFactory {
 		return function <This, Args extends unknown[], Return>(
 			originalMethod: (this: This, ...args: Args) => Return,
 			context: ClassMethodDecoratorContext<This, (this: This, ...args: Args) => Return>,
@@ -23,37 +32,28 @@ function createRouteDecorator(httpMethod: string): RouteDecoratorFactory {
 			
 			const metadata = context.metadata as FrameworkMetadata
 			
-			if(!metadata.routes) {
-				metadata.routes = []
+			if(!Object.hasOwn(metadata, "routes")) {
+				metadata.routes = [...(metadata.routes ?? [])]
 			}
 			
-			metadata.routes.push({
+			metadata.routes!.push({
 				method: httpMethod,
 				path: path,
 				handlerName: context.name,
 				originalMethod: originalMethod as (...args: unknown[]) => unknown,
+				interceptors: options?.interceptors ?? [],
 			})
-			
-			if(process.env.NODE_ENV === "development") {
-				console.info(`\n[router/createRouteDecorator] Registered ${httpMethod} ${path} onto method: ${String(context.name)}`)
-			}
-			
-			console.info(`\n[Router] Registered ${httpMethod} ${path} onto method: ${String(context.name)}`)
 		}
 	}
 }
 
+export const Get: RouteDecoratorFactory = _createRouteDecorator("GET")
 
-export const Get: RouteDecoratorFactory = createRouteDecorator("GET")
+export const Post: RouteDecoratorFactory = _createRouteDecorator("POST")
 
+export const Patch: RouteDecoratorFactory = _createRouteDecorator("PATCH")
 
-export const Post: RouteDecoratorFactory = createRouteDecorator("POST")
-
-
-export const Patch: RouteDecoratorFactory = createRouteDecorator("PATCH")
-
-
-export const Delete: RouteDecoratorFactory = createRouteDecorator("DELETE")
+export const Delete: RouteDecoratorFactory = _createRouteDecorator("DELETE")
 
 /**
  * Synchronous Stage 3 Class Decorator
@@ -72,59 +72,21 @@ export const Delete: RouteDecoratorFactory = createRouteDecorator("DELETE")
  *  }
  * ```
  */
-// export function Route(basePath: string): (targetClass: Controller, context: ClassDecoratorContext) => void {
-// 	return function(targetClass, context): void {
-// 		if(context.kind !== "class") {
-// 			throw new Error("@Route only works on classes.")
-// 		}
-//
-// 		const metadata = context.metadata as IExtendedFrameworkMetadata | undefined
-// 		const routes = metadata?.routes ?? []
-// 		const classGuards = metadata?.controllerGuards ?? []
-// 		const methodGuards = metadata?.methodGuards ?? {}
-// 		const interceptors = metadata?.interceptors ?? new Map<string | symbol, HttpInterceptorFn[]>()
-//
-// 		const definitions: RouteDefinition[] = routes.map((route) => {
-// 			const path = joinPaths(basePath, route.path)
-// 			const {segments, paramNames} = compilePath(path)
-//
-// 			return {
-// 				method: route.method.toUpperCase(),
-// 				path,
-// 				segments,
-// 				paramNames,
-// 				basePath,
-// 				controller: targetClass,
-// 				handlerName: route.handlerName,
-// 				originalMethod: route.originalMethod,
-// 				routeInterceptors: interceptors.get(route.handlerName) ?? [],
-// 				routeGuards: [
-// 					...classGuards,
-// 					...(methodGuards[route.handlerName] ?? []),
-// 				],
-// 			}
-// 		})
-//
-// 		Object.defineProperty(targetClass, ROUTE_DEFINITIONS, {
-// 			value: definitions,
-// 		})
-// 	}
-// }
-export function Route(
-	basePath: string,
-	options?: RouteOptionsConfig,
-): <TClass extends Controller>(targetClass: TClass, context: ClassDecoratorContext<TClass>) => void {
+
+export function Route(basePath: string, options?: RouteOptionsConfig): <TClass extends Controller>(targetClass: TClass, context: ClassDecoratorContext<TClass>) => void {
 	return function(targetClass, context): void {
 		if(context.kind !== "class") {
 			throw new Error("@Route only works on classes.")
 		}
-		
+		// Options defined in ../types.ts -> FrameworkMetadata
 		const metadata = context.metadata as FrameworkMetadata | undefined
+		
 		const routes = metadata?.routes ?? []
-		const classGuards = metadata?.controllerGuards ?? []
-		const methodGuards = metadata?.methodGuards ?? {}
+		
 		const classInterceptors = options?.interceptors ?? []
+		
 		const providers = options?.providers ?? []
+		
 		const methodInterceptors = metadata?.interceptors ?? new Map<string | symbol, InterceptorFn[]>()
 		
 		const definitions: RouteDefinition[] = routes.map((route) => {
@@ -144,10 +106,6 @@ export function Route(
 				routeInterceptors: [
 					...classInterceptors,
 					...(methodInterceptors.get(route.handlerName) ?? []),
-				],
-				routeGuards: [
-					...classGuards,
-					...(methodGuards[route.handlerName] ?? []),
 				],
 			}
 		})

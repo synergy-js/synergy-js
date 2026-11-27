@@ -7,6 +7,13 @@ export interface JSXRenderNode {
 	dom: Node
 }
 
+export interface JSXChildArray extends Array<JSXChild> {
+}
+
+export interface JSXChildAccessor {
+	(): JSXChild
+}
+
 export type JSXChild =
 	| Node
 	| JSXRenderNode
@@ -15,6 +22,8 @@ export type JSXChild =
 	| boolean
 	| null
 	| undefined
+	| JSXChildAccessor
+	| JSXChildArray
 	| Accessor<string | number | boolean | null | undefined>
 	| JSXChild[]
 

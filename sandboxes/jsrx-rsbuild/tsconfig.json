@@ -1,0 +1,14 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"rootDir": "./src",
+		"noEmit": true,
+		"composite": false,
+		"isolatedDeclarations": false,
+		"types": [
+			"node",
+			"bun",
+			"rstack/types"
+		]
+	}
+}

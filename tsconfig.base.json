@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"esModuleInterop": true,
+		"incremental": true,
+		"module": "ESNext",
+		"pretty": true,
+		"moduleResolution": "bundler",
+		"erasableSyntaxOnly": true,
+		"rewriteRelativeImportExtensions": true,
+		"noFallthroughCasesInSwitch": true,
+		"allowImportingTsExtensions": true,
+		"resolvePackageJsonImports": true,
+		"resolveJsonModule": true,
+		"resolvePackageJsonExports": true,
+		"skipDefaultLibCheck": true,
+		"verbatimModuleSyntax": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"declarationMap": false,
+		"target": "ESNext"
+	}
+}

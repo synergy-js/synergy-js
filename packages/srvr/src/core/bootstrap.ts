@@ -22,7 +22,6 @@ export const bootstrap = async <TOptions>(options: BootstrapOptions): Promise<Se
 	const fetchHandler = createFetchHandler({
 		router,
 		appInterceptors: options.interceptors ?? [],
-		createScope: options.createScope,
 	})
 	
 	console.info("\n[Engine] Booting framework environment runtime.")

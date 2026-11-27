@@ -1,13 +1,24 @@
 {
 	"name": "@synergy-js/httpx",
-	"version": "1.0.0",
+	"version": "0.1.0-beta.1",
 	"license": "MIT",
+	"description": "A better way to fetch http data",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/synergy-js/synergy-js.git",
 		"directory": "packages/httpx"
 	},
 	"type": "module",
+	"keywords": [
+		"http",
+		"fetch",
+		"interceptors",
+		"zero dependency"
+	],
+	"files": [
+		"dist",
+		"README.md"
+	],
 	"exports": {
 		".": {
 			"import": "./dist/index.js",
@@ -15,14 +26,13 @@
 		}
 	},
 	"scripts": {
-		"clean:node": "rm -rf node_modules",
-		"clean:dist": "rm -rf dist",
-		"httpx-build": "rs lib",
-		"httpx-test": "bun test"
+		"build": "rs lib"
 	},
 	"devDependencies": {
+		"@rsdoctor/rspack-plugin": "catalog:",
 		"@types/bun": "catalog:",
 		"@types/node": "catalog:",
-		"@rsdoctor/rspack-plugin": "catalog:"
+		"rstack": "catalog:",
+		"typescript": "catalog:"
 	}
 }

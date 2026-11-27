@@ -1,26 +1,42 @@
+// tsconfig.json (monorepo root)
 {
-	"compilerOptions": {
-		"esModuleInterop": true,
-		"incremental": true,
-		"module": "ESNext",
-		"pretty": true,
-		"moduleResolution": "bundler",
-		"erasableSyntaxOnly": true,
-		"rewriteRelativeImportExtensions": true,
-		"noFallthroughCasesInSwitch": true,
-		"allowImportingTsExtensions": true,
-		"resolvePackageJsonImports": true,
-		"resolveJsonModule": true,
-		"resolvePackageJsonExports": true,
-		"skipDefaultLibCheck": true,
-		"verbatimModuleSyntax": true,
-		"skipLibCheck": true,
-		"strict": true,
-		"target": "ESNext",
-		"types": [
-			"node",
-			"bun",
-			"rstack/types"
-		]
-	}
+	"files": [],
+	"references": [
+		{
+			"path": "./packages/events"
+		},
+		{
+			"path": "./packages/fusion"
+		},
+		{
+			"path": "./packages/hookr"
+		},
+		{
+			"path": "./packages/httpx"
+		},
+		{
+			"path": "./packages/infusion"
+		},
+		{
+			"path": "./packages/jsxr"
+		},
+		{
+			"path": "./packages/rsbuild-plugin-jsxr"
+		},
+		{
+			"path": "./packages/scribe"
+		},
+		{
+			"path": "./packages/signals"
+		},
+		{
+			"path": "./packages/srvr"
+		},
+		{
+			"path": "./packages/typed-env"
+		},
+		{
+			"path": "./packages/verdict"
+		}
+	]
 }

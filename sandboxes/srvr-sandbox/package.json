@@ -1,0 +1,22 @@
+{
+	"name": "srvr-sandbox",
+	"private": true,
+	"scripts": {
+		"srvr-sandbox-dev": " bun --watch entry.ts",
+		"clean:node": "rm -rf node_modules",
+		"clean:dist": "rm -rf dist"
+	},
+	"dependencies": {
+		"@synergy-js/infusion": "workspace:*",
+		"@synergy-js/jsxr": "workspace:*",
+		"@synergy-js/prism": "workspace:",
+		"@synergy-js/signals": "workspace:*",
+		"@synergy-js/srvr": "workspace:*"
+	},
+	"devDependencies": {
+		"@types/bun": "catalog:",
+		"@types/node": "catalog:",
+		"rstack": "catalog:",
+		"typescript": "catalog:"
+	}
+}

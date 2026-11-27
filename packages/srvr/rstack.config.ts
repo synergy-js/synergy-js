@@ -9,7 +9,7 @@ define.lib({
 			id: "srvr",
 			bundle: false,
 			dts: {
-				isolated: true,
+				build: true,
 			},
 			output: {
 				cleanDistPath: true,

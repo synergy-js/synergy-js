@@ -1,6 +1,6 @@
 {
 	"name": "@synergy-js/rsbuild-plugin-jsxr",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
@@ -8,6 +8,10 @@
 		"directory": "packages/rsbuild-plugin-jsxr"
 	},
 	"type": "module",
+	"files": [
+		"dist",
+		"README.md"
+	],
 	"exports": {
 		".": {
 			"import": "./dist/index.js",
@@ -22,19 +26,15 @@
 			"import": "./dist/jsx-dev-runtime.js"
 		}
 	},
-	"scripts": {
-		"clean:node": "rm -rf node_modules",
-		"clean:dist": "rm -rf dist",
-		"jsx-build": "rs lib",
-		"jsx-test": "bun --bun rs test"
-	},
 	"dependencies": {
 		"magic-string": "^1.4.5",
 		"oxc-parser": "^0.158.0"
 	},
 	"devDependencies": {
+		"@rsdoctor/rspack-plugin": "catalog:",
 		"@types/bun": "catalog:",
 		"@types/node": "catalog:",
-		"@rsdoctor/rspack-plugin": "catalog:"
+		"rstack": "catalog:",
+		"typescript": "catalog:"
 	}
 }

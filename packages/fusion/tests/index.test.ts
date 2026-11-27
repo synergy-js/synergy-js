@@ -8,7 +8,7 @@ describe("Fusion Loader", () => {
 		export function myFn1(){}
 		export const myFn2 = () => {}
 		`
-		const {exportedFns} = parseFns(code)
+		const {exportedFns} = parseFns(code, code)
 		
 		expect(exportedFns.length).toBe(2)
 	})

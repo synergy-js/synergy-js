@@ -1,6 +1,6 @@
-import { parseSync, Visitor, Program } from "oxc-parser"
+import { parseSync, Visitor, type Program } from "oxc-parser"
 import { randomBytes } from "node:crypto"
-import { LiveLine, type ServerModule } from "./types.js"
+import type { LiveLine, ServerModule } from "./types.ts"
 
 /**
  * Generate a unique id (hash) for each rfunction
@@ -20,14 +20,14 @@ export const generateHash = (length: number): string => {
  * replace it with client-side fetch stubs so the browser doesn't break,
  * and update a global server-side registry (productionFnManifest / developmentFnManifest)
  * to map network calls back to the original files.
- * @param filePath
+ * @param fileName
  * @param {string} code
  * @returns {{exportedFns: string[], result: Program}}
  *
  */
-export const parseFns = (filePath: string, code: string): {exportedFns: string[], result: Program} => {
+export const parseFns = (fileName: string, code: string): {exportedFns: string[], result: Program} => {
 	
-	const parseResult = parseSync(filePath, code, {
+	const parseResult = parseSync(fileName, code, {
 		sourceType: "module",
 		lang: "ts", // Tells OXC to parse TypeScript syntax
 	})
@@ -126,11 +126,7 @@ export const parseFns = (filePath: string, code: string): {exportedFns: string[]
  * @param {string} targetMethod
  * @returns {Promise<Response>}
  */
-export const useDevServerFnHandler = async (
-	request: Request,
-	filePath: string,
-	targetMethod: string,
-): Promise<Response> => {
+export const useDevServerFnHandler = async (request: Request, filePath: string, targetMethod: string): Promise<Response> => {
 	try {
 		const args = (await request.json()) as unknown[]
 		

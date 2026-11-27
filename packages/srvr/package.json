@@ -1,6 +1,6 @@
 {
 	"name": "@synergy-js/srvr",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
@@ -8,6 +8,10 @@
 		"directory": "packages/srvr"
 	},
 	"type": "module",
+	"files": [
+		"dist",
+		"README.md"
+	],
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
@@ -22,18 +26,14 @@
 			"import": "./dist/adapters/index.js"
 		}
 	},
-	"scripts": {
-		"clean:node": "rm -rf node_modules",
-		"clean:dist": "rm -rf dist",
-		"srvr-build": "rs lib",
-		"srvr-test": "rs test"
-	},
 	"dependencies": {
 		"@synergy-js/infusion": "workspace:*"
 	},
 	"devDependencies": {
-		"@types/node": "catalog:",
+		"@rsdoctor/rspack-plugin": "catalog:",
 		"@types/bun": "catalog:",
-		"@rsdoctor/rspack-plugin": "catalog:"
+		"@types/node": "catalog:",
+		"rstack": "catalog:",
+		"typescript": "catalog:"
 	}
 }

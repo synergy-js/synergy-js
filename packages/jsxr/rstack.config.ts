@@ -36,3 +36,6 @@ define.lib({
 		preset: "default",
 	},
 })
+define.test({
+	testEnvironment: "happy-dom",
+})
