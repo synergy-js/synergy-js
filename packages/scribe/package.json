@@ -13,6 +13,21 @@
 		"dist",
 		"README.md"
 	],
+	"scripts": {
+		"build": "wireit"
+	},
+	"wireit": {
+		"build": {
+			"command": "rs lib",
+			"clean": "if-file-deleted",
+			"files": [
+				"src/**/*.ts"
+			],
+			"output": [
+				"dist/**"
+			]
+		}
+	},
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
@@ -24,6 +39,7 @@
 		"@types/bun": "catalog:",
 		"@types/node": "catalog:",
 		"rstack": "catalog:",
-		"typescript": "catalog:"
+		"typescript": "catalog:",
+		"wireit": "catalog:"
 	}
 }
