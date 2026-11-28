@@ -23,12 +23,10 @@ on:
         description: "Create new Git tag"
         required: true
         type: boolean
-        default: false
       release-tag-version:
         description: "Tag version (pkg@0.1.0-alpha, beta, ..."
         required: true
         type: choice
-        default: false
         options:
           - alpha
           - beta
