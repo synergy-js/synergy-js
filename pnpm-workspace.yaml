@@ -29,8 +29,7 @@ catalog:
   "oxc-parser": "^0.160.0"
   "happy-dom": "^21.0.4"
 
-lockfile:
-  includeResolutionSettings: true
+lockfile: false
 minimumReleaseAgeExclude:
   - tailwindcss@4.3.5
   - "@tailwindcss/node@4.3.5"
